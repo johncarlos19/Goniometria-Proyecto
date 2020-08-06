@@ -1,0 +1,1204 @@
+<!DOCTYPE  html>
+
+<html lang="es_ES">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto</title>
+    <meta name="viewport" content="width=device-width,  initial-scale=1">
+    <meta name="keywords" content="s"/>
+    <meta name="description" content="a"/>
+    <meta name="klickart:url" content="//art.klickpages.com.br"/>
+    <meta name="handler:contact" content="//handler.klickpages.com.br/sendmail"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="bootstrap-4.5.0-dist/js/bootstrap.bundle.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbar-fixed/">
+    <link rel="stylesheet" href="/publico/Stylesheets/carousel.css"/>
+    <link rel="stylesheet" href="/Stylesheets/css.css"/>
+    <link rel="stylesheet" href="/Stylesheets/made_with.css"/>
+    <link rel="stylesheet" href="/Stylesheets/main.css"/>
+    <link rel="stylesheet" href="/Stylesheets/publish.css"/>
+    <script>
+        window.NREUM || (NREUM = {});
+        NREUM.info = {
+            "beacon": "bam.nr-data.net",
+            "errorBeacon": "bam.nr-data.net",
+            "licenseKey": "NRJS-c142e72e4c1ae98c33c",
+            "applicationID": "503514264",
+            "transactionName": "JQ5YEBZdDl8GRUxmWwgAQhYFHTJSBFIQZlcUF18HAQhYchNHTHJ3MkEMCxRGC1wNVg9qQgcVXg==",
+            "queueTime": 0,
+            "applicationTime": 6,
+            "agent": ""
+        }
+    </script>
+    <script>
+        (window.NREUM || (NREUM = {})).loader_config = {
+            licenseKey: "NRJS-c142e72e4c1ae98c33c",
+            applicationID: "503514264"
+        };
+        window.NREUM || (NREUM = {}),
+            __nr_require = function (e, n, t) {
+                function r(t) {
+                    if (!n[t]) {
+                        var i = n[t] = {
+                            exports: {}
+                        };
+                        e[t][0].call(i.exports, function (n) {
+                            var i = e[t][1][n];
+                            return r(i || n)
+                        }, i, i.exports)
+                    }
+                    return n[t].exports
+                }
+
+                if ("function" == typeof __nr_require)
+                    return __nr_require;
+                for (var i = 0; i < t.length; i++)
+                    r(t[i]);
+                return r
+            }({
+                1: [function (e, n, t) {
+                    function r() {
+                    }
+
+                    function i(e, n, t) {
+                        return function () {
+                            return o(e, [u.now()].concat(f(arguments)), n ? null : this, t),
+                                n ? void 0 : this
+                        }
+                    }
+
+                    var o = e("handle")
+                        , a = e(4)
+                        , f = e(5)
+                        , c = e("ee").get("tracer")
+                        , u = e("loader")
+                        , s = NREUM;
+                    "undefined" == typeof window.newrelic && (newrelic = s);
+                    var p = ["setPageViewName", "setCustomAttribute", "setErrorHandler", "finished", "addToTrace", "inlineHit", "addRelease"]
+                        , l = "api-"
+                        , d = l + "ixn-";
+                    a(p, function (e, n) {
+                        s[n] = i(l + n, !0, "api")
+                    }),
+                        s.addPageAction = i(l + "addPageAction", !0),
+                        s.setCurrentRouteName = i(l + "routeName", !0),
+                        n.exports = newrelic,
+                        s.interaction = function () {
+                            return (new r).get()
+                        }
+                    ;
+                    var m = r.prototype = {
+                        createTracer: function (e, n) {
+                            var t = {}
+                                , r = this
+                                , i = "function" == typeof n;
+                            return o(d + "tracer", [u.now(), e, t], r),
+                                function () {
+                                    if (c.emit((i ? "" : "no-") + "fn-start", [u.now(), r, i], t),
+                                        i)
+                                        try {
+                                            return n.apply(this, arguments)
+                                        } catch (e) {
+                                            throw  c.emit("fn-err", [arguments, this, e], t),
+                                                e
+                                        } finally {
+                                            c.emit("fn-end", [u.now()], t)
+                                        }
+                                }
+                        }
+                    };
+                    a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","), function (e, n) {
+                        m[n] = i(d + n)
+                    }),
+                        newrelic.noticeError = function (e, n) {
+                            "string" == typeof e && (e = new Error(e)),
+                                o("err", [e, u.now(), !1, n])
+                        }
+                }
+                    , {}],
+                2: [function (e, n, t) {
+                    function r(e, n) {
+                        var t = e.getEntries();
+                        t.forEach(function (e) {
+                            "first-paint" === e.name ? c("timing", ["fp", Math.floor(e.startTime)]) : "first-contentful-paint" === e.name && c("timing", ["fcp", Math.floor(e.startTime)])
+                        })
+                    }
+
+                    function i(e, n) {
+                        var t = e.getEntries();
+                        t.length > 0 && c("lcp", [t[t.length - 1]])
+                    }
+
+                    function o(e) {
+                        if (e instanceof s && !l) {
+                            var n, t = Math.round(e.timeStamp);
+                            n = t > 1e12 ? Date.now() - t : u.now() - t,
+                                l = !0,
+                                c("timing", ["fi", t, {
+                                    type: e.type,
+                                    fid: n
+                                }])
+                        }
+                    }
+
+                    if (!("init" in NREUM && "page_view_timing" in NREUM.init && "enabled" in NREUM.init.page_view_timing && NREUM.init.page_view_timing.enabled === !1)) {
+                        var a, f, c = e("handle"), u = e("loader"), s = NREUM.o.EV;
+                        if ("PerformanceObserver" in window && "function" == typeof window.PerformanceObserver) {
+                            a = new PerformanceObserver(r),
+                                f = new PerformanceObserver(i);
+                            try {
+                                a.observe({
+                                    entryTypes: ["paint"]
+                                }),
+                                    f.observe({
+                                        entryTypes: ["largest-contentful-paint"]
+                                    })
+                            } catch (p) {
+                            }
+                        }
+                        if ("addEventListener" in document) {
+                            var l = !1
+                                , d = ["click", "keydown", "mousedown", "pointerdown", "touchstart"];
+                            d.forEach(function (e) {
+                                document.addEventListener(e, o, !1)
+                            })
+                        }
+                    }
+                }
+                    , {}],
+                3: [function (e, n, t) {
+                    function r(e, n) {
+                        if (!i)
+                            return !1;
+                        if (e !== i)
+                            return !1;
+                        if (!n)
+                            return !0;
+                        if (!o)
+                            return !1;
+                        for (var t = o.split("."), r = n.split("."), a = 0; a < r.length; a++)
+                            if (r[a] !== t[a])
+                                return !1;
+                        return !0
+                    }
+
+                    var i = null
+                        , o = null
+                        , a = /Version\/(\S+)\s+Safari/;
+                    if (navigator.userAgent) {
+                        var f = navigator.userAgent
+                            , c = f.match(a);
+                        c && f.indexOf("Chrome") === -1 && f.indexOf("Chromium") === -1 && (i = "Safari",
+                            o = c[1])
+                    }
+                    n.exports = {
+                        agent: i,
+                        version: o,
+                        match: r
+                    }
+                }
+                    , {}],
+                4: [function (e, n, t) {
+                    function r(e, n) {
+                        var t = []
+                            , r = ""
+                            , o = 0;
+                        for (r in e)
+                            i.call(e, r) && (t[o] = n(r, e[r]),
+                                o += 1);
+                        return t
+                    }
+
+                    var i = Object.prototype.hasOwnProperty;
+                    n.exports = r
+                }
+                    , {}],
+                5: [function (e, n, t) {
+                    function r(e, n, t) {
+                        n || (n = 0),
+                        "undefined" == typeof t && (t = e ? e.length : 0);
+                        for (var r = -1, i = t - n || 0, o = Array(i < 0 ? 0 : i); ++r < i;)
+                            o[r] = e[n + r];
+                        return o
+                    }
+
+                    n.exports = r
+                }
+                    , {}],
+                6: [function (e, n, t) {
+                    n.exports = {
+                        exists: "undefined" != typeof window.performance && window.performance.timing && "undefined" != typeof window.performance.timing.navigationStart
+                    }
+                }
+                    , {}],
+                ee: [function (e, n, t) {
+                    function r() {
+                    }
+
+                    function i(e) {
+                        function n(e) {
+                            return e && e instanceof r ? e : e ? c(e, f, o) : o()
+                        }
+
+                        function t(t, r, i, o) {
+                            if (!l.aborted || o) {
+                                e && e(t, r, i);
+                                for (var a = n(i), f = v(t), c = f.length, u = 0; u < c; u++)
+                                    f[u].apply(a, r);
+                                var p = s[y[t]];
+                                return p && p.push([b, t, r, a]),
+                                    a
+                            }
+                        }
+
+                        function d(e, n) {
+                            h[e] = v(e).concat(n)
+                        }
+
+                        function m(e, n) {
+                            var t = h[e];
+                            if (t)
+                                for (var r = 0; r < t.length; r++)
+                                    t[r] === n && t.splice(r, 1)
+                        }
+
+                        function v(e) {
+                            return h[e] || []
+                        }
+
+                        function g(e) {
+                            return p[e] = p[e] || i(t)
+                        }
+
+                        function w(e, n) {
+                            u(e, function (e, t) {
+                                n = n || "feature",
+                                    y[t] = n,
+                                n in s || (s[n] = [])
+                            })
+                        }
+
+                        var h = {}
+                            , y = {}
+                            , b = {
+                            on: d,
+                            addEventListener: d,
+                            removeEventListener: m,
+                            emit: t,
+                            get: g,
+                            listeners: v,
+                            context: n,
+                            buffer: w,
+                            abort: a,
+                            aborted: !1
+                        };
+                        return b
+                    }
+
+                    function o() {
+                        return new r
+                    }
+
+                    function a() {
+                        (s.api || s.feature) && (l.aborted = !0,
+                            s = l.backlog = {})
+                    }
+
+                    var f = "nr@context"
+                        , c = e("gos")
+                        , u = e(4)
+                        , s = {}
+                        , p = {}
+                        , l = n.exports = i();
+                    l.backlog = s
+                }
+                    , {}],
+                gos: [function (e, n, t) {
+                    function r(e, n, t) {
+                        if (i.call(e, n))
+                            return e[n];
+                        var r = t();
+                        if (Object.defineProperty && Object.keys)
+                            try {
+                                return Object.defineProperty(e, n, {
+                                    value: r,
+                                    writable: !0,
+                                    enumerable: !1
+                                }),
+                                    r
+                            } catch (o) {
+                            }
+                        return e[n] = r,
+                            r
+                    }
+
+                    var i = Object.prototype.hasOwnProperty;
+                    n.exports = r
+                }
+                    , {}],
+                handle: [function (e, n, t) {
+                    function r(e, n, t, r) {
+                        i.buffer([e], r),
+                            i.emit(e, n, t)
+                    }
+
+                    var i = e("ee").get("handle");
+                    n.exports = r,
+                        r.ee = i
+                }
+                    , {}],
+                id: [function (e, n, t) {
+                    function r(e) {
+                        var n = typeof e;
+                        return !e || "object" !== n && "function" !== n ? -1 : e === window ? 0 : a(e, o, function () {
+                            return i++
+                        })
+                    }
+
+                    var i = 1
+                        , o = "nr@id"
+                        , a = e("gos");
+                    n.exports = r
+                }
+                    , {}],
+                loader: [function (e, n, t) {
+                    function r() {
+                        if (!x++) {
+                            var e = E.info = NREUM.info
+                                , n = d.getElementsByTagName("script")[0];
+                            if (setTimeout(s.abort, 3e4),
+                                !(e && e.licenseKey && e.applicationID && n))
+                                return s.abort();
+                            u(y, function (n, t) {
+                                e[n] || (e[n] = t)
+                            }),
+                                c("mark", ["onload", a() + E.offset], null, "api");
+                            var t = d.createElement("script");
+                            t.src = "https://" + e.agent,
+                                n.parentNode.insertBefore(t, n)
+                        }
+                    }
+
+                    function i() {
+                        "complete" === d.readyState && o()
+                    }
+
+                    function o() {
+                        c("mark", ["domContent", a() + E.offset], null, "api")
+                    }
+
+                    function a() {
+                        return O.exists && performance.now ? Math.round(performance.now()) : (f = Math.max((new Date).getTime(), f)) - E.offset
+                    }
+
+                    var f = (new Date).getTime()
+                        , c = e("handle")
+                        , u = e(4)
+                        , s = e("ee")
+                        , p = e(3)
+                        , l = window
+                        , d = l.document
+                        , m = "addEventListener"
+                        , v = "attachEvent"
+                        , g = l.XMLHttpRequest
+                        , w = g && g.prototype;
+                    NREUM.o = {
+                        ST: setTimeout,
+                        SI: l.setImmediate,
+                        CT: clearTimeout,
+                        XHR: g,
+                        REQ: l.Request,
+                        EV: l.Event,
+                        PR: l.Promise,
+                        MO: l.MutationObserver
+                    };
+                    var h = "" + location
+                        , y = {
+                        beacon: "bam.nr-data.net",
+                        errorBeacon: "bam.nr-data.net",
+                        agent: "js-agent.newrelic.com/nr-1169.min.js"
+                    }
+                        , b = g && w && w[m] && !/CriOS/.test(navigator.userAgent)
+                        , E = n.exports = {
+                        offset: f,
+                        now: a,
+                        origin: h,
+                        features: {},
+                        xhrWrappable: b,
+                        userAgent: p
+                    };
+                    e(1),
+                        e(2),
+                        d[m] ? (d[m]("DOMContentLoaded", o, !1),
+                            l[m]("load", r, !1)) : (d[v]("onreadystatechange", i),
+                            l[v]("onload", r)),
+                        c("mark", ["firstbyte", f], null, "api");
+                    var x = 0
+                        , O = e(6)
+                }
+                    , {}],
+                "wrap-function": [function (e, n, t) {
+                    function r(e) {
+                        return !(e && e instanceof Function && e.apply && !e[a])
+                    }
+
+                    var i = e("ee")
+                        , o = e(5)
+                        , a = "nr@original"
+                        , f = Object.prototype.hasOwnProperty
+                        , c = !1;
+                    n.exports = function (e, n) {
+                        function t(e, n, t, i) {
+                            function nrWrapper() {
+                                var r, a, f, c;
+                                try {
+                                    a = this,
+                                        r = o(arguments),
+                                        f = "function" == typeof t ? t(r, a) : t || {}
+                                } catch (u) {
+                                    l([u, "", [r, a, i], f])
+                                }
+                                s(n + "start", [r, a, i], f);
+                                try {
+                                    return c = e.apply(a, r)
+                                } catch (p) {
+                                    throw  s(n + "err", [r, a, p], f),
+                                        p
+                                } finally {
+                                    s(n + "end", [r, a, c], f)
+                                }
+                            }
+
+                            return r(e) ? e : (n || (n = ""),
+                                nrWrapper[a] = e,
+                                p(e, nrWrapper),
+                                nrWrapper)
+                        }
+
+                        function u(e, n, i, o) {
+                            i || (i = "");
+                            var a, f, c, u = "-" === i.charAt(0);
+                            for (c = 0; c < n.length; c++)
+                                f = n[c],
+                                    a = e[f],
+                                r(a) || (e[f] = t(a, u ? f + i : i, o, f))
+                        }
+
+                        function s(t, r, i) {
+                            if (!c || n) {
+                                var o = c;
+                                c = !0;
+                                try {
+                                    e.emit(t, r, i, n)
+                                } catch (a) {
+                                    l([a, t, r, i])
+                                }
+                                c = o
+                            }
+                        }
+
+                        function p(e, n) {
+                            if (Object.defineProperty && Object.keys)
+                                try {
+                                    var t = Object.keys(e);
+                                    return t.forEach(function (t) {
+                                        Object.defineProperty(n, t, {
+                                            get: function () {
+                                                return e[t]
+                                            },
+                                            set: function (n) {
+                                                return e[t] = n,
+                                                    n
+                                            }
+                                        })
+                                    }),
+                                        n
+                                } catch (r) {
+                                    l([r])
+                                }
+                            for (var i in e)
+                                f.call(e, i) && (n[i] = e[i]);
+                            return n
+                        }
+
+                        function l(n) {
+                            try {
+                                e.emit("internal-error", n)
+                            } catch (t) {
+                            }
+                        }
+
+                        return e || (e = i),
+                            t.inPlace = u,
+                            t.flag = a,
+                            t
+                    }
+                }
+                    , {}]
+            }, {}, ["loader"]);
+    </script>
+    <meta property="og:url" content="proyecto"/>
+    <link rel="shortcut  icon"
+          href="https://static-art.klickpages.com.br/assets/favicon-c77fa3ade1955ddd88bb66da4b7a1ba537a645cf0d5370d104857045b366d66c.ico"/>
+    <link rel="stylesheet" media="screen"
+          href="//static-public.klickpages.com.br/app/assets/stylesheets/publish.css?v=1591247725"/>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:300,500,700|Just+Another+Hand|Lato:%27100italic%27,%27300italic%27,%27400italic%27,%27700italic%27,%27900italic%27,100,300,400,700,900|Lora:%27400italic%27,%27700italic%27,400,700|Montserrat:300,400,500,700|Oswald:300,400,700|Open+Sans:%27300italic%27,%27400italic%27,%27600italic%27,%27700italic%27,300,400,600,700|Open+Sans+Condensed:%27300italic%27,300,700|Roboto:%27100italic%27,%27300italic%27,%27400italic%27,%27500italic%27,%27700italic%27,%27900italic%27,100,300,400,500,700,900|Raleway:%27300italic%27,%27400italic%27,%27700italic%27,300,400,700|Nunito:%27wght@200%27,400,700,800"
+          rel="stylesheet">
+    <script type="text/javascript"
+            src="//static-public.klickpages.com.br/app/assets/javascripts/public/js/include.js?v=1591247725">
+        //<![CDATA[
+
+        //]]>
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/plus.js" async></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js" async></script>
+    <style type="text/css"></style>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id))
+            return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script type="text/javascript"
+        src="//static-public.klickpages.com.br/app/assets/javascripts/public/js/body/begin.js?v=1591247725">
+    //<![CDATA[
+
+    //]]>j
+
+
+</script>
+<div klickart-sections>
+    <link rel="stylesheet" href="//static-public.klickpages.com.br/tmp/zip/956/styles/main.css?v=1532636683">
+    <div id="section-6577430" klickart-edit-component-info="">
+        <link rel="stylesheet" href="//static-public.klickpages.com.br/tmp/zip/907/styles/main.css?v=1532107766">
+        <header class="header-container  template-invs"
+                data-klickart-delay-options='{"enabled":false,"selectedType":"default","time":"","dateTime":"2020-05-22T04:52:53.501Z","timezone":"-04:00","redirect":false,"url":""}'
+                style="background-attachment:  scroll;">
+            <div class="component-bg" style="background-color:  rgba(255,  255,  255,  1);"
+                 klickart-edit-background-mask-visible="true"></div>
+            <div class="container">
+                <div class="header-logo">
+                    <img src="/img/Xtreme Sport Channel Logo.gif" class="header-image" klickart-edit-not-highlight=""
+                         style="width:  160px;" klickart-image-source="src"
+                         previous-value="https://static-public.klickpages.com.br/uploads/media/file/2029240/xtreme_sport_channel_logo_(1).gif"
+                         last-local-image-source="https://static-public.klickpages.com.br/uploads/media/file/2029240/xtreme_sport_channel_logo_(1).gif">
+                </div>
+                <nav class="header-menu">
+                    <ul id="klickart-collection-1tqjbabjuuh800">
+                        <li class="header-menu-item">
+                            <a style="color:#d9d94d" href="Formulario-Login/login.html"
+                               klickart-edit-link-type="default" klickart-edit-link-href-klickbox="#"
+                               klickart-edit-link-href-faq-question="#" id="klickart-linkoe6jpoov4u800">
+                                                                                <span>
+                                                                                        <b>
+                                                                                                <font style="vertical-align:  inherit;">
+                                                                                                        <font style="vertical-align:  inherit;">Registrar  /  Iniciar  Sesi&#243n</font>
+                                                                                                </font>
+                                                                                        </b>
+                                                                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+    <link rel="stylesheet" href="//static-public.klickpages.com.br/tmp/zip/956/styles/main.css?v=1532636683">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style='height: 500px;'>
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" style='height: 500px;'>
+            <div class="carousel-item active" style='height: 500px;'>
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                    <div class="carousel-caption text-left">
+                        <h1>Example headline.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" style='height: 500px;'>
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Another example headline.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" style='height: 500px;'>
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                    <div class="carousel-caption text-right">
+                        <h1>One more for good measure.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+<!--
+    <div id="section-6577431" klickart-edit-component-info="">
+        <link rel="stylesheet" href="//static-public.klickpages.com.br/tmp/zip/956/styles/main.css?v=1532636683">
+        <section class="cta  cta-1  template-invs  cta-bg-image  bottom"
+                 style='background-image:  url("https://static-public.klickpages.com.br/tmp/zip/956/images/bg.jpg?v=1532636683");  background-attachment:  fixed;'
+                 data-klickart-delay-options='{"enabled":false,"selectedType":"default","time":"","dateTime":"2020-05-22T04:52:53.731Z","timezone":"-04:00","redirect":false,"url":""}'>
+            <div class="component-bg" style=""></div>
+            <div class="container">
+                <h1 class="cta-title">
+                    <font style="vertical-align:  inherit;">
+                        <font style="vertical-align:  inherit;">GONIOMETER EXO-GLOVE DIGITAL</font>
+                    </font>
+                    <br>
+                </h1>
+                <h2 class="cta-description">
+                    <b class="medium-b">
+                        <font class="klickart-fontSize" style="font-size:  54px;">
+                            <font style="vertical-align:  inherit;">
+                                <font style="vertical-align:  inherit;">Proyecto de la mano aplicada a la t&#233cnica de
+                                    Goniometr&#237a.</font>
+                            </font>
+                        </font>
+                    </b>
+                </h2>
+            </div>
+        </section>
+    </div>-->
+
+
+
+
+    <div id="section-6577432" klickart-edit-component-info="">
+        <link rel="stylesheet" href="//static-public.klickpages.com.br/tmp/zip/909/styles/main.css?v=1532108505">
+        <section class="quality  template-invs  bottom"
+                 data-klickart-delay-options='{"enabled":false,"selectedType":"default","time":"","dateTime":"2020-05-22T04:52:53.831Z","timezone":"-04:00","redirect":false,"url":""}'
+                 style="background-attachment:  fixed;">
+            <div class="component-bg" style="background-color:  #fff"
+                 klickart-edit-background-mask-visible="true"></div>
+            <div class="container">
+                <h2 class="quality-title">
+                    <b class="medium-b">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">La Goniometr&#237a en la Facultad de Ciencias de la
+                                Salud.</font>
+                        </font>
+                    </b>
+                </h2>
+                <div class="quality-description" style="color:  rgb(192,  69,  140);">
+                    <font class="klickart-fontSize  klickart-font"
+                          style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">Hoy en el &#225rea de la fisioterapia, es de vital
+                                importancia </font>
+                        </font>
+                    </font>
+                    <br>
+                    <font class="klickart-fontSize  klickart-font"
+                          style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">que se realicen evaluaciones cl&#237nicas y
+                                de </font>
+                        </font>
+                    </font>
+                    <font style="vertical-align:  inherit;">
+                        <font class="klickart-fontSize  klickart-font"
+                              style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                            <font style="vertical-align:  inherit;">tiempo </font>
+                        </font>
+                        <font class="klickart-fontSize  klickart-font"
+                              style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                            <font style="vertical-align:  inherit;">para ciertos pacientes, que presentan
+                                problemas </font>
+                        </font>
+                    </font>
+                    <br>
+                    <font class="klickart-fontSize  klickart-font"
+                          style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">musculares espec&#237ficamente en el movimiento de
+                                sus articulaciones. </font>
+                            <font style="vertical-align:  inherit;">Existen muchas </font>
+                        </font>
+                    </font>
+                    <br>
+                    <font class="klickart-fontSize  klickart-font"
+                          style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">herramientas que permiten llevar a cabo la
+                                evaluaci&#243n. </font>
+                            <font style="vertical-align:  inherit;">Sin embargo, la mayor&#237a de estos </font>
+                        </font>
+                    </font>
+                    <br>
+                    <font class="klickart-fontSize  klickart-font"
+                          style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">diagn&#243sticos se realizan manualmente, por lo
+                                que </font>
+                        </font>
+                    </font>
+                    <font class="klickart-fontSize  klickart-font"
+                          style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">se requiere </font>
+                        </font>
+                    </font>
+                    <font style="vertical-align:  inherit;">
+                        <font class="klickart-fontSize  klickart-font"
+                              style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                            <font style="vertical-align:  inherit;">un buen manejo y </font>
+                        </font>
+                        <font class="klickart-fontSize  klickart-font"
+                              style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                            <font style="vertical-align:  inherit;">experiencia del profesional en funciones. </font>
+                        </font>
+                        <font class="klickart-fontSize  klickart-font"
+                              style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                            <font style="vertical-align:  inherit;">Estas evaluaciones se realizan utilizando la </font>
+                        </font>
+                    </font>
+                    <span style="color:  rgb(82,  82,  82);  font-size:  22px;">"disciplina  que  se  encarga  de  estudiar  la  medici&#243n  de  &#225ngulos"  conocida  como  </span>
+                    <div>
+                        <font class="klickart-fontSize  klickart-font"
+                              style="font-size:  22px;  color:  rgb(82,  82,  82);">
+                            <font style="vertical-align:  inherit;">
+                                <font style="vertical-align:  inherit;">geometr&#237a, que es una disciplina con
+                                    cient&#237ficos de aplicaciones.</font>
+                            </font>
+                        </font>
+                        <br>
+                    </div>
+                </div>
+                <h3 class="quality-subtitle" style="">
+                    <b class="medium-b">
+                        <font class="klickart-fontSize" style="font-size:  42px;">
+                            <font style="vertical-align:  inherit;">
+                                <font style="vertical-align:  inherit;">&#191Por qu&#233 usar EXO-GLOVE?</font>
+                            </font>
+                        </font>
+                    </b>
+                    <div>
+                        <br>
+                        <div>
+                            <div>
+                                <div>
+                                    <font class="klickart-fontSize  klickart-font"
+                                          style="font-size:  21px;  color:  rgb(82,  82,  82);">
+                                        <font style="vertical-align:  inherit;">
+                                            <font style="vertical-align:  inherit;">La importancia de esta guantina
+                                                radica en el hecho de que todas estas funcionalidades se </font>
+                                        </font>
+                                    </font>
+                                    <br>
+                                    <font class="klickart-fontSize  klickart-font"
+                                          style="font-size:  21px;  color:  rgb(82,  82,  82);">
+                                        <font style="vertical-align:  inherit;">
+                                            <font style="vertical-align:  inherit;">proporcionan de forma digital, se
+                                                debe decidir que las mediciones goniom&#233tricas se tomar&#225n </font>
+                                        </font>
+                                    </font>
+                                    <br>
+                                    <font class="klickart-fontSize" style="font-size:  21px;">
+                                        <font class="klickart-font" style="color:  rgb(82,  82,  82);">
+                                            <font style="vertical-align:  inherit;">
+                                                <font style="vertical-align:  inherit;">autom&#225ticamente mediante un
+                                                    sistema de sensores incorporados en la garant&#237a.</font>
+                                            </font>
+                                        </font>
+                                        <font class="klickart-font" style="color:  rgb(82,  82,  82);"></font>
+                                    </font>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h3>
+                <div class="quality-list" id="klickart-collection-1pj3q1fdk4o800" style="">
+                    <div class="quality-item  col-3">
+                                                                <span class="ico">
+                                                                        <img class="circle-bg"
+                                                                             src="//static-public.klickpages.com.br/uploads/media/file/2028217/pr1.png"
+                                                                             alt="CUERPO:  Comida  y  Fitness"
+                                                                             klickart-image-source="src"
+                                                                             previous-value="//static-public.klickpages.com.br/uploads/media/file/2028217/pr1.png"
+                                                                             last-local-image-source="//static-public.klickpages.com.br/uploads/media/file/2028217/pr1.png"
+                                                                             style="border-radius:  26%;">
+                                                                </span>
+                        <h4 class="title">
+                            <b>
+                                <font style="vertical-align:  inherit;">
+                                    <font style="vertical-align:  inherit;">GRABAR</font>
+                                </font>
+                            </b>
+                        </h4>
+                        <div class="description" style="text-align:  center;  font-size:  21px;">
+                            <font style="vertical-align:  inherit;">
+                                <font style="vertical-align:  inherit;">Puede mantener un registro de la informaci&#243n
+                                    del paciente: datos personales, datos m&#233dicos, sesiones tomadas, evaluaciones y
+                                    diagn&#243stico de cada paciente.</font>
+                            </font>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="quality-item  col-3">
+                                                                <span class="ico">
+                                                                        <img class="circle-bg"
+                                                                             src="//static-public.klickpages.com.br/uploads/media/file/2028255/pr2.png"
+                                                                             alt="VIDA:  prosperidad  y  productividad"
+                                                                             klickart-image-source="src"
+                                                                             previous-value="https://static-public.klickpages.com.br/uploads/media/file/2028255/pr2.png"
+                                                                             style="width:  169px;  border-radius:  22%;"
+                                                                             last-local-image-source="https://static-public.klickpages.com.br/uploads/media/file/2028255/pr2.png">
+                                                                </span>
+                        <h4 class="title" style="color:  rgb(192,  69,  140);">
+                            <b>
+                                <font style="vertical-align:  inherit;">
+                                    <font style="vertical-align:  inherit;">PRECISI&#211N</font>
+                                </font>
+                            </b>
+                            <br>
+                        </h4>
+                        <div class="description" style="color:  rgb(7,  163,  250);">
+                            <font class="klickart-fontSize  klickart-font"
+                                  style="font-size:  22px;  color:  rgb(62,  70,  75);">
+                                <font style="vertical-align:  inherit;">
+                                    <font style="vertical-align:  inherit;">Tiene la capacidad de obtener la medida de
+                                        cada articulaci&#243n de las manos </font>
+                                </font>
+                            </font>
+                            <br>
+                            <font class="klickart-fontSize  klickart-font"
+                                  style="font-size:  22px;  color:  rgb(62,  70,  75);">
+                                <font style="vertical-align:  inherit;">
+                                    <font style="vertical-align:  inherit;">sin la necesidad de utilizar el
+                                        goni&#243metro anal&#243gico</font>
+                                </font>
+                            </font>
+                        </div>
+                    </div>
+                    <div class="quality-item  col-3">
+                                                                <span class="ico">
+                                                                        <img class="circle-bg"
+                                                                             src="//static-public.klickpages.com.br/uploads/media/file/2028265/pr3.png"
+                                                                             alt="MENTE:  Salud  Cu&#225ntica"
+                                                                             klickart-image-source="src"
+                                                                             previous-value="https://static-public.klickpages.com.br/uploads/media/file/2028265/pr3.png"
+                                                                             style="width:  163px;  border-radius:  26%;"
+                                                                             last-local-image-source="https://static-public.klickpages.com.br/uploads/media/file/2028265/pr3.png">
+                                                                </span>
+                        <h4 class="title">
+                            <b>
+                                <font style="vertical-align:  inherit;">
+                                    <font style="vertical-align:  inherit;">INTERFAZ GR&#193FICA</font>
+                                </font>
+                            </b>
+                        </h4>
+                        <div class="description" style="font-size:  22px;">
+                            <font class="klickart-fontSize" style="font-size:  21px;">
+                                <font style="vertical-align:  inherit;">
+                                    <font style="vertical-align:  inherit;">A trav&#233s de la aplicaci&#243n, puede
+                                        observar el desarrollo del paciente: diagn&#243sticos, sesiones previas,
+                                        gr&#225ficos, actualizaciones y consultas espec&#237ficas de cada medida
+                                        tomada</font>
+                                </font>
+                            </font>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="section-6843259" klickart-edit-component-info="">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="//static-public.klickpages.com.br/tmp/zip/1252/styles/main.css?v=1568983799">
+        <section componentname="Erico  Rocha  -  Video  4" class="video-4  template-erico  bottom"
+                 style='background:  url("//static-public.klickpages.com.br/tmp/zip/1252/images/image.jpg?v=1568983799")  center  center  /  cover  no-repeat  scroll;'
+                 data-klickart-delay-options='{"enabled":false,"selectedType":"default","time":"","dateTime":"2020-06-05T04:45:32.867Z","timezone":"-04:00","redirect":false,"url":""}'>
+            <div class="component-bg" style="background-color:  RGBA(45,44,44,0.7)"
+                 klickart-edit-background-mask-visible="true"></div>
+            <div class="container">
+                <div class="box-container">
+                    <div class="box">
+                        <div class="col  media">
+                            <div class="video-container  embed-responsive  embed-responsive-16by9"
+                                 klickart-edit-not-highlight="" style="">
+                                <iframe class="embed-responsive-item"
+                                        src="https://www.youtube.com/embed/tZyrRqnPkZc?modestbranding=1&amp;showinfo=0&amp;disablekb=1&amp;rel=0&amp;iv_load_policy=3"
+                                        allowfullscreen=""></iframe>
+                            </div>
+                        </div>
+                        <div class="col  txt">
+                            <h3 class="title" style="text-align:  left;">
+                                <b>
+                                    <font class="klickart-fontSize" style="font-size:  35px;">Facilita a los m&#233dicos
+                                        un diagnostico en general!</font>
+                                </b>
+                            </h3>
+                            <div class="description" style="text-align:  left;">
+                                <font class="klickart-fontSize" style="font-size:  23px;">Este guante desplazar&#237a
+                                    o </font>
+                                <font class="klickart-fontSize" style="font-size:  23px;">dejar&#237a a la manera
+                                    tradicional(manual) en que se toman las mediciones.</font>
+                                <br>
+                            </div>
+                            <div class="form-content"
+                                 data-klickart-delay-options='{"enabled":false,"selectedType":"default","time":"","dateTime":"2020-06-05T04:45:32.900Z","timezone":"-04:00","redirect":false,"url":""}'>
+                                <a class="general-button  success  modal-trigger" href="#"
+                                   klickart-edit-not-highlight="" klickart-edit-link-type="default"
+                                   klickart-edit-link-href-klickbox="#" klickart-edit-link-href-faq-question="#"
+                                   id="klickart-link7h4bse4h1do00" style="background-attachment:  scroll;">
+                                                                                        <span>
+                                                                                                <b class="medium-b">REGISTRARME</b>
+                                                                                        </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text" style="font-weight:  500;  text-align:  left;  font-size:  30px;">
+                        <font class="klickart-font">Destinado tanto a m&#233dicos, fisioterapeutas y entrenadores de
+                            deportistas, como una herramienta precisa e indispensable para mantener un diagn&#243stico y
+                            seguimiento de las condiciones de un paciente en particular.</font>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="section-6577440" klickart-edit-component-info="">
+        <link rel="stylesheet" href="//static-public.klickpages.com.br/tmp/zip/918/styles/main.css?v=1532356413">
+        <footer class="footer  template-invs"
+                data-klickart-delay-options='{"enabled":false,"selectedType":"default","time":"","dateTime":"2020-05-22T04:52:54.365Z","timezone":"-04:00","redirect":false,"url":""}'
+                style="background-attachment:  scroll;">
+            <div class="component-bg" style="background-color:rgba(52,  52,  52,  1);"
+                 klickart-edit-background-mask-visible="true"></div>
+            <div class="container  footer-twoCol  footer-conteiner">
+                <div class="footer-col  col-left">
+                    <img class="footer-logo"
+                         src="//static-public.klickpages.com.br/tmp/zip/918/images/logo/logo.png?v=1532356413" alt="">
+                    <div class="footer-text">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">¡Aqu&#237 encontrar&#225 informaci&#243n
+                                actualizada, comprobada y pr&#225ctica sobre lo que realmente es el EXO-GLOVE y sus
+                                beneficios en el &#225rea de Terapia Fisica!</font>
+                        </font>
+                    </div>
+                    <div class="facebookpage-item">
+                        <div class="fb-page  fb_iframe_widget" data-href="https://www.facebook.com/INVidaSaudavel/"
+                             data-width="340" data-small-header="false" data-adapt-container-width="true"
+                             data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+                    </div>
+                </div>
+                <div class="footer-col  col-right">
+                    <div class="footer-title">
+                        <b class="medium-b">
+                            <font style="vertical-align:  inherit;">
+                                <font style="vertical-align:  inherit;">Suscribirse</font>
+                            </font>
+                        </b>
+                    </div>
+                    <div class="footer-text  Medium  Medium-rich">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">¡Ingrese su correo electr&#243nico en el campo a
+                                continuaci&#243n y reciba todo el contenido detallado del proyecto!</font>
+                        </font>
+                    </div>
+                    <div class="clearfix"
+                         data-klickart-delay-options='{"enabled":false,"selectedType":"default","time":"","dateTime":"2020-05-22T04:52:54.376Z","timezone":"-04:00","redirect":false,"url":""}'>
+                        <form action="#" class="general-form  ng-pristine  ng-valid" klickart-edit-not-highlight=""
+                              klickart-email-subscription-form="" style="">
+                            <div>
+                                <div>
+                                    <div>
+                                        <input type="email" class="general-input"
+                                               placeholder="Ingrese  su  mejor  correo  electr&#243nico" name="EMAIL"
+                                               required="" data-klickart-form-autofill-options='{"parameter":"EMAIL"}'
+                                               klickart-edit-placeholder-id="kb0bkgjg">
+                                    </div>
+                                </div>
+                            </div>
+                            <button href="#" class="footer-button  success" style="background-attachment:  scroll;">
+                                                                                <span>
+                                                                                        <b class="medium-b">
+                                                                                                <font style="vertical-align:  inherit;">
+                                                                                                        <font style="vertical-align:  inherit;">FIRMAR</font>
+                                                                                                </font>
+                                                                                        </b>
+                                                                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copy" style="background-attachment:  scroll;">
+                <div class="container  footer-twoCol">
+                    <div class="footer-col  footer-text">
+                        <font style="vertical-align:  inherit;">
+                            <font style="vertical-align:  inherit;">© 2020  PUCMM - Todos los derechos reservados</font>
+                        </font>
+                    </div>
+                    <div class="footer-col  footer-social" id="klickart-collection-204ghp50uggg00">
+                        <a class="footer-facebook" href="#" klickart-edit-highlight-hide-buttons=""
+                           klickart-edit-link-type="default" klickart-edit-link-href-klickbox="#"
+                           klickart-edit-link-href-faq-question="#" id="klickart-link27enh3i5j97000">
+                                                                        <span>
+                                                                                <img klickart-edit-icon="image"
+                                                                                     src="//static-public.klickpages.com.br/tmp/zip/918/images/facebook.png?v=1532356413"
+                                                                                     alt="">
+                                                                        </span>
+                        </a>
+                        <a class="footer-twitter" href="#" klickart-edit-highlight-hide-buttons=""
+                           klickart-edit-link-type="default" klickart-edit-link-href-klickbox="#"
+                           klickart-edit-link-href-faq-question="#" id="klickart-link1rk5thocg1so00">
+                                                                        <span>
+                                                                                <img klickart-edit-icon="image"
+                                                                                     src="//static-public.klickpages.com.br/tmp/zip/918/images/twitter.png?v=1532356413"
+                                                                                     alt="">
+                                                                        </span>
+                        </a>
+                        <a class="footer-youtube" href="#" klickart-edit-highlight-hide-buttons=""
+                           klickart-edit-link-type="default" klickart-edit-link-href-klickbox="#"
+                           klickart-edit-link-href-faq-question="#" id="klickart-linkssie1l2la1g00">
+                                                                        <span>
+                                                                                <img klickart-edit-icon="image"
+                                                                                     src="//static-public.klickpages.com.br/tmp/zip/918/images/youtube.png?v=1532356413"
+                                                                                     alt="">
+                                                                        </span>
+                        </a>
+                        <a class="footer-instagram" href="#" klickart-edit-highlight-hide-buttons=""
+                           klickart-edit-link-type="default" klickart-edit-link-href-klickbox="#"
+                           klickart-edit-link-href-faq-question="#" id="klickart-link622qcsaet4b00">
+                                                                        <span>
+                                                                                <img klickart-edit-icon="image"
+                                                                                     src="//static-public.klickpages.com.br/tmp/zip/918/images/instagram.png?v=1532356413"
+                                                                                     alt="">
+                                                                        </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<div klickart-popups style="display:  none;"></div>
+<link rel="stylesheet" media="screen"
+      href="//static-public.klickpages.com.br/app/assets/stylesheets/made_with.css?v=1591247725"/>
+<div id="klickpages-produced-by" class="powered-by-branding">
+    <div class="made-by">Feito com</div>
+    <a href="//art.klickpages.com.br/public/redirects/made-with" target="__blank">
+        <img src="//static-public.klickpages.com.br/app/assets/images/logos/klickpages.png?v=1591247725"/>
+    </a>
+</div>
+<script type="text/javascript"
+        src="//static-public.klickpages.com.br/app/assets/javascripts/public/js/body/end.js?v=1591247725">
+    //<![CDATA[
+
+    //]]>
+</script>
+<script type="text/javascript" src="//static-public.klickpages.com.br/app/assets/javascripts/libs/libs.js?v=1591247725">
+    //<![CDATA[
+
+    //]]>
+    function getCookie(t) {
+        for (var e = t + "=", n = decodeURIComponent(document.cookie).split(";"), o = 0; o < n.length; o++) {
+            for (var a = n[o]; "  " == a.charAt(0);)
+                a = a.substring(1);
+            if (0 == a.indexOf(e))
+                return a.substring(e.length, a.length)
+        }
+        return ""
+    }
+
+    getCookie("hostinger") && (document.cookie = "hostinger=;expires=Thu,  01  Jan  1970  00:00:01  GMT;",
+        location.reload());
+    var wordpressAdminBody = document.getElementsByClassName("wp-admin")[0]
+        , notification = document.getElementsByClassName("notice  notice-success  is-dismissible")
+        , hostingerLogo = document.getElementsByClassName("hlogo")
+        , mainContent = document.getElementsByClassName("notice_content")[0]
+        , wpSidebar = document.getElementById("adminmenuwrap")
+        , wpTopBarRight = document.getElementById("wp-admin-bar-top-secondary");
+    if (null != wordpressAdminBody && notification.length > 0 && null != mainContent) {
+        var googleFont = document.createElement("link");
+        googleFontHref = document.createAttribute("href"),
+            googleFontRel = document.createAttribute("rel"),
+            googleFontHref.value = "https://fonts.googleapis.com/css?family=Roboto:300,400,600",
+            googleFontRel.value = "stylesheet",
+            googleFont.setAttributeNode(googleFontHref),
+            googleFont.setAttributeNode(googleFontRel);
+        var css = "@media  only  screen  and  (max-width:  576px)  {#main_content  {max-width:  320px  !important;}  #main_content  h1  {font-size:  30px  !important;}  #main_content  h2  {font-size:  40px  !important;  margin:  20px  0  !important;}  #main_content  p  {font-size:  14px  !important;}  #main_content  .content-wrapper  {text-align:  center  !important;}}  @media  only  screen  and  (max-width:  781px)  {#main_content  {margin:  auto;  justify-content:  center;  max-width:  445px;}  .upgrade-btn-sidebar  {display:  none;}  #wp-toolbar  .top-bar-upgrade-btn  {width:  52px;  height:  46px  !important;  padding:  0  !important;}  .top-bar-upgrade-btn__text  {display:  none;}  .dashicons-star-filled.top-bar-upgrade-btn__icon::before  {font-size:  28px;  margin-top:  10px;  width:  28px;  height:  28px;}}  @media  only  screen  and  (max-width:  1325px)  {.web-hosting-90-off-image-wrapper  {position:  absolute;  max-width:  95%  !important;}  .notice_content  {justify-content:  center;}  .web-hosting-90-off-image  {opacity:  0.3;}}  @media  only  screen  and  (min-width:  769px)  {.notice_content  {justify-content:  space-between;}  #main_content  {margin-left:  5%;  max-width:  445px;}  .web-hosting-90-off-image-wrapper  {position:  absolute;  right:  0;  display:  flex;  padding:  0  5%}}  @media  only  screen  and  (max-width:  960px)  {.upgrade-btn-sidebar  {border-radius:  0  !important;  padding:  10px  0  !important;  margin:  0  !important;}  .upgrade-btn-sidebar__icon  {display:  block  !important;  margin:  auto;}  .upgrade-btn-sidebar__text  {display:  none;}}    .web-hosting-90-off-image  {max-width:  90%;  margin-top:  20px;}  .content-wrapper  {z-index:  5}  .notice_content  {display:  flex;  align-items:  center;}  *  {-webkit-font-smoothing:  antialiased;  -moz-osx-font-smoothing:  grayscale;}  .upgrade_button_red_sale{box-shadow:  0  2px  12px  -6px  #cc292f;  max-width:  350px;  border:  0;  border-radius:  3px;  background-color:  #6747c7  !important;  padding:  15px  55px  !important;    margin-bottom:  48px;  font-size:  14px;  font-weight:  800;  color:  #ffffff;}  .upgrade_button_red_sale:hover{color:  #ffffff  !important;  background:  rgba(103,71,199,  0.9)  !important;}  .upgrade-btn-sidebar  {text-align:center;background-color:#ff4546;max-width:  350px;border-radius:  3px;border:  0;padding:  12px;  margin:  20px  10px;display:  block;  font-size:  12px;color:  #ffffff;font-weight:  700;text-decoration:  none;}  .upgrade-btn-sidebar:hover,  .upgrade-btn-sidebar:focus,  .upgrade-btn-sidebar:active  {background-color:  rgba(255,69,70,  0.9);  color:  #ffffff;}  .upgrade-btn-sidebar__icon  {display:  none;}  .top-bar-upgrade-btn  {height:  100%  !important;  display:  inline-block  !important;  padding:  0  10px  !important;  color:  #ffffff;  cursor:  pointer;}  .top-bar-upgrade-btn:hover,  .top-bar-upgrade-btn:active,  .top-bar-upgrade-btn:focus  {background-color:  #ff4546  !important;  color:  #ffffff  !important;}  .top-bar-upgrade-btn__icon  {margin-right:  6px;}"
+            , style = document.createElement("style")
+            , sheet = window.document.styleSheets[0];
+        style.styleSheet ? style.styleSheet.cssText = css : style.appendChild(document.createTextNode(css)),
+            document.getElementsByTagName("head")[0].appendChild(style),
+            document.getElementsByTagName("head")[0].appendChild(googleFont);
+        var button = document.getElementsByClassName("upgrade_button_red")[0]
+            , link = button.parentElement;
+        link.setAttribute("href", "https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&utm_medium=panel&utm_campaign=000-wp"),
+            link.innerHTML = '<button  class="upgrade_button_red_sale">Upgrade  Now</button>',
+            (notification = notification[0]).setAttribute("style", "background-color:  #f8f8f8;  border-left-color:  #6747c7  !important;"),
+            notification.className = "notice  notice-error  is-dismissible";
+        var mainContentHolder = document.getElementById("main_content");
+        mainContentHolder.setAttribute("style", "padding:  0;"),
+            hostingerLogo[0].remove();
+        var h1Tag = notification.getElementsByTagName("H1")[0];
+        h1Tag.className = "000-h1",
+            h1Tag.innerHTML = "Limited  Time  Offer",
+            h1Tag.setAttribute("style", "color:  #32454c;    margin-top:  48px;  font-size:  48px;  font-weight:  700;");
+        var h2Tag = document.createElement("H2");
+        h2Tag.innerHTML = "From  $0.79/month",
+            h2Tag.setAttribute("style", "color:  #32454c;  margin:  20px  0  45px  0;  font-size:  48px;  font-weight:  700;"),
+            h1Tag.parentNode.insertBefore(h2Tag, h1Tag.nextSibling);
+        var paragraph = notification.getElementsByTagName("p")[0];
+        paragraph.innerHTML = "Don’t  miss  the  opportunity  to  enjoy  up  to  <strong>4x  WordPress  Speed,  Free  SSL  and  all  premium  features</strong>  available  for  a  fraction  of  the  price!",
+            paragraph.setAttribute("style", 'font-family:  "Roboto",  sans-serif;  font-size:  18px;  font-weight:  300;  color:  #6f7c81;  margin-bottom:  20px;');
+        var list = notification.getElementsByTagName("UL")[0];
+        list.remove();
+        var org_html = mainContent.innerHTML
+            ,
+            new_html = '<div  class="content-wrapper">' + mainContent.innerHTML + '</div><div  class="web-hosting-90-off-image-wrapper"><img  class="web-hosting-90-off-image"  src="https://cdn.000webhost.com/000webhost/promotions/wp-inject-default-img.png"></div>';
+        mainContent.innerHTML = new_html;
+        var saleImage = mainContent.getElementsByClassName("web-hosting-90-off-image")[0];
+        wpSidebar.insertAdjacentHTML("beforeend", '<a  href="https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&amp;utm_medium=panel&amp;utm_campaign=000-wp-sidebar"  target="_blank"  class="upgrade-btn-sidebar"><span  class="dashicons  dashicons-star-filled  upgrade-btn-sidebar__icon"></span><span  class="upgrade-btn-sidebar__text">Upgrade</span></a>'),
+            wpTopBarRight.insertAdjacentHTML("beforebegin", '<a  class="top-bar-upgrade-btn"  href="https://www.hostinger.com/hosting-starter-offer?utm_source=000webhost&amp;utm_medium=panel&amp;utm_campaign=000-wp-top-bar"  target="_blank"><span  class="ab-icon  dashicons-before  dashicons-star-filled  top-bar-upgrade-btn__icon"></span><span  class="top-bar-upgrade-btn__text">Go  Premium</span></a>')
+    }
+</script>
+<script type="text/javascript" src="https://a.opmnstr.com/app/js/api.min.js" data-campaign="f6brbmuxflyqoriatchv"
+        data-user="71036" async></script>
+</body>
+</html>
