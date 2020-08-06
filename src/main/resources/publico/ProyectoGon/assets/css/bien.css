@@ -1,0 +1,10 @@
+* {
+  outline: none;
+}
+
+@media (min-width:767px) {
+  .navbar-side ul, .navbar-side li {
+    float: none;
+  }
+}
+
