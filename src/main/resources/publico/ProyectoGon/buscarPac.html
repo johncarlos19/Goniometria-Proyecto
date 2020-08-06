@@ -202,30 +202,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <th:block th:each="aux : ${listaPaciente}">
                                     <tr>
-                                        <td>10128006</td>
-                                        <td>Joan Pena</td>
-                                        <td>(849)-846-3324</td>
-                                        <td><a class="btn btn-link border-pretty" role="button" style="color:#ce9c95;" href="profile.html">Seleccionar&nbsp;</a></td>
+                                        <td th:text="${aux.idPaciente}">10128006</td>
+                                        <td th:text="${aux.nombre}+' '+${aux.apellido}">Joan Pena</td>
+                                        <td th:text="${aux.telefono}">(849)-846-3324</td>
+                                        <td>
+                                            <form method="post" action="/profile">
+                                                <input type="hidden" th:value="${aux.idPaciente}" name="idPaciente">
+                                                <input type="hidden" name="action" th:value="${dirigir}">
+                                                <button class="btn btn-link border-pretty" role="button" style="color:#ce9c95;" type="submit">Seleccionar&nbsp;</button>
+                                            </form>
+                                            </td>
                                     </tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
+                                </th:block>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><strong>ID</strong></td>
-                                        <td><strong>Nombre</strong></td>
-                                        <td><strong>Telefono</strong></td>
-                                        <td>Accion</td>
-                                    </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <div class="row">
