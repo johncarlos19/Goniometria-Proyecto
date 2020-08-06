@@ -1,10 +1,7 @@
 package logico.controlador;
 
 import io.javalin.Javalin;
-import logico.goniometriaClass.Cuenta;
-import logico.goniometriaClass.Direccion;
-import logico.goniometriaClass.Especialista;
-import logico.goniometriaClass.Goniometria;
+import logico.goniometriaClass.*;
 import logico.util.BaseControlador;
 
 import java.util.ArrayList;
@@ -12,8 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static io.javalin.apibuilder.ApiBuilder.get;
-import static io.javalin.apibuilder.ApiBuilder.path;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class RecibirDatosControlador extends BaseControlador {
 
@@ -193,6 +189,28 @@ public class RecibirDatosControlador extends BaseControlador {
                     }
                 });
             });
+            path("/register", () -> {
+
+                post(ctx -> {
+                    Direccion dire = new Direccion(ctx.formParam("country"), ctx.formParam("city"), ctx.formParam("address"), null, null);
+                    dire.Send_Information();
+                    Paciente aux = new Paciente(ctx.formParam("cedula"),null,
+                            ctx.formParam("nombre"), ctx.formParam("apellido"),
+                            ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
+                            ctx.formParam("phone"), dire.getID_Direccion());
+                    String user = ctx.cookie("User");
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
+                    } else {
+                        ctx.redirect("/publico/Formulario-Login/login.html");
+                    }
+                });
+            });
+
+
+
         });
     }
 
