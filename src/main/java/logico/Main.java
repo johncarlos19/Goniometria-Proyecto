@@ -27,7 +27,7 @@ public class Main {
         Javalin app = Javalin.create(config ->{
             config.addStaticFiles("/publico"); //desde la carpeta de resources
             config.addStaticFiles("/publico/Formulario-Login");
-           // config.addStaticFiles("/publico/AdminLTE-3.0.5");
+            config.addStaticFiles("/publico/ProyectoGon");
             config.registerPlugin(new RouteOverviewPlugin("/rutas")); //aplicando plugins de las rutas
         }).start(getHerokuAssignedPort());
 
