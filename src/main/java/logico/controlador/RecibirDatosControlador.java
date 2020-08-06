@@ -187,7 +187,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
-                        ctx.render("/publico/AdminLTE-3.0.5/index.html",modelo);
+                        ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
                     } else {
                         ctx.redirect("/publico/Formulario-Login/login.html");
                     }
