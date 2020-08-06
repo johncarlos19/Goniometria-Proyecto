@@ -176,7 +176,8 @@
             </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Paciente</h3>
+                <a class="btn btn-primary btn-sm d-none d-sm-inline-block pull-right" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                <h2 class="text-dark mb-4">Paciente</h2>
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <div class="card mb-3"><div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/user.png" width="160" height="160" />
@@ -236,24 +237,30 @@
         <p class="text-primary m-0 font-weight-bold">Informacion</p>
     </div>
     <div class="card-body">
-        <form>
+        <form id="formProfile" action="/profile" method="post">
             <div class="form-row">
                 <div class="col">
-                    <div class="form-group"><label for="username"><strong>Nombre</strong><br /></label><input type="text" class="form-control" placeholder="user.name" name="username" /></div>
+                    <div class="form-group"><label for="nombre"><strong>Nombre</strong><br /></label><input type="text" class="form-control" placeholder="user.nombre" name="nombre" th:value="${paciente.nombre}" th:attrappend="disabled=${statu}"/></div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group"><label for="apellido"><strong>Apellido</strong><br /></label><input type="text" class="form-control" placeholder="user.apellido" name="apellido" th:value="${paciente.apellido}" th:attrappend="disabled=${statu}"/></div>
                 </div>
                 <div class="col">
-                    <div class="form-group"><label for="email"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="email" /></div>
+                    <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(809)-233-5820" name="telefono" th:value="${paciente.telefono}" th:attrappend="disabled=${statu}" /></div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
-                    <div class="form-group"><label for="first_name"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="John" name="first_name" /></div>
+                    <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${paciente.cedula}" th:attrappend="disabled=${statu}" /></div>
                 </div>
+
                 <div class="col">
-                    <div class="form-group"><label for="last_name"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(809)-233-5820" name="last_name" /></div>
+                    <div class="form-group"><label for="email"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${paciente.correo}" th:attrappend="disabled=${statu}" /></div>
                 </div>
+
             </div>
-            <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Editar</button></div>
+            <div class="form-group"><input class="btn btn-primary btn-sm" th:value="perfil" type="submit" value="Editar"></input></div>
         </form>
     </div>
 </div>
@@ -262,17 +269,17 @@
                                         <p class="text-primary m-0 font-weight-bold">Direccion</p>
                                     </div>
                                     <div class="card-body">
-                                        <form>
-                                            <div class="form-group"><label for="address"><strong>Municipio</strong><br></label><input class="form-control" type="text" placeholder="Sunset Blvd, 38" name="address"></div>
+                                        <form <form id="formProfile2" action="/profile" method="post">
+                                            <div class="form-group"><label for="municipio"><strong>Municipio</strong><br></label><input class="form-control" type="text" placeholder="?" name="municipio" th:value="${direccion.municipio}" th:attrappend="disabled=${statu}" /></div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="city"><strong>Sector</strong><br></label><input class="form-control" type="text" placeholder="Los Angeles" name="city"></div>
+                                                    <div class="form-group"><label for="sector"><strong>Sector</strong><br></label><input class="form-control" type="text" placeholder="?" name="sector" th:value="${direccion.sector}" th:attrappend="disabled=${statu}" /></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="country"><strong>Calle</strong><br></label><input class="form-control" type="text" placeholder="USA" name="country"></div>
+                                                    <div class="form-group"><label for="calle"><strong>Calle</strong><br></label><input class="form-control" type="text" placeholder="?" name="calle" th:value="${direccion.calle}" th:attrappend="disabled=${statu}" /></div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"><button class="btn btn-primary btn-sm" type="submit">Editar</button></div>
+                                            <div class="form-group"><input class="btn btn-primary btn-sm" type="submit" value="Editar"></div>
                                         </form>
                                     </div>
                                 </div>

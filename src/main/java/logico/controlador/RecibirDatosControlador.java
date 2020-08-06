@@ -192,6 +192,26 @@ public class RecibirDatosControlador extends BaseControlador {
             path("/register", () -> {
 
                 post(ctx -> {
+                    Direccion dire = new Direccion(null, ctx.formParam("municipio"), ctx.formParam("calle"), ctx.formParam("sector"), null);
+                    dire.Send_Information();
+                    Paciente aux = new Paciente(ctx.formParam("cedula"),null,
+                            ctx.formParam("nombre"), ctx.formParam("apellido"),
+                            null, null,
+                            ctx.formParam("telefono"), dire.getID_Direccion() /*,ctx.formParam("correo")*/);
+                    String user = ctx.cookie("User");
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
+                    } else {
+                        ctx.redirect("/publico/Formulario-Login/login.html");
+                    }
+                });
+            });
+
+            path("/profile", () -> {
+
+                post(ctx -> {
                     Direccion dire = new Direccion(ctx.formParam("country"), ctx.formParam("city"), ctx.formParam("address"), null, null);
                     dire.Send_Information();
                     Paciente aux = new Paciente(ctx.formParam("cedula"),null,
@@ -208,7 +228,6 @@ public class RecibirDatosControlador extends BaseControlador {
                     }
                 });
             });
-
 
 
         });

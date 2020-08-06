@@ -176,7 +176,7 @@
             </div>
             </nav><div class="profile-card">
     <div class="profile-back" style="background-color: #000000;"></div><img class="rounded-circle profile-pic" src="assets/img/avatars/pedro.png" />
-    <h3 class="profile-name" style="background-color: #2c2222;">Dr. Joan Pena</h3>
+    <h3 class="profile-name" style="background-color: #2c2222;" th:text="${especialista.nombre}+' '+${especialista.apellido}" >Dr. Joan Pena</h3>
     <div data-ride="carousel" data-interval="10000" class="carousel slide" id="carousel-t">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -200,18 +200,18 @@
                             <form>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="username"><strong>Especialidad</strong><br /></label><input type="text" class="form-control" placeholder="Terapeuta de la mano" name="username" /></div>
+                                        <div class="form-group"><label for="especialidad"><strong>Especialidad</strong><br /></label><input type="text" class="form-control" placeholder="Terapeuta de la mano" name="especialidad" th:value="${especialista.nombre}" disabled /></div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="email"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="email" /></div>
+                                        <div class="form-group"><label for="correo"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${especialista.correo}" disabled /></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="first_name"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="402-#######-#" name="first_name" /></div>
+                                        <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${especialista.cedula}" disabled /></div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="last_name"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(809)-233-5820" name="last_name" /></div>
+                                        <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(###)-###-###" name="telefono" th:value="${especialista.telefono}" disabled /></div>
                                     </div>
                                 </div>
                             </form>
@@ -229,13 +229,13 @@
                         </div>
                         <div class="card-body">
                             <form>
-                                <div class="form-group"><label for="address"><strong>Municipio</strong><br /></label><input type="text" class="form-control" placeholder="Sunset Blvd, 38" name="address" /></div>
+                                <div class="form-group"><label for="municipio"><strong>Municipio</strong><br /></label><input type="text" class="form-control" placeholder="?" name="municipio" th:value="${direccion.municipio}" disabled/></div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="city"><strong>Sector</strong><br /></label><input type="text" class="form-control" placeholder="Los Angeles" name="city" /></div>
+                                        <div class="form-group"><label for="sector"><strong>Sector</strong><br /></label><input type="text" class="form-control" placeholder="?" name="sector" th:value="${direccion.sector}" disabled /></div>
                                     </div>
                                     <div class="col">
-                                        <div class="form-group"><label for="country"><strong>Calle</strong><br /></label><input type="text" class="form-control" placeholder="USA" name="country" /></div>
+                                        <div class="form-group"><label for="calle"><strong>Calle</strong><br /></label><input type="text" class="form-control" placeholder="?" name="calle" th:value="${direccion.calle}" disabled /></div>
                                     </div>
                                 </div>
                             </form>
@@ -255,9 +255,9 @@
     </div>
 
     <ul class="social-list">
-        <li><a href="#"><i class="fa fa-facebook-official"></i></li>
-        <li><a href="#"><i class="fa fa-twitter-square"></i></li>
-        <li><a href ="https://api.whatsapp.com/send?phone=18492663324&text=&source=&data=&app_absent=" target="_blank"><i class="fa fa-linkedin-square"></i></li>
+        <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
     </ul>
 </div><button class="btn btn-primary btn-block" type="submit" style="padding: 6px 12px 10px;">Dar permisos para ver registros de mis pacientes&nbsp;<i class="fa fa-chevron-circle-right"></i></button></div>
         <footer class="bg-white sticky-footer">
@@ -280,48 +280,27 @@
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th style="width: 170px;">Permiso</th>
-                                        <th>ID</th>
-                                        <th style="width: 270px;">Nombre</th>
+                                        <th style="width: 170px;">ID</th>
+                                        <th>Nombre</th>
                                         <th style="width: 270px;">Telefono</th>
+                                        <th style="width: 270px;">Permiso</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <th:block th:each="aux : ${listaPaciente}">
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/tick.png"><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/close.png"></td>
-                                        <td>1010</td>
-                                        <td>Pedro Emilio</td>
-                                        <td>(849)-846-3324</td>
+                                        <td th:text="${aux.idPaciente}">10128006</td>
+                                        <td th:text="${aux.nombre}+' '+${aux.apellido}">Joan Pena</td>
+                                        <td th:text="${aux.telefono}">(849)-846-3324</td>
+                                        <td>
+                                            <form method="post" action="/profile">
+                                                <input type="hidden" th:value="${aux.idPaciente}" name="idPaciente">
+                                                <input type="hidden" name="action" th:value="${dirigir}">
+                                                <button class="btn btn-link border-pretty" role="button" style="color:#ce9c95;" type="submit">Dar Permiso&nbsp;</button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/tick.png"><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/close.png"></td>
-                                        <td>1111</td>
-                                        <td>Manolo Pedrada</td>
-                                        <td>(809)-233-5820</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/tick.png"><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/close.png"></td>
-                                        <td>1212</td>
-                                        <td>Victor Botella</td>
-                                        <td>(849)-881-0992</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/tick.png"><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/close.png"></td>
-                                        <td>1313</td>
-                                        <td>Emilio Empanada</td>
-                                        <td>(809)-979-1005</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/tick.png"><img class="rounded-circle mr-2" width="30" height="30" src="assets/img/avatars/close.png"></td>
-                                        <td>1414</td>
-                                        <td>Ramona Cruz</td>
-                                        <td>(809)-576-2123</td>
-                                    </tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
-                                    <tr></tr>
+                                </th:block>
                                 </tbody>
                                 <tfoot>
                                     <tr>
