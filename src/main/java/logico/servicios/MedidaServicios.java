@@ -78,10 +78,9 @@ public class MedidaServicios {
 
                     est = new Medida();
                     est.setId_medida(rs.getString(2));
-                    Date date = rs.getDate(3);
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                    String strDate = dateFormat.format(date);
-                    est.setFecha_realizacion(strDate);
+                    Timestamp date = rs.getTimestamp(3);
+
+                    est.setFecha_realizacion(date.toString());
                     est.setId_especialista(rs.getString(4));
                     est.setId_angulo(rs.getString(5));
                     if(rs.getString(6) != null){
@@ -141,10 +140,9 @@ public class MedidaServicios {
 
                     est = new Medida();
                     est.setId_medida(rs.getString(2));
-                    Date date = rs.getDate(3);
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-                    String strDate = dateFormat.format(date);
-                    est.setFecha_realizacion(strDate);
+                    Timestamp date = rs.getTimestamp(3);
+
+                    est.setFecha_realizacion(date.toString());
                     est.setId_especialista(rs.getString(4));
                     est.setId_angulo(rs.getString(5));
                     if(rs.getString(6) != null){
