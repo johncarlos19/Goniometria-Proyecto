@@ -2,6 +2,7 @@ package logico.controlador;
 
 import io.javalin.Javalin;
 import logico.goniometriaClass.*;
+import logico.servicios.PacienteServicios;
 import logico.util.BaseControlador;
 
 import java.util.ArrayList;
@@ -190,15 +191,30 @@ public class RecibirDatosControlador extends BaseControlador {
                 });
             });
             path("/register", () -> {
+                get(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        ctx.render("/publico/ProyectoGon/registrarPac.html",modelo);
+                    } else {
+                        ctx.redirect("/publico/Formulario-Login/login.html");
+                    }
+
+                        });
+
+
 
                 post(ctx -> {
                     Direccion dire = new Direccion(null, ctx.formParam("municipio"), ctx.formParam("calle"), ctx.formParam("sector"), null);
-                    dire.Send_Information();
-                    Paciente aux = new Paciente(ctx.formParam("cedula"),null,
-                            ctx.formParam("nombre"), ctx.formParam("apellido"),
-                            null, null,
-                            ctx.formParam("telefono"), dire.getID_Direccion() /*,ctx.formParam("correo")*/);
                     String user = ctx.cookie("User");
+
+                    Paciente aux = new Paciente(ctx.formParam("cedula"),user,
+                            ctx.formParam("nombre"), ctx.formParam("apellido"), ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
+                            ctx.formParam("telefono"), dire.getID_Direccion(), ctx.formParam("correo"), ctx.formParam("comentario") );
+
+                    PacienteServicios.getInstance().crearPaciente(aux, dire);
+
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
@@ -209,20 +225,41 @@ public class RecibirDatosControlador extends BaseControlador {
                 });
             });
 
-            path("/profile", () -> {
+            path("/buscarPaciente", () -> {
 
-                post(ctx -> {
-                    Direccion dire = new Direccion(ctx.formParam("country"), ctx.formParam("city"), ctx.formParam("address"), null, null);
-                    dire.Send_Information();
-                    Paciente aux = new Paciente(ctx.formParam("cedula"),null,
-                            ctx.formParam("nombre"), ctx.formParam("apellido"),
-                            ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
-                            ctx.formParam("phone"), dire.getID_Direccion());
+                get(ctx -> {
+
                     String user = ctx.cookie("User");
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
-                        ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
+                        modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
+                        ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
+                    } else {
+                        ctx.redirect("/publico/Formulario-Login/login.html");
+                    }
+                });
+            });
+
+            path("/profile", () -> {
+
+                post(ctx -> {
+
+                    Paciente aux  = PacienteServicios.getInstance().getPaciente(ctx.formParam("idPaciente"));
+                    Direccion dire = PacienteServicios.getInstance().getDireccion(aux.getID_Direccion());
+
+                    /*            Paciente aux = new Paciente(ctx.formParam("cedula"),null,
+                            ctx.formParam("nombre"), ctx.formParam("apellido"),
+                            ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
+                            ctx.formParam("phone"), dire.getID_Direccion());    */
+                    String user = ctx.cookie("User");
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        modelo.put("paciente",aux);
+                        modelo.put("direccion",dire);
+                        modelo.put("perfil","Editar");
+                        ctx.render("/publico/ProyectoGon/profile.html",modelo);
                     } else {
                         ctx.redirect("/publico/Formulario-Login/login.html");
                     }

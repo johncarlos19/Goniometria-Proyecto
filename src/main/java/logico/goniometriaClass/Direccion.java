@@ -17,6 +17,9 @@ public class Direccion {
         N_residencia = n_residencia;
     }
 
+
+
+
     private String return_ID_Direction(){
         String direction = Goniometria.getInstance().return_ID_Generate("select count(*) from direccion","DIR-",13);
         return direction;

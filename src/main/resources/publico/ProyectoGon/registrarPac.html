@@ -164,7 +164,7 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small" th:text="${user}">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div
                                         class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                         <a
@@ -204,7 +204,7 @@
 
                                 <div class="form-group"><label for="from-email">Correo Electrónico</label><span class="required-input">*</span>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="text" id="from-email" name="email" required="" placeholder="Ingrese su correo electrónico"></div>
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="text" id="from-email" name="correo" required="" placeholder="Ingrese su correo electrónico"></div>
                                 </div>
                                 <div class="form-group"><label for="from-email">Cedula</label><span class="required-input">*</span>
                                     <div class="input-group">
@@ -215,7 +215,7 @@
                                     <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                         <div class="form-group"><label for="from-phone">Telefóno</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" id="from-phone" name="phone" required="" placeholder="(809)-233-5820"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" id="from-phone" name="telefono" required="" placeholder="(809)-233-5820"></div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-12 col-lg-6"><div class="form-group"><label for="from-calltime">Genero</label><label for="from-calltime">*<br /></label>

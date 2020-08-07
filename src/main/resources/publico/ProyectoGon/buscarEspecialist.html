@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Profile - Brand</title>
+    <title>Table - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
@@ -56,7 +56,7 @@
             <li role="presentation" class="nav-item"></li>
             <li role="presentation" class="nav-item"><a class="nav-link" href="estadisticas.html"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
             <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#"><i class="fas fa-user"></i>Paciente</a>
-                <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="registrarPac.html">Registrar </a><a role="presentation" class="dropdown-item" href="buscarPac.html">Buscar</a><a role="presentation" class="dropdown-item" href="#">Formulario</a></div>
+                <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="registrarPac.html">Registrar </a><a role="presentation" class="dropdown-item" href="buscarEspecialist.html">Buscar</a><a role="presentation" class="dropdown-item" href="#">Formulario</a></div>
             </li>
             <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#"><i class="fas fa-hospital"></i>Terapia</a>
                 <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="tomarMedida.html">Tomar Medidas</a><a role="presentation" class="dropdown-item" href="insertarEvo.html">Hoja de Evolucion</a><a role="presentation" class="dropdown-item" href="#"></a></div>
@@ -176,161 +176,74 @@
             </div>
             </nav>
             <div class="container-fluid">
-                <a class="btn btn-primary btn-sm d-none d-sm-inline-block pull-right" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
-                <h2 class="text-dark mb-4">Paciente</h2>
-                <div class="row mb-3">
-                    <div class="col-lg-4">
-                        <div class="card mb-3"><div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/user.png" width="160" height="160" />
-    <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Subir Foto</button></div>
-</div></div>
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="text-primary font-weight-bold m-0">Estadisticas</h6>
-                            </div><div class="card-body" style="height: 293px;">
-    <h4 class="small font-weight-bold">Visitas <span class="float-right">20%</span></h4>
-    <div class="progress progress-sm mb-3">
-        <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="sr-only">20%</span></div>
-    </div>
-    <h4 class="small font-weight-bold">Medidas tomadas<span class="float-right">40%</span></h4>
-    <div class="progress progress-sm mb-3">
-        <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="sr-only">40%</span></div>
-    </div>
-    <h4 class="small font-weight-bold">Evolucion<span class="float-right">60%</span></h4>
-    <div class="progress progress-sm mb-3">
-        <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60%</span></div>
-    </div><button class="btn btn-link border-pretty" style="top:  50px;" type="button">Mostrar Estadisticas<i class="icon ion-android-arrow-forward"></i></button></div></div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row mb-3 d-none">
-                            <div class="col">
-                                <div class="card text-white bg-primary shadow">
-                                    <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col">
-                                                <p class="m-0">Peformance</p>
-                                                <p class="m-0"><strong>65.2%</strong></p>
-                                            </div>
-                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                        </div>
-                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card text-white bg-success shadow">
-                                    <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col">
-                                                <p class="m-0">Peformance</p>
-                                                <p class="m-0"><strong>65.2%</strong></p>
-                                            </div>
-                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                        </div>
-                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since last month</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col"><div class="card shadow mb-3">
-    <div class="card-header py-3">
-        <p class="text-primary m-0 font-weight-bold">Informacion</p>
-    </div>
-    <div class="card-body">
-        <form id="formProfile" action="/profile" method="post">
-            <div class="form-row">
-                <div class="col">
-                    <div class="form-group"><label for="nombre"><strong>Nombre</strong><br /></label><input type="text" class="form-control" placeholder="user.nombre" name="nombre" th:value="${paciente.nombre}" th:attrappend="disabled=${statu}"/></div>
-                </div>
-
-                <div class="col">
-                    <div class="form-group"><label for="apellido"><strong>Apellido</strong><br /></label><input type="text" class="form-control" placeholder="user.apellido" name="apellido" th:value="${paciente.apellido}" th:attrappend="disabled=${statu}"/></div>
-                </div>
-                <div class="col">
-                    <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(809)-233-5820" name="telefono" th:value="${paciente.telefono}" th:attrappend="disabled=${statu}" /></div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col">
-                    <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${paciente.cedula}" th:attrappend="disabled=${statu}" /></div>
-                </div>
-
-                <div class="col">
-                    <div class="form-group"><label for="email"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${paciente.correo}" th:attrappend="disabled=${statu}" /></div>
-                </div>
-
-            </div>
-            <div class="form-group"><input class="btn btn-primary btn-sm" th:value="${perfil}" type="submit" value="Editar"></input></div>
-        </form>
-    </div>
-</div>
-                                <div class="card shadow">
-                                    <div class="card-header py-3">
-                                        <p class="text-primary m-0 font-weight-bold">Direccion</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <form <form id="formProfile2" action="/profile" method="post">
-                                            <div class="form-group"><label for="municipio"><strong>Municipio</strong><br></label><input class="form-control" type="text" placeholder="?" name="municipio" th:value="${direccion.ciudad}" th:attrappend="disabled=${statu}" /></div>
-                                            <div class="form-row">
-                                                <div class="col">
-                                                    <div class="form-group"><label for="sector"><strong>Sector</strong><br></label><input class="form-control" type="text" placeholder="?" name="sector" th:value="${direccion.sector}" th:attrappend="disabled=${statu}" /></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="form-group"><label for="calle"><strong>Calle</strong><br></label><input class="form-control" type="text" placeholder="?" name="calle" th:value="${direccion.calle}" th:attrappend="disabled=${statu}" /></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group"><input class="btn btn-primary btn-sm" type="submit" value="Editar"></div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card shadow mb-5">
+                <h3 class="text-dark mb-4">Buscar Especialista</h3>
+                <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Comentarios</p>
-                    </div>
-                    <div class="card-body"><div class="container">
-	<div class="card">
-	    <div class="card-body">
-	        <div class="row">
-        	    <div class="col-md-2">
-        	        <img src="assets/img/avatars/pedro.png" width="120" height="120"/>
-        	    </div>
-        	    <div class="col-md-10">
-        	        <p>
-        	            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Dr. Joan Pena</strong></a>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                        <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-        	            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-
-        	       </p>
-        	       <div class="clearfix"></div>
-        	        <p> El paciente Rafael presenta problemas en la interfalangica distal, es un paciente delicado por favor no realizar terapia con pesas.</p>
-        	        <p>
-        	            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Responder</a>
-        	            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-        	       </p>
-        	    </div>
-	        </div>
-
-
-</div>
-                </div>
-                <div class="card shadow mb-5">
-                    <div class="card-body"></div>
-                </div>
-                <div class="card shadow mb-5">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Formulario</p>
+                        <p class="text-primary m-0 font-weight-bold">Infomacion del especialista</p>
                     </div>
                     <div class="card-body">
-                        <div class="jumbotron">
-                            <h1>No se ha completado</h1>
-                            <p>Favor completar la solicitud de formulario,&nbsp;</p>
-                            <p><button class="btn btn-link border-pretty" style="color:#23b499;" type="button">Registrar Formulario <i class="icon ion-android-arrow-forward"></i></button></p>
+                        <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Mostrar&nbsp;&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Especialidad</th>
+                                        <th>Telefono</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <th:block th:each="aux : ${listaEspecialista}">
+                                    <tr>
+                                        <td th:text="${aux.idEspecialista}">10128006</td>
+                                        <td th:text="${aux.nombre}+' '+${aux.apellido}">Dr Pedro</td>
+                                        <td th:text="${aux.especialidad}">Nutriologo</td>
+                                        <td th:text="${aux.telefono}">(849)-846-3324</td>
+                                        <td>
+                                            <form method="post" action="/profile">
+                                                <input type="hidden" th:value="${aux.idEspecialista}" name="idEspecialista">
+                                                <input type="hidden" name="action" th:value="${dirigir}">
+                                                <button class="btn btn-link border-pretty" role="button" style="color:#ce9c95;" type="submit">Seleccionar&nbsp;</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </th:block>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td><strong>ID</strong></td>
+                                        <td><strong>Nombre</strong></td>
+                                        <td><strong>Especialidad</strong></td>
+                                        <td><strong>Telefono</strong></td>
+                                        <td>Accion</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Mostrar 1 de 10&nbsp;</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
