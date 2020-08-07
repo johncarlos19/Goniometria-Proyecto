@@ -3,6 +3,7 @@ package logico.controlador;
 import io.javalin.Javalin;
 import logico.goniometriaClass.*;
 import logico.servicios.PacienteServicios;
+import logico.servicios.TerapiaServicios;
 import logico.util.BaseControlador;
 
 import java.util.ArrayList;
@@ -235,6 +236,23 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("user",user);
                         modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
                         ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
+                    } else {
+                        ctx.redirect("/publico/Formulario-Login/login.html");
+                    }
+                });
+            });
+
+            path("/buscarMedida", () -> {
+
+                post(ctx -> {
+
+
+                    String user = ctx.cookie("User");
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        modelo.put("listaMedida", TerapiaServicios.getInstance().listaMedida(ctx.formParam("idPaciente")));
+                        ctx.render("/publico/ProyectoGon/medidas.html",modelo);
                     } else {
                         ctx.redirect("/publico/Formulario-Login/login.html");
                     }

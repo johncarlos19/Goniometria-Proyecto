@@ -228,7 +228,8 @@
                                         <th>Nombre</th>
                                         <th>Posicion</th>
                                         <th>ROM</th>
-                                        <th>Especialista</th>
+                                        <th>Resultado</th>
+                                        <th>Usuario del Especialista</th>
                                         <th>Fecha</th>
                                     </tr>
                                 </thead>
@@ -236,26 +237,18 @@
 
                                 <th:block th:each="aux : ${listaMedida}">
                                     <tr>
-                                        <td th:text="${aux.idMedida}">10128006</td>
-                                        <td th:text="${aux.nombre}+' '+${aux.apellido}">Carpometacarpiana</td>
-                                        <td th:text="${aux.posicion}">Pulgar</td>
+                                        <td th:text="${aux.id_medida}">10128006</td>
+                                        <td th:text="${aux.medida}">Carpometacarpiana</td>
+                                        <td th:text="${aux.lugar}">Pulgar</td>
                                         <td th:text="${aux.rom}">Flexion</td>
-                                        <td th:text="${aux.especialista}">Pepito</td>
-                                        <td th:text="${aux.fecha}">24-7-2020</td>
+                                        <td th:text="${aux.rom_value}">Flexion</td>
+                                        <td th:text="${aux.id_especialista}">Pepito</td>
+                                        <td th:text="${aux.fecha_realizacion}">24-7-2020</td>
                                     </tr>
                                 </th:block>
 
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><strong>ID</strong></td>
-                                        <td><strong>Nombre</strong></td>
-                                        <td><strong>Posicion</strong></td>
-                                        <td><strong>Rom</strong></td>
-                                        <td><strong>Especialista</strong></td>
-                                        <td><strong>Fecha</strong></td>
-                                    </tr>
-                                </tfoot>
+
                             </table>
                         </div>
                         <div class="row">
