@@ -1,5 +1,7 @@
 package logico.goniometriaClass;
 
+import org.jasypt.util.text.AES256TextEncryptor;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -17,9 +19,13 @@ public class Goniometria {
     private static Goniometria goniometria;
     private static Connection con = null;
     private static Statement stmt = null;
+    private AES256TextEncryptor userEncryptor = new AES256TextEncryptor();
+    private AES256TextEncryptor passwordEncryptor = new AES256TextEncryptor();
+
 
     public Goniometria() {
         this.con = null;
+
     }
 
     public static Goniometria getInstance( ) {
@@ -40,6 +46,8 @@ public class Goniometria {
 
     public void Start_Connection_DataBase(String IP_ADDRESS, String port, String DataBase, String user, String password){
         try{
+            userEncryptor.setPassword("admin");
+            passwordEncryptor.setPassword("admin");
             Class.forName("com.mysql.jdbc.Driver");
             con= DriverManager.getConnection("jdbc:mysql://"+IP_ADDRESS+":"+port+"/"+DataBase,user,password);
             stmt= null;
@@ -83,6 +91,22 @@ public class Goniometria {
         return false;
     }
 
+    public AES256TextEncryptor getUserEncryptor() {
+        return userEncryptor;
+    }
+
+    public AES256TextEncryptor getPasswordEncryptor() {
+        return passwordEncryptor;
+    }
+
+    public void setPasswordEncryptor(AES256TextEncryptor passwordEncryptor) {
+        this.passwordEncryptor = passwordEncryptor;
+    }
+
+    public void setUserEncryptor(AES256TextEncryptor userEncryptor) {
+        this.userEncryptor = userEncryptor;
+    }
+
     public boolean send_correo(String correo, String user){
         Properties propiedad = new Properties();
         propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -97,7 +121,7 @@ public class Goniometria {
         String contrasena = "joanelvis809";
         String receptor = correo;
         String asunto = "Verification account";
-                String mensaje= "Verifica cuenta en el siguiente enlace: http://138.255.251.202:7000/verification/"+user;
+                String mensaje= "Verifica cuenta en el siguiente enlace: https://https://app1.goniometer-exoglove.me/verification/"+userEncryptor.encrypt(user);
 
         MimeMessage mail = new MimeMessage(sesion);
         try {

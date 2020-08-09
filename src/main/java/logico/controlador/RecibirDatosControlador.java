@@ -62,7 +62,7 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
         app.get("/verification/:username", ctx -> {
-            String user = ctx.pathParam("username");
+            String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.pathParam("username"));
             System.out.println("hola:" +user);
             if (Goniometria.getInstance().verificar_cuenta(user) == true){
                 ctx.redirect("/verification");
@@ -143,7 +143,8 @@ public class RecibirDatosControlador extends BaseControlador {
             //listando la informacion.
             if (Goniometria.getInstance().verificacion(user,pass) == true){
                 if (Goniometria.getInstance().verificacion_correo(user,pass)==true){
-                    ctx.cookie("User",user,120);
+
+                    ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(user),120);
                     ctx.redirect("/dashboard");
                 }else {
                     Map<String, Object> modelo = new HashMap<>();
