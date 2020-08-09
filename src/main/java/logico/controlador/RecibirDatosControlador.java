@@ -45,16 +45,7 @@ public class RecibirDatosControlador extends BaseControlador {
         });
 
 
-        app.get("/parametros", ctx -> {
-            List<String> salida = new ArrayList<>();
-            salida.add("Mostrando todos los parametros enviados:");
-            //listando la informacion.
-            ctx.queryParamMap().forEach((key, lista) -> {
-                salida.add(String.format("[%s] = [%s]", key, String.join(",", lista)));
-            });
-            //
-            ctx.result(String.join("\n", salida));
-        });
+
 
         app.get("/login", ctx -> {
             ctx.render("/publico/Formulario-Login/login.html");
@@ -81,19 +72,7 @@ public class RecibirDatosControlador extends BaseControlador {
 
         });
 
-        app.post("/parametros", ctx -> {
-            List<String> salida = new ArrayList<>();
 
-            //listando la informacion.
-            ctx.formParamMap().forEach((key, lista) -> {
-
-                salida.add(0,String.format("[%s] = [%s]", key, String.join(",", lista)));
-            });
-            salida.add(0, "Mostrando todos la informacion enviada en el cuerpo:");
-            //
-            System.out.println(salida);
-            ctx.result(String.join("\n", salida));
-        });
 
 
         app.post("/create", ctx -> {
@@ -167,16 +146,7 @@ public class RecibirDatosControlador extends BaseControlador {
          * http://localhost:7000/leerheaders
          */
 
-        app.get("leerheaders", ctx -> {
-            List<String> salida = new ArrayList<>();
-            salida.add("Mostrando la informacion enviada en los headers:");
-            //listando la informacion.
-            ctx.headerMap().forEach((key, valor) -> {
-                salida.add(String.format("[%s] = [%s]", key, String.join(",", valor)));
-            });
-            //
-            ctx.result(String.join("\n", salida));
-        });
+
 
         app.routes(() -> {
 
@@ -189,7 +159,7 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("user",user);
                         ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
                     } else {
-                        ctx.redirect("/publico/Formulario-Login/login.html");
+                        ctx.redirect("/login");
                     }
                 });
             });
@@ -201,7 +171,7 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("user",user);
                         ctx.render("/publico/ProyectoGon/registrarPac.html",modelo);
                     } else {
-                        ctx.redirect("/publico/Formulario-Login/login.html");
+                        ctx.redirect("/login");
                     }
 
                         });
@@ -224,7 +194,7 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("user",user);
                         ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
                     } else {
-                        ctx.redirect("/publico/Formulario-Login/login.html");
+                        ctx.redirect("/login");
                     }
                 });
             });
@@ -257,7 +227,7 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("listaMedida", TerapiaServicios.getInstance().listaMedida(ctx.formParam("idPaciente")));
                         ctx.render("/publico/ProyectoGon/medidas.html",modelo);
                     } else {
-                        ctx.redirect("/publico/Formulario-Login/login.html");
+                        ctx.redirect("/login");
                     }
                 });
             });
@@ -282,7 +252,7 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("perfil","Editar");
                         ctx.render("/publico/ProyectoGon/profile.html",modelo);
                     } else {
-                        ctx.redirect("/publico/Formulario-Login/login.html");
+                        ctx.redirect("/login");
                     }
                 });
             });
