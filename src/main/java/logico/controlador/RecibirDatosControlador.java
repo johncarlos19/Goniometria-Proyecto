@@ -183,7 +183,7 @@ public class RecibirDatosControlador extends BaseControlador {
             path("/dashboard", () -> {
 
                 get(ctx -> {
-                    String user = ctx.cookie("User");
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
@@ -195,7 +195,7 @@ public class RecibirDatosControlador extends BaseControlador {
             });
             path("/register", () -> {
                 get(ctx -> {
-                    String user = ctx.cookie("User");
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
@@ -210,7 +210,8 @@ public class RecibirDatosControlador extends BaseControlador {
 
                 post(ctx -> {
                     Direccion dire = new Direccion(null, ctx.formParam("municipio"), ctx.formParam("calle"), ctx.formParam("sector"), null);
-                    String user = ctx.cookie("User");
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+
 
                     Paciente aux = new Paciente(ctx.formParam("cedula"),user,
                             ctx.formParam("nombre"), ctx.formParam("apellido"), ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
@@ -218,7 +219,7 @@ public class RecibirDatosControlador extends BaseControlador {
 
                     PacienteServicios.getInstance().crearPaciente(aux, dire);
 
-                    if (ctx.cookie("User") != null) {
+                    if (Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User")) != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
                         ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
@@ -232,7 +233,7 @@ public class RecibirDatosControlador extends BaseControlador {
 
                 get(ctx -> {
 
-                    String user = ctx.cookie("User");
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
@@ -249,7 +250,7 @@ public class RecibirDatosControlador extends BaseControlador {
                 post(ctx -> {
 
 
-                    String user = ctx.cookie("User");
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
@@ -272,7 +273,7 @@ public class RecibirDatosControlador extends BaseControlador {
                             ctx.formParam("nombre"), ctx.formParam("apellido"),
                             ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
                             ctx.formParam("phone"), dire.getID_Direccion());    */
-                    String user = ctx.cookie("User");
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
