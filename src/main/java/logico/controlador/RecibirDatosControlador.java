@@ -61,6 +61,7 @@ public class RecibirDatosControlador extends BaseControlador {
         });
 
 
+
         app.get("/verification/:username", ctx -> {
             String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.pathParam("username"));
             System.out.println("hola:" +user);
