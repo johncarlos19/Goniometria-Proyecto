@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class DataBaseServices {
 
     private static DataBaseServices instancia;
-    private String URL = "jdbc:mysql://192.168.50.80:3306/goniometria"; //Modo Server...
+    private String URL = "jdbc:mysql://goniometria.cm31gjdb0ov8.us-east-1.rds.amazonaws.com:3306/goniometria?characterEncoding=latin1"; //Modo Server...
 
     /**
      *Implementando el patron Singleton
@@ -47,7 +47,7 @@ public class DataBaseServices {
     public Connection getConexion() {
         Connection con = null;
         try {
-            con = DriverManager.getConnection(URL, "root", "castillo30");
+            con = DriverManager.getConnection(URL, "johncarlos1943", "castillo30");
         } catch (SQLException ex) {
             Logger.getLogger(MedidaServicios.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -44,6 +44,7 @@ public class Goniometria {
             con= DriverManager.getConnection("jdbc:mysql://"+IP_ADDRESS+":"+port+"/"+DataBase,user,password);
             stmt= null;
             stmt = con.createStatement();
+            System.out.println("imprimi");
 
 //here sonoo is database name, root is username and password
 
