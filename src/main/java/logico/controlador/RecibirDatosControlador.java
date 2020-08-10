@@ -6,6 +6,8 @@ import logico.servicios.PacienteServicios;
 import logico.servicios.TerapiaServicios;
 import logico.util.BaseControlador;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +56,7 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
         app.get("/verification/:username", ctx -> {
-            String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.pathParam("username"));
+            String user = Goniometria.getInstance().getUserEncryptor().decrypt(URLDecoder.decode(ctx.pathParam("username"), "UTF-8"));
             System.out.println("hola:" +user);
             if (Goniometria.getInstance().verificar_cuenta(user) == true){
                 ctx.redirect("/verification");

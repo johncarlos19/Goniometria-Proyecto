@@ -10,6 +10,8 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.awt.*;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -117,11 +119,17 @@ public class Goniometria {
 
 
         Session sesion = Session.getDefaultInstance(propiedad);
-        String correoEnvia = "bobpena14@gmail.com";
-        String contrasena = "joanelvis809";
+        String correoEnvia = "goniometria.project@gmail.com";
+        String contrasena = "castillo30";
         String receptor = correo;
         String asunto = "Verification account";
-                String mensaje= "Verifica cuenta en el siguiente enlace: https://https://app1.goniometer-exoglove.me/verification/"+userEncryptor.encrypt(user);
+
+        String mensaje= null;
+        try {
+            mensaje = "Verifica cuenta en el siguiente enlace: https://app1.goniometer-exoglove.me/verification/"+ URLEncoder.encode( userEncryptor.encrypt(user), "UTF-8" );
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         MimeMessage mail = new MimeMessage(sesion);
         try {
