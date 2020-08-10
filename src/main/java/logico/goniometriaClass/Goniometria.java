@@ -1,5 +1,6 @@
 package logico.goniometriaClass;
 
+import org.jasypt.contrib.org.apache.commons.codec_1_3.Encoder;
 import org.jasypt.util.text.AES256TextEncryptor;
 
 import javax.mail.Message;
@@ -12,6 +13,7 @@ import javax.mail.internet.MimeMessage;
 import java.awt.*;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -55,6 +57,7 @@ public class Goniometria {
             stmt= null;
             stmt = con.createStatement();
             System.out.println("imprimi");
+
 
 //here sonoo is database name, root is username and password
 
@@ -126,7 +129,9 @@ public class Goniometria {
 
         String mensaje= null;
         try {
-            mensaje = "Verifica cuenta en el siguiente enlace: https://app1.goniometer-exoglove.me/verification/"+ URLEncoder.encode( userEncryptor.encrypt(user), "UTF-8" );
+            String enc = userEncryptor.encrypt(user);
+            System.out.println("encriptart ante" + enc);
+            mensaje = "Verifica cuenta en el siguiente enlace: https://app1.goniometer-exoglove.me/verification/"+ URLEncoder.encode( enc, StandardCharsets.UTF_8.toString() );
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

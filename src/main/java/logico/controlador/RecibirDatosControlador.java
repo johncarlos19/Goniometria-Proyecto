@@ -6,8 +6,10 @@ import logico.servicios.PacienteServicios;
 import logico.servicios.TerapiaServicios;
 import logico.util.BaseControlador;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,11 +58,18 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
         app.get("/verification/:username", ctx -> {
-            String user = Goniometria.getInstance().getUserEncryptor().decrypt(URLDecoder.decode(ctx.pathParam("username"), "UTF-8"));
-            System.out.println("hola:" +user);
-            if (Goniometria.getInstance().verificar_cuenta(user) == true){
-                ctx.redirect("/verification");
-            }
+
+
+                System.out.println("llego: "+ctx.pathParam("username"));
+                String deco = ctx.pathParam("username");
+                System.out.println("que es: " + deco);
+                String user = Goniometria.getInstance().getUserEncryptor().decrypt(deco);
+                System.out.println("hola:" +user);
+                if (Goniometria.getInstance().verificar_cuenta(user) == true){
+                    ctx.redirect("/verification");
+                }
+
+
 
 
         });
