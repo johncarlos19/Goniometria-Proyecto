@@ -133,7 +133,7 @@ public class Goniometria {
         try {
             String enc = userEncryptor.encrypt(user);
             System.out.println("encriptart ante" + enc);
-            mensaje = "Verifica cuenta en el siguiente enlace: https://app1.goniometer-exoglove.me/verification/"+ URLEncoder.encode( enc, StandardCharsets.UTF_8.toString() );
+            mensaje = "Verifica cuenta en el siguiente enlace: https://app1.goniometer-exoglove.me/verification/?username="+ URLEncoder.encode( enc, StandardCharsets.UTF_8.toString() );
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

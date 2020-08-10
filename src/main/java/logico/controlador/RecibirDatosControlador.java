@@ -57,16 +57,16 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
 
-        app.get("/verification/:username", ctx -> {
+        app.get("/verification/", ctx -> {
 
 
-                System.out.println("llego: "+ctx.pathParam("username"));
-                String deco = ctx.pathParam("username");
+                System.out.println("llego: "+ctx.queryParam("username"));
+                String deco = ctx.queryParam("username");
                 System.out.println("que es: " + deco);
                 String user = Goniometria.getInstance().getUserEncryptor().decrypt(deco);
                 System.out.println("hola:" +user);
                 if (Goniometria.getInstance().verificar_cuenta(user) == true){
-                    ctx.redirect("/verification");
+                    ctx.redirect("/verificationSuccess");
                 }
 
 
@@ -75,7 +75,7 @@ public class RecibirDatosControlador extends BaseControlador {
         });
 
 
-        app.get("/verification", ctx -> {
+        app.get("/verificationSuccess", ctx -> {
             Map<String, Object> modelo = new HashMap<>();
             modelo.put("parrafo1","Su cuenta ha sido verificada correctamente");
             ctx.render("/publico/Formulario-Login/confirmation.html",modelo);
