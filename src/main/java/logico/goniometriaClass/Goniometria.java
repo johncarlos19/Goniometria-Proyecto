@@ -1,5 +1,7 @@
 package logico.goniometriaClass;
 
+import logico.servicios.DataBaseServices;
+import logico.servicios.PacienteServicios;
 import org.jasypt.contrib.org.apache.commons.codec_1_3.Encoder;
 import org.jasypt.util.text.AES256TextEncryptor;
 
@@ -160,9 +162,16 @@ public class Goniometria {
     }
 
     public boolean verificacion(String user, String pass){
+
+
+        Connection con = null; //objeto conexion.
         try {
+            //
+            String query = "select count(*) from cuenta where cuenta.ID_cuenta = '"+ user +"' and cuenta.Password = '"+pass+"'";
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            ResultSet rs = prepareStatement.executeQuery();
             int cant = 0;
-            ResultSet rs= stmt.executeQuery("select count(*) from cuenta where cuenta.ID_cuenta = '"+ user +"' and cuenta.Password = '"+pass+"'");
             while(rs.next()){
                 cant = rs.getInt(1);
             }
@@ -171,18 +180,33 @@ public class Goniometria {
             }else{
                 return false;
             }
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
+
+
+
+
         return false;
     }
     public boolean verificacion_correo(String user, String pass){
+
+
+        Connection con = null; //objeto conexion.
         try {
+            //
+            String query = "select count(*) from cuenta where cuenta.ID_cuenta = '"+ user +"' and cuenta.Password = '"+pass+"' and cuenta.Validacion = 1";
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            ResultSet rs = prepareStatement.executeQuery();
             int cant = 0;
-            ResultSet rs= stmt.executeQuery("select count(*) from cuenta where cuenta.ID_cuenta = '"+ user +"' and cuenta.Password = '"+pass+"' and cuenta.Validacion = 1");
             while(rs.next()){
                 cant = rs.getInt(1);
             }
@@ -191,12 +215,17 @@ public class Goniometria {
             }else{
                 return false;
             }
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
+
         return false;
     }
 
@@ -206,36 +235,63 @@ public class Goniometria {
         }
     }
     public boolean Execute_insert(String query){
-        try {
 
-            int rd = stmt.executeUpdate(query);
+
+        Connection con = null; //objeto conexion.
+        try {
+            //
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            int rd = prepareStatement.executeUpdate(query);
             if (rd == 1){
                 return true;
             }else{
                 return false;
             }
-
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
+        return false;
+
+
     }
+
+
     String hola = "Select count(cuenta.id='anna', cuenta.passowrd='pera' from cuenta)";
     public int cant(String query){
         int total = 0;
-        try {
 
-            ResultSet rs= stmt.executeQuery(query);
+
+
+
+        Connection con = null; //objeto conexion.
+        try {
+            //
+
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            ResultSet rs = prepareStatement.executeQuery();
+
             while(rs.next()){
                 total = rs.getInt(1);
             }
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
         return total;
     }
 
@@ -243,9 +299,18 @@ public class Goniometria {
         StringBuilder value = new StringBuilder();
         int number = 0;
         int code_long = code.length();
-        try {
 
-            ResultSet rs= stmt.executeQuery(query);
+
+
+
+        Connection con = null; //objeto conexion.
+        try {
+            //
+
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            ResultSet rs = prepareStatement.executeQuery();
+
             while(rs.next()){
                 number = rs.getInt(1);
             }
@@ -261,11 +326,17 @@ public class Goniometria {
             for (int i = 0; i< number_String.length(); i++){
                 value.append(number_String.charAt(i));
             }
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
+
 
 
         return value.toString();
