@@ -182,12 +182,17 @@
                     <div class="col">
                         <div class="profile-card" style="height: 200px;">
                             <div class="profile-back" style="height: 100px;background-color: rgb(78,115,223);"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/user.png" style="width: 150px;height: 150px;padding: 1;margin: -26px 0px 10px;">
-                            <h3 class="profile-name" style="background-color: rgb(78,115,223);">Joan Elvis Peña Acosta</h3>
+                            <h3 class="profile-name" style="background-color: rgb(78,115,223);" th:text="${paciente.nombre} + ' ' + ${paciente.apellido}  ">Joan Elvis Peña Acosta</h3>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-xl-3 mb-4"><div class="card visible border-left-primary py-2"> <a class="col mr-2" href="medidas.html">
+                    <div class="col-md-6 col-xl-3 mb-4"><div class="card visible border-left-primary py-2">
+                        <form method="post" action="/buscarMedida">
+                            <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                            <button class="col mr-2" style="background: transparent; border: none !important; font-size: 0;" ></button>
+                        </form>
+
     <div class="card-body">
         <div class="row align-items-center no-gutters"> 
             <div class="col mr-2">

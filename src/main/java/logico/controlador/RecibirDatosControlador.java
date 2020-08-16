@@ -221,7 +221,25 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
                         ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
                     } else {
-                        ctx.redirect("/publico/Formulario-Login/login.html");
+                        ctx.redirect("/login");
+                    }
+                });
+            });
+
+            path("/estadisticas", () -> {
+
+                post(ctx -> {
+
+
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        modelo.put("paciente", PacienteServicios.getInstance().getPaciente(ctx.formParam("idPaciente")));
+                        modelo.put("listaMedida", TerapiaServicios.getInstance().listaMedida(ctx.formParam("idPaciente")));
+                        ctx.render("/publico/ProyectoGon/estadisticas.html",modelo);
+                    } else {
+                        ctx.redirect("/login");
                     }
                 });
             });
@@ -242,6 +260,8 @@ public class RecibirDatosControlador extends BaseControlador {
                     }
                 });
             });
+
+
 
             path("/profile", () -> {
 
@@ -271,6 +291,7 @@ public class RecibirDatosControlador extends BaseControlador {
 
         });
     }
+
 
 
 }
