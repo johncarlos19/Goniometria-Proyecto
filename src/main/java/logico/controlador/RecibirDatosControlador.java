@@ -259,6 +259,20 @@ public class RecibirDatosControlador extends BaseControlador {
                         ctx.redirect("/login");
                     }
                 });
+
+                get(ctx -> {
+
+
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        modelo.put("listaMedida", TerapiaServicios.getInstance().listaMedida(ctx.queryParam("idPaciente")));
+                        ctx.render("/publico/ProyectoGon/medidas.html",modelo);
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
             });
 
 

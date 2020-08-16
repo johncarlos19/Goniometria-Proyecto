@@ -188,42 +188,49 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xl-3 mb-4"><div class="card visible border-left-primary py-2">
-                        <form method="post" action="/buscarMedida">
+                       <!-- <a class="col mr-2" th:href="'/buscarMedida?idPaciente='+${paciente.idPaciente}"></a>-->
+                        <form method="post" action="/buscarMedida" class="col mr-2">
                             <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
-                            <button class="col mr-2" style="background: transparent; border: none !important; font-size: 0;" ></button>
+                            <button class="col mr-2 text-left" type="submit" style="background: transparent; border: none !important;" >
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Medidas TOMADAS</span></div>
+                                            <div class="progress progress-sm mb-3">
+                                                <div class="progress-bar bg-info" style="  width: 50%;
+"><span class="sr-only">50%</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </button>
                         </form>
 
-    <div class="card-body">
-        <div class="row align-items-center no-gutters"> 
-            <div class="col mr-2">
-                <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Medidas TOMADAS</span></div>
-                <div class="progress progress-sm mb-3">
-                    <div class="progress-bar bg-info" style="  width: 50%;
-"><span class="sr-only">50%</span></div>
-                </div>
-            </div>
-            <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
-        </div>
-    </div>
-	</a>
+
 	
 </div>
 
 </div>
-                    <div class="col-md-6 col-xl-3 mb-4"><div class="card shadow border-left-success py-2"> <a class="col mr-2" href="evolucionMedida.html">
-    <div class="card-body">
-        <div class="row align-items-center no-gutters">
-            <div class="col mr-2">
-                <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>EVOLUCIÓN  </span></div>
-                <div class="progress progress-sm mb-3">
-                    <div class="progress-bar bg-success" style="  width: 70%;
+                    <div class="col-md-6 col-xl-3 mb-4"><div class="card shadow border-left-success py-2">
+                        <form method="post" action="/evolucionMedida.html" class="col mr-2">
+                            <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                            <button class="col mr-2 text-left" type="submit" style="background: transparent; border: none !important;" >
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>EVOLUCIÓN  </span></div>
+                                            <div class="progress progress-sm mb-3">
+                                                <div class="progress-bar bg-success" style="  width: 70%;
 "><span class="sr-only">70%</span></div>
-                </div>
-            </div>
-            <div class="col-auto"><i class="fas fa-hand-spock fa-2x text-gray-300"></i></div>
-        </div>
-    </div>
-	</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-hand-spock fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </button>
+                        </form>
+
 </div></div>
                     <div class="col-md-6 col-xl-3 mb-4">
                         <div class="card shadow border-left-info py-2"><div class="card-body">
