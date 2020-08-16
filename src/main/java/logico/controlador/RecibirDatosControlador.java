@@ -219,6 +219,7 @@ public class RecibirDatosControlador extends BaseControlador {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
                         modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
+                        modelo.put("dirigir","/profile");
                         ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
                     } else {
                         ctx.redirect("/login");
@@ -228,6 +229,24 @@ public class RecibirDatosControlador extends BaseControlador {
 
             path("/estadisticas", () -> {
 
+
+                get(ctx -> {
+
+
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
+                        modelo.put("dirigir","/estadisticas");
+                        ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
+
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
+
                 post(ctx -> {
 
 
@@ -236,7 +255,7 @@ public class RecibirDatosControlador extends BaseControlador {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",user);
                         modelo.put("paciente", PacienteServicios.getInstance().getPaciente(ctx.formParam("idPaciente")));
-                        modelo.put("listaMedida", TerapiaServicios.getInstance().listaMedida(ctx.formParam("idPaciente")));
+                        modelo.put("cantMedida", TerapiaServicios.getInstance().cantidadMedida(ctx.formParam("idPaciente")));
                         ctx.render("/publico/ProyectoGon/estadisticas.html",modelo);
                     } else {
                         ctx.redirect("/login");

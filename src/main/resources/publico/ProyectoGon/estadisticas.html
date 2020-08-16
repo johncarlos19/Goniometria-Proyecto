@@ -43,31 +43,31 @@
 
 <body id="page-top">
     <div id="wrapper"><nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-    <div class="container-fluid d-flex flex-column p-0">
-        <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-            <div class="sidebar-brand-icon rotate-n-15"><i class="far fa-hand-spock"></i></div>
-            <div class="sidebar-brand-text mx-3"><span>EXO - GLOVE</span></div>
-        </a>
-        <hr class="sidebar-divider my-0" />
-        <ul class="nav navbar-nav text-light" id="accordionSidebar">
-            <li role="presentation" class="nav-item"><a class="nav-link active" href="completarEvo.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-            <li role="presentation" class="nav-item"></li>
-            <li role="presentation" class="nav-item"></li>
-            <li role="presentation" class="nav-item"></li>
-            <li role="presentation" class="nav-item"><a class="nav-link" href="estadisticas.html"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
-            <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#"><i class="fas fa-user"></i>Paciente</a>
-                <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="registrarPac.html">Registrar </a><a role="presentation" class="dropdown-item" href="buscarPac.html">Buscar</a><a role="presentation" class="dropdown-item" href="#">Formulario</a></div>
-            </li>
-            <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#"><i class="fas fa-hospital"></i>Terapia</a>
-                <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="tomarMedida.html">Tomar Medidas</a><a role="presentation" class="dropdown-item" href="insertarEvo.html">Hoja de Evolucion</a><a role="presentation" class="dropdown-item" href="#"></a></div>
-            </li>
-            <li class="nav-item dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
-                <div role="menu" class="dropdown-menu"><a role="presentation" class="dropdown-item" href="medico.html">Informacion</a><a role="presentation" class="dropdown-item" href="#">Dar permisos</a></div>
-            </li>
-        </ul>
-        <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
-    </div>
-</nav>
+        <div class="container-fluid d-flex flex-column p-0">
+            <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                <div class="sidebar-brand-icon rotate-n-15"><i class="far fa-hand-spock"></i></div>
+                <div class="sidebar-brand-text mx-3"><span>EXO - GLOVE</span></div>
+            </a>
+            <hr class="sidebar-divider my-0" />
+            <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                <li class="nav-item" role="presentation"><a class="nav-link active" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                <li class="nav-item" role="presentation"></li>
+                <li class="nav-item" role="presentation"></li>
+                <li class="nav-item" role="presentation"></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
+                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user"></i>Paciente</a>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
+                </li>
+                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="tomarMedida.html">Tomar Medidas</a><a class="dropdown-item" role="presentation" href="insertarEvo.html">Hoja de Evolucion</a><a class="dropdown-item" role="presentation" href="#"></a></div>
+                </li>
+                <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="medico.html">Informacion</a><a class="dropdown-item" role="presentation" href="#">Dar permisos</a></div>
+                </li>
+            </ul>
+            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+        </div>
+    </nav>
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
@@ -164,7 +164,7 @@
                             </li>
                             <div class="d-none d-sm-block topbar-divider"></div>
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small" th:text="${user}">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div
                                         class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                         <a
@@ -196,10 +196,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
                                             <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Medidas TOMADAS</span></div>
-                                            <div class="progress progress-sm mb-3">
-                                                <div class="progress-bar bg-info" style="  width: 50%;
-"><span class="sr-only">50%</span></div>
-                                            </div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span th:text="${cantMedida}">5</span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
                                     </div>
@@ -219,7 +216,7 @@
                                 <div class="card-body">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col mr-2">
-                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>EVOLUCIÓN  </span></div>
+                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>EVOLUCIÓN</span></div>
                                             <div class="progress progress-sm mb-3">
                                                 <div class="progress-bar bg-success" style="  width: 70%;
 "><span class="sr-only">70%</span></div>

@@ -20,6 +20,42 @@ public class TerapiaServicios {
         return instancia;
     }
 
+    public long cantidadMedida(String id_paciente){
+        long cant = 0;
+
+        Connection con = null; //objeto conexion.
+        try {
+            //
+            String query = "select count(*) " +
+                    "from terapia inner join medidas m on terapia.ID_medida = m.ID_medida " +
+                    "inner join angulos a on m.ID_medida = a.ID_medida" +
+                    " where ID_paciente = ? order by m.Fecha_realizacion desc ;  ";
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            //
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            prepareStatement.setString(1,id_paciente);
+
+            ResultSet rs = prepareStatement.executeQuery();
+            while(rs.next()){
+
+                cant = rs.getLong(1);
+
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TerapiaServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TerapiaServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return cant;
+    }
+
+
+
     public ArrayList<Terapia> listaTerapia(String id_paciente){
         ArrayList<Terapia> list = new ArrayList<>();
         Connection con = null; //objeto conexion.

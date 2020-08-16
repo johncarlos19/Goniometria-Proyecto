@@ -55,9 +55,9 @@
                 <li class="nav-item" role="presentation"></li>
                 <li class="nav-item" role="presentation"></li>
                 <li class="nav-item" role="presentation"></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="estadisticas.html"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
                 <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user"></i>Paciente</a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar </a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
                 </li>
                 <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
                     <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="tomarMedida.html">Tomar Medidas</a><a class="dropdown-item" role="presentation" href="insertarEvo.html">Hoja de Evolucion</a><a class="dropdown-item" role="presentation" href="#"></a></div>
@@ -212,7 +212,7 @@
                                         <td th:text="${aux.telefono}">(849)-846-3324</td>
                                         <td th:text="${aux.correo}">pepe@hotmail.com</td>
                                         <td>
-                                            <form method="post" action="/profile">
+                                            <form method="post" action="/profile" th:action="${dirigir}">
                                                 <input type="hidden" th:value="${aux.idPaciente}" name="idPaciente">
                                                 <input type="hidden" name="action" th:value="${dirigir}">
                                                 <button class="btn btn-link border-pretty" role="button" style="color:#ce9c95;" type="submit" >Seleccionar&nbsp;</button>
