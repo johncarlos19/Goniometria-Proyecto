@@ -54,10 +54,10 @@ public class Goniometria {
         try{
             userEncryptor.setPassword("admin");
             passwordEncryptor.setPassword("admin");
-            Class.forName("com.mysql.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:mysql://"+IP_ADDRESS+":"+port+"/"+DataBase,user,password);
-            stmt= null;
-            stmt = con.createStatement();
+            //Class.forName("com.mysql.jdbc.Driver");
+            //con= DriverManager.getConnection("jdbc:mysql://"+IP_ADDRESS+":"+port+"/"+DataBase,user,password);
+            //stmt= null;
+           // stmt = con.createStatement();
             System.out.println("imprimi");
 
 

@@ -161,7 +161,18 @@ public class RecibirDatosControlador extends BaseControlador {
 
         app.routes(() -> {
 
+
+
             path("/dashboard", () -> {
+                before(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (user != null) {
+                        ctx.cookie("User",user ,120);
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
 
                 get(ctx -> {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
@@ -174,7 +185,42 @@ public class RecibirDatosControlador extends BaseControlador {
                     }
                 });
             });
+            path("/informacion", () -> {
+                before(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (user != null) {
+                        ctx.cookie("User",user ,120);
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
+
+                get(ctx -> {
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+                    if (ctx.cookie("User") != null) {
+                        Map<String, Object> modelo = new HashMap<>();
+                        modelo.put("user",user);
+                        //modelo.put("especialista", new Especialista(null,null,null,null,null,null,null,null,null,null));
+                        //modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
+                        //th:text="${especialista.nombre}+' '+${especialista.apellido}"
+                        ctx.redirect("/medico.html");
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
+            });
+
             path("/register", () -> {
+                before(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (user != null) {
+                        ctx.cookie("User",user ,120);
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
                 get(ctx -> {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
@@ -213,6 +259,16 @@ public class RecibirDatosControlador extends BaseControlador {
 
             path("/buscarPaciente", () -> {
 
+                before(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (user != null) {
+                        ctx.cookie("User",user ,120);
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
+
                 get(ctx -> {
 
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
@@ -229,6 +285,16 @@ public class RecibirDatosControlador extends BaseControlador {
             });
 
             path("/estadisticas", () -> {
+
+                before(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (user != null) {
+                        ctx.cookie("User",user ,120);
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
 
 
                 get(ctx -> {
@@ -266,6 +332,16 @@ public class RecibirDatosControlador extends BaseControlador {
 
             path("/buscarMedida", () -> {
 
+                before(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (user != null) {
+                        ctx.cookie("User",user ,120);
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
+
                 post(ctx -> {
 
 
@@ -298,6 +374,16 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
             path("/profile", () -> {
+
+                before(ctx -> {
+                    String user = ctx.cookie("User");
+                    if (user != null) {
+                        ctx.cookie("User",user ,120);
+
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
 
                 post(ctx -> {
 

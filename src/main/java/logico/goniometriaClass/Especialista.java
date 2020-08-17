@@ -4,6 +4,8 @@ public class Especialista extends Persona {
     private String Tipo_especialista;
     private Cuenta cuenta;
 
+
+
     public Especialista(String cedula, String ID_Cuenta, String nombre, String apellido, String sexo, String fecha_nacimiento, String telefono, String ID_Direccion, String tipo_especialista, Cuenta cuenta) {
         super(cedula, ID_Cuenta, nombre, apellido, sexo, fecha_nacimiento, telefono, ID_Direccion);
         this.Tipo_especialista = tipo_especialista;
