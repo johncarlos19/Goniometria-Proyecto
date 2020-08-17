@@ -190,7 +190,8 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
                 post(ctx -> {
-                    Direccion dire = new Direccion(null, ctx.formParam("municipio"), ctx.formParam("calle"), ctx.formParam("sector"), null);
+                    //String pais, String ciudad, String calle, String sector, String n_residencia
+                    Direccion dire = new Direccion("Republica Dominicana", ctx.formParam("ciudad"), ctx.formParam("calle"), ctx.formParam("sector"), null);
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
 
 
