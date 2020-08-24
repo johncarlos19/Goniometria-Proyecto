@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         String p = null;
         //create connection for a server installed in localhost, with a user "root" with no password
-        Goniometria.getInstance().Start_Connection_DataBase("goniometria.cm31gjdb0ov8.us-east-1.rds.amazonaws.com","3306","goniometria?characterEncoding=latin1","johncarlos1943","castillo30");
+        Goniometria.getInstance().Start_Connection_DataBase("goniometriaproyect.cm31gjdb0ov8.us-east-1.rds.amazonaws.com","3306","goniometria?characterEncoding=latin1","johncarlos1943","castillo30");
        // Goniometria.getInstance().Execute_query("select * from actor");
         //System.out.println(Goniometria.getInstance().return_ID_Generate("select count(*) from direccion","DIR-",13));
         //Goniometria.getInstance().close_connectio();
