@@ -459,7 +459,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",decodeJWT(user).getId());
-                        modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
+                        modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(decodeJWT(user).getId()));
                         modelo.put("dirigir","/profile");
                         ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
                     } else {
@@ -530,7 +530,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",decodeJWT(user).getId());
-                        modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
+                        modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(decodeJWT(user).getId()));
                         modelo.put("dirigir","/estadisticas");
                         ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
 
