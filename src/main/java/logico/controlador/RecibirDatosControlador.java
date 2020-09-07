@@ -1,24 +1,26 @@
 package logico.controlador;
 
 import io.javalin.Javalin;
+import io.jsonwebtoken.*;
 import logico.goniometriaClass.*;
 import logico.servicios.PacienteServicios;
 import logico.servicios.TerapiaServicios;
 import logico.util.BaseControlador;
 
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.security.Key;
+import java.util.*;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class RecibirDatosControlador extends BaseControlador {
-
+    public final static String SECRET_KEY = "ghQaYY7Wo24sDqKSX3IM9ASGmdGPmkTd9jo1QTy4b7P9Ze5_9hKolVX8xNrQDcNRfVEdTZNOuOyqEGhXEbdJI-ZQ19k_o9MI0y3eZN2lp9jow55FfXMiINEdt1XR85VipRLSOkT6kSpzs2x-jbLDiz9iFVzkd81YKxMgPA7VfZeQUm4n-mOmnWMaVX30zGFU4L3oPBctYKkl4dYfqYWqRNfrgPJVi5DGFjywgxx0ASEiJHtV72paI3fDR2XwlSkyhhmY-ICjCRmsJN4fX1pdoL8a18-aQrvyu4j0Os6dVPYIoPvvY0SAZtWYKHfM15g7A3HD4cVREf9cUsprCRK93w";
+    public List<String> token = new ArrayList<String>();
     public RecibirDatosControlador(Javalin app) {
         super(app);
     }
@@ -30,28 +32,17 @@ public class RecibirDatosControlador extends BaseControlador {
          * http://localhost:7000/parametros?matricula=20011126&nombre=Carlos%20Camacho
          */
 
-        app.before(ctx -> {
-            //
-            String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
-                    ctx.req.getRemoteHost(),
-                    ctx.req.getServletPath(),
-                    ctx.req.getMethod());
-            //
-            System.out.println(mensaje);
-        });
 
         /**
          * Manejador que se aplica de la ruta /isc415
          */
-        app.before("/", ctx -> {
-            //
 
-        });
 
 
 
 
         app.get("/login", ctx -> {
+            ctx.header("Content-Type", "application/json");
             ctx.render("/publico/Formulario-Login/login.html");
         });
 
@@ -131,11 +122,23 @@ public class RecibirDatosControlador extends BaseControlador {
             String user = ctx.formParam("user");
             String pass = ctx.formParam("pass");
 
+            System.out.println(ctx.req.getHeaderNames());
+
             //listando la informacion.
             if (Goniometria.getInstance().verificacion(user,pass) == true){
                 if (Goniometria.getInstance().verificacion_correo(user,pass)==true){
 
-                    ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(user),120);
+
+
+
+                    String header = "Authorization";
+                    String jwt = createJWT(user);
+
+
+
+                    ctx.sessionAttribute("User",jwt);
+                    ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+
                     ctx.redirect("/dashboard");
                 }else {
                     Map<String, Object> modelo = new HashMap<>();
@@ -160,47 +163,145 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
         app.routes(() -> {
+            path("/logout", () -> {
 
+
+                        get(ctx -> {
+
+
+                            ctx.removeCookie("User");
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+
+                        });
+
+                    });
+
+            app.before("/dashboard",ctx -> {
+
+
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+                                System.out.println("Nuevo token: " + jwt);
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
+                        ctx.redirect("/login");
+                    }
+
+
+                }
+            });
+            app.before("/informacion",ctx -> {
+
+
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
+                        ctx.redirect("/login");
+                    }
+
+
+                }
+            });
 
 
             path("/dashboard", () -> {
-                before(ctx -> {
-                    String user = ctx.cookie("User");
-                    if (user != null) {
-                        ctx.cookie("User",user ,120);
 
-                    } else {
-                        ctx.redirect("/login");
-                    }
-                });
+
 
                 get(ctx -> {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
+                        ctx.res.addHeader("Authorization",ctx.cookie("User"));
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
+
                         ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
-                    } else {
+                    } else {ctx.res.addHeader("lola","pepe");
+                        System.out.println("hola");
                         ctx.redirect("/login");
                     }
                 });
             });
             path("/informacion", () -> {
-                before(ctx -> {
-                    String user = ctx.cookie("User");
-                    if (user != null) {
-                        ctx.cookie("User",user ,120);
 
-                    } else {
-                        ctx.redirect("/login");
-                    }
-                });
 
                 get(ctx -> {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         //modelo.put("especialista", new Especialista(null,null,null,null,null,null,null,null,null,null));
                         //modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
                         //th:text="${especialista.nombre}+' '+${especialista.apellido}"
@@ -211,21 +312,63 @@ public class RecibirDatosControlador extends BaseControlador {
                 });
             });
 
-            path("/register", () -> {
-                before(ctx -> {
-                    String user = ctx.cookie("User");
-                    if (user != null) {
-                        ctx.cookie("User",user ,120);
+            app.before("/register",ctx -> {
 
-                    } else {
+
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
                         ctx.redirect("/login");
                     }
-                });
+
+
+                }
+            });
+
+
+            path("/register", () -> {
+
                 get(ctx -> {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         ctx.render("/publico/ProyectoGon/registrarPac.html",modelo);
                     } else {
                         ctx.redirect("/login");
@@ -249,7 +392,7 @@ public class RecibirDatosControlador extends BaseControlador {
 
                     if (Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User")) != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
                     } else {
                         ctx.redirect("/login");
@@ -257,24 +400,65 @@ public class RecibirDatosControlador extends BaseControlador {
                 });
             });
 
-            path("/buscarPaciente", () -> {
+            app.before("/buscarPaciente",ctx -> {
 
-                before(ctx -> {
-                    String user = ctx.cookie("User");
-                    if (user != null) {
-                        ctx.cookie("User",user ,120);
 
-                    } else {
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
                         ctx.redirect("/login");
                     }
-                });
+
+
+                }
+            });
+
+            path("/buscarPaciente", () -> {
+
+
 
                 get(ctx -> {
 
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
                         modelo.put("dirigir","/profile");
                         ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
@@ -284,17 +468,59 @@ public class RecibirDatosControlador extends BaseControlador {
                 });
             });
 
-            path("/estadisticas", () -> {
+            app.before("/estadisticas",ctx -> {
 
-                before(ctx -> {
-                    String user = ctx.cookie("User");
-                    if (user != null) {
-                        ctx.cookie("User",user ,120);
 
-                    } else {
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
                         ctx.redirect("/login");
                     }
-                });
+
+
+                }
+            });
+
+            path("/estadisticas", () -> {
+
+
 
 
                 get(ctx -> {
@@ -303,7 +529,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         modelo.put("listaPaciente", PacienteServicios.getInstance().listaPaciente(user));
                         modelo.put("dirigir","/estadisticas");
                         ctx.render("/publico/ProyectoGon/buscarPac.html",modelo);
@@ -320,7 +546,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         modelo.put("paciente", PacienteServicios.getInstance().getPaciente(ctx.formParam("idPaciente")));
                         modelo.put("cantMedida", TerapiaServicios.getInstance().cantidadMedida(ctx.formParam("idPaciente")));
                         ctx.render("/publico/ProyectoGon/estadisticas.html",modelo);
@@ -330,17 +556,58 @@ public class RecibirDatosControlador extends BaseControlador {
                 });
             });
 
-            path("/buscarMedida", () -> {
+            app.before("/buscarMedida",ctx -> {
 
-                before(ctx -> {
-                    String user = ctx.cookie("User");
-                    if (user != null) {
-                        ctx.cookie("User",user ,120);
 
-                    } else {
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
                         ctx.redirect("/login");
                     }
-                });
+
+
+                }
+            });
+
+            path("/buscarMedida", () -> {
+
+
 
                 post(ctx -> {
 
@@ -348,7 +615,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         modelo.put("listaMedida", TerapiaServicios.getInstance().listaMedida(ctx.formParam("idPaciente")));
                         ctx.render("/publico/ProyectoGon/medidas.html",modelo);
                     } else {
@@ -362,7 +629,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         modelo.put("listaMedida", TerapiaServicios.getInstance().listaMedida(ctx.queryParam("idPaciente")));
                         ctx.render("/publico/ProyectoGon/medidas.html",modelo);
                     } else {
@@ -371,19 +638,58 @@ public class RecibirDatosControlador extends BaseControlador {
                 });
             });
 
+            app.before("/profile",ctx -> {
 
+
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
+                        ctx.redirect("/login");
+                    }
+
+
+                }
+            });
 
             path("/profile", () -> {
 
-                before(ctx -> {
-                    String user = ctx.cookie("User");
-                    if (user != null) {
-                        ctx.cookie("User",user ,120);
 
-                    } else {
-                        ctx.redirect("/login");
-                    }
-                });
 
                 post(ctx -> {
 
@@ -397,7 +703,7 @@ public class RecibirDatosControlador extends BaseControlador {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",user);
+                        modelo.put("user",decodeJWT(user).getId());
                         modelo.put("paciente",aux);
                         modelo.put("direccion",dire);
                         modelo.put("perfil","Editar");
@@ -410,6 +716,56 @@ public class RecibirDatosControlador extends BaseControlador {
 
 
         });
+    }
+
+
+
+    public static String createJWT(String username) {
+
+        //The JWT signature algorithm we will be using to sign the token
+        SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+
+        long nowMillis = System.currentTimeMillis();
+        Date now = new Date(nowMillis);
+
+        //We will sign our JWT with our ApiKey secret
+        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(SECRET_KEY);
+        Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
+
+        //Let's set the JWT Claims
+        JwtBuilder builder = Jwts.builder().setId(username)
+                .setIssuedAt(now)
+                .setSubject("Goniometria")
+                .setIssuer("PUCMM-ITT")
+                .signWith(signatureAlgorithm, signingKey);
+
+        // 5 minutes para expiracion
+        long expMillis = nowMillis + 300000;
+        Date exp = new Date(expMillis);
+        builder.setExpiration(exp);
+        System.out.println("fecha" +now +exp);
+        System.out.println("Expiro: "+isExpirate(decodeJWT(builder.compact())));
+        //Builds the JWT and serializes it to a compact, URL-safe string
+        return builder.compact();
+    }
+
+    public static boolean isExpirate(Claims jwt){
+        boolean expire = true;
+
+        if (new  Date(System.currentTimeMillis()).after(jwt.getExpiration())){
+            return expire;
+        }
+        return false;
+    }
+
+    public static Claims decodeJWT(String jwt) {
+
+        //This line will throw an exception if it is not a signed JWS (as expected)
+        Claims claims = Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary(SECRET_KEY))
+                .parseClaimsJws(jwt).getBody();
+
+        return claims;
     }
 
 
