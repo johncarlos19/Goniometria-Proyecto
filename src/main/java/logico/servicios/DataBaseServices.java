@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class DataBaseServices {
 
     private static DataBaseServices instancia;
-    private String URL = "jdbc:mysql://goniometriaproyect.cm31gjdb0ov8.us-east-1.rds.amazonaws.com:3306/goniometria?characterEncoding=latin1"; //Modo Server...
+    private String URL = "jdbc:mysql://goniometriaproject11.cvtbrnkqsjzz.us-east-1.rds.amazonaws.com:3306/goniometria?characterEncoding=latin1"; //Modo Server...
 
     /**
      *Implementando el patron Singleton
