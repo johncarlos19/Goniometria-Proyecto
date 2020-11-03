@@ -341,4 +341,67 @@ public class Goniometria {
 
         return value.toString();
     }
+    public String return_ID_Generate_Max_Id(String query, String code, int longitud){
+        StringBuilder value = new StringBuilder();
+        long number = 0;
+        long code_long = code.length();
+        String receiver = "";
+        StringBuilder receiverConst = new StringBuilder();
+        boolean contin = false;
+
+
+
+
+        Connection con = null; //objeto conexion.
+        try {
+            //
+
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            ResultSet rs = prepareStatement.executeQuery();
+
+            while(rs.next()){
+                receiver = rs.getString(1);
+            }
+            for (int i =0; i <receiver.length(); i++){
+                if(contin==true){
+
+                    receiverConst.append(receiver.charAt(i));
+                }else if (receiver.charAt(i)=='-'){
+                    contin = true;
+                }
+            }
+            number = Long.parseLong(receiverConst.toString());
+
+
+
+
+
+            String number_String = Long.toString(number+1);
+
+            long total_longitud_0 = longitud - code_long - number_String.length();
+            for (int i = 0; i< code_long; i++){
+                value.append(code.charAt(i));
+            }
+            for (int i = 0; i< total_longitud_0; i++){
+                value.append('0');
+            }
+            for (int i = 0; i< number_String.length(); i++){
+                value.append(number_String.charAt(i));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+
+
+        return value.toString();
+    }
 }

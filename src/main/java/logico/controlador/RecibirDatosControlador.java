@@ -4,6 +4,7 @@ import io.javalin.Javalin;
 import io.jsonwebtoken.*;
 import logico.goniometriaClass.*;
 import logico.servicios.PacienteServicios;
+import logico.servicios.PreMedidaServicios;
 import logico.servicios.TerapiaServicios;
 import logico.util.BaseControlador;
 
@@ -688,7 +689,33 @@ public class RecibirDatosControlador extends BaseControlador {
             });
 
             path("/profile", () -> {
+                get(ctx -> {
+                    if(ctx.sessionAttribute("idPaciente")!=null){
+                        Paciente aux  = PacienteServicios.getInstance().getPaciente(ctx.sessionAttribute("idPaciente"));
+                        ctx.req.getSession().removeAttribute("idPaciente");
+                        Direccion dire = PacienteServicios.getInstance().getDireccion(aux.getID_Direccion());
 
+                    /*            Paciente aux = new Paciente(ctx.formParam("cedula"),null,
+                            ctx.formParam("nombre"), ctx.formParam("apellido"),
+                            ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
+                            ctx.formParam("phone"), dire.getID_Direccion());    */
+                        String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+                        if (ctx.cookie("User") != null) {
+                            Map<String, Object> modelo = new HashMap<>();
+                            modelo.put("user",decodeJWT(user).getId());
+                            modelo.put("paciente",aux);
+                            modelo.put("direccion",dire);
+                            modelo.put("perfil","Editar");
+                            modelo.put("preMedida",PreMedidaServicios.getInstance().listaPreMedida(aux.getIdPaciente()));
+                            ctx.render("/publico/ProyectoGon/profile.html",modelo);
+                        } else {
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.redirect("/dashboard");
+                    }
+
+                });
 
 
                 post(ctx -> {
@@ -707,7 +734,90 @@ public class RecibirDatosControlador extends BaseControlador {
                         modelo.put("paciente",aux);
                         modelo.put("direccion",dire);
                         modelo.put("perfil","Editar");
+                        modelo.put("preMedida",PreMedidaServicios.getInstance().listaPreMedida(aux.getIdPaciente()));
                         ctx.render("/publico/ProyectoGon/profile.html",modelo);
+                    } else {
+                        ctx.redirect("/login");
+                    }
+                });
+            });
+
+            app.before("/RegistrarPreMedida",ctx -> {
+
+
+                System.out.println(ctx.req.getPathInfo());
+
+                String headerAuth = ctx.req.getHeader("Authorization");
+                System.out.println(headerAuth);
+                String user = ctx.cookie("User");
+                String session = ctx.sessionAttribute("User");
+                if (user==null || session == null){
+
+                    System.out.println(Goniometria.getInstance().getUserEncryptor().decrypt(user));
+                    ctx.redirect("/login");
+
+                }else{
+
+                    if(Goniometria.getInstance().getUserEncryptor().decrypt(user).equalsIgnoreCase(session)){
+                        try {
+                            if(isExpirate(decodeJWT(session))==false){
+                                String header = "Authorization";
+                                String jwt = createJWT(decodeJWT(session).getId());
+
+                                ctx.sessionAttribute("User",jwt);
+                                ctx.cookie("User",Goniometria.getInstance().getUserEncryptor().encrypt(jwt),2147483647);
+                                String mensaje = String.format("Manejador before aplicando a todas las llamadas: %s, Contexto: %s, Metodo: %s",
+                                        ctx.req.getRemoteHost(),
+                                        ctx.req.getServletPath(),
+                                        ctx.req.getMethod());
+                                //
+                                System.out.println(mensaje);
+
+                            }else{
+                                ctx.req.getSession().invalidate();
+                                ctx.redirect("/login");
+                            }
+
+                        }catch (ExpiredJwtException e){
+                            ctx.req.getSession().invalidate();
+                            ctx.redirect("/login");
+                        }
+                    }else{
+                        ctx.req.getSession().invalidate();
+                        ctx.redirect("/login");
+                    }
+
+
+                }
+            });
+            path("/RegistrarPreMedida", () -> {
+
+
+
+                post(ctx -> {
+
+                    Paciente aux  = PacienteServicios.getInstance().getPaciente(ctx.formParam("idPaciente"));
+
+
+                    /*            Paciente aux = new Paciente(ctx.formParam("cedula"),null,
+                            ctx.formParam("nombre"), ctx.formParam("apellido"),
+                            ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
+                            ctx.formParam("phone"), dire.getID_Direccion());    */
+                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+
+                    if (ctx.cookie("User") != null) {
+                        if (ctx.formParam("preMedida").equalsIgnoreCase("Agregar Pre Medida")){
+                            Map<String, Object> modelo = new HashMap<>();
+                            modelo.put("user",decodeJWT(user).getId());
+                            modelo.put("paciente",aux);
+                            ctx.render("/publico/ProyectoGon/tomarMedida.html",modelo);
+                        }else if (ctx.formParam("preMedida").equalsIgnoreCase("agregar")){
+                            PreMedida preMedida = new PreMedida(null,ctx.formParam("medida"),ctx.formParam("lugar"),ctx.formParam("rom"));
+                            PreMedidaServicios.getInstance().addPreMedida(preMedida,ctx.formParam("idPaciente"));
+                            ctx.sessionAttribute("idPaciente",ctx.formParam("idPaciente"));
+                            ctx.redirect("/profile");
+                        }
+
                     } else {
                         ctx.redirect("/login");
                     }

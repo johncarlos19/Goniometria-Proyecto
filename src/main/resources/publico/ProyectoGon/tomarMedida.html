@@ -186,132 +186,183 @@
                     <section class="py-5">
                         <div class="container">
                             <h1 class="text-center mb-4">Selecciona el Destino</h1>
-                            <div class="filtr-controls text-center lead text-uppercase mb-3" style="border-color: rgb(78,115,223);"><span class="active d-inline-block mx-3 py-1 position-relative" data-filter="all">TODOS</span><span class="d-inline-block mx-3 py-1 position-relative" data-filter="1">MEÑIQUE</span><span class="d-inline-block mx-3 py-1 position-relative"
-                                                                                                                                                                                                                                                                                                                               data-filter="2">ANULAR</span><span class="d-inline-block mx-3 py-1 position-relative" data-filter="3">MAYOR&nbsp;</span><span class="d-inline-block mx-3 py-1 position-relative" data-filter="4">INDICE</span><span class="d-inline-block mx-3 py-1 position-relative"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   data-filter="5">PULGAR</span></div>
+                            <div class="filtr-controls text-center lead text-uppercase mb-3" style="border-color: rgb(78,115,223);">
+<!--                                <span class=" d-inline-block mx-3 py-1 position-relative" data-filter="all">TODOS</span>-->
+                                <span class="active d-inline-block mx-3 py-1 position-relative" id="menique" onclick="lugarClick('menique')" data-filter="1">MEÑIQUE</span>
+                                <span class="d-inline-block mx-3 py-1 position-relative" id="anular" data-filter="2" onclick="lugarClick('anular')">ANULAR</span>
+                                <span class="d-inline-block mx-3 py-1 position-relative" id="medio" data-filter="3" onclick="lugarClick('medio')" >MEDIO&nbsp;</span>
+                                <span class="d-inline-block mx-3 py-1 position-relative" id="indice" data-filter="4" onclick="lugarClick('indice')" >INDICE</span>
+                                <span class="d-inline-block mx-3 py-1 position-relative" id="pulgar" data-filter="5" onclick="lugarClick('pulgar')" >PULGAR</span></div>
                             <h1 class="text-center mb-4">Selecciona la Medida</h1>
                             <div class="row filtr-container">
+
+
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="5">
                                     <div class="card border-dark">
+                                        <form action="/RegistrarPreMedida" method="post">
                                         <div class="card-header bg-dark text-light" style="background-color: rgb(78,115,223);">
-                                            <h5 class="m-0">Carpometacarpiana</h5>
+                                            <h5 class="m-0 text-white">Carpometacarpiana</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l1.PNG" style="width: 150px;height: 170px;">
                                         <div class="profile-card" style="height: 150px;">
-                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select>
-                                            <option value="">Seleccionar</option>
-                                            <option value="AL">Flexion</option>
-                                            <option value="AK">Extension</option>
-                                            <option value="AZ">Abduccion</option>
+                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select name="rom">
+                                            <option value="" disabled>Seleccionar</option>
+                                            <option value="Flexion">Flexion</option>
+                                            <option value="Extension">Extension</option>
+                                            <option value="abduccion">Abduccion</option>
 
                                         </select></div>
                                         <div class="row">
                                             <div class="col">
-                                                <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                    <strong>Atencion!</strong> :Medida Seleccionada.</div>
+<!--                                                <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                                    <span aria-hidden="true">&times;</span>-->
+<!--                                                </button>-->
+<!--                                                    <strong>Atencion!</strong> :Medida Seleccionada.-->
+<!--                                                </div>-->
                                             </div>
                                         </div>
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="button"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                            <input name="lugar" type="hidden" id="lugar1"  value="" >
+                                            <input name="medida" type="hidden" value="carpometacarpiana">
+                                            <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                            <input name="preMedida" type="hidden" value="agregar">
+                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                        </form>
                                     </div>
                                 </div>
+
+
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="5">
                                     <div class="card border-dark">
+                                        <form action="/RegistrarPreMedida" method="post">
                                         <div class="card-header bg-dark text-light">
-                                            <h5 class="m-0">Metacarpofalangicas_P</h5>
+                                            <h5 class="m-0 text-white">Metacarpofalangicas_P</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l3.PNG" style="height: 170px;">
                                         <div class="profile-card" style="height: 150px;">
-                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select>
-                                            <option value="">Seleccionar</option>
-                                            <option value="AL">Flexion</option>
-                                            <option value="AK">Extension</option>
+                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select name="rom">
+                                            <option value="" disabled>Seleccionar</option>
+                                            <option value="Flexion">Flexion</option>
+                                            <option value="Extension">Extension</option>
 
 
                                         </select></div>
-                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                            <strong>Atencion!</strong> :Medida Seleccionada.</div>
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="button"><i class="fa fa-plus"></i>&nbsp; Agregar</button></div>
+<!--                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                            <span aria-hidden="true">&times;</span>-->
+<!--                                        </button>-->
+<!--                                            <strong>Atencion!</strong> :Medida Seleccionada.-->
+<!--                                        </div>-->
+                                            <input name="lugar" type="hidden" id="lugar2"  value="">
+                                        <input name="medida" type="hidden" value="metocarpofalangicas_p">
+                                        <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                        <input name="preMedida" type="hidden" value="agregar">
+                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp; Agregar</button></div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="5">
                                     <div class="card border-dark">
+                                        <form action="/RegistrarPreMedida" method="post">
                                         <div class="card-header bg-dark text-light">
-                                            <h5 class="m-0">Interfalangica</h5>
+                                            <h5 class="m-0 text-white">Interfalangica</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l6.PNG" style="height: 170px;">
                                         <div class="profile-card" style="height: 150px;">
-                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select>
-                                            <option value="">Seleccionar</option>
-                                            <option value="AL">Flexion</option>
+                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select name="rom">
+                                            <option value="" disabled>Seleccionar</option>
+                                            <option value="Flexion">Flexion</option>
 
 
                                         </select></div>
-                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                            <strong>Atencion!</strong> :Medida Seleccionada.</div>
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="button"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+<!--                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                            <span aria-hidden="true">&times;</span>-->
+<!--                                        </button>-->
+<!--                                            <strong>Atencion!</strong> :Medida Seleccionada.-->
+<!--                                        </div>-->
+                                            <input name="lugar" type="hidden" id="lugar3"  value="">
+                                        <input name="medida" type="hidden" value="interfalangica">
+                                        <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                        <input name="preMedida" type="hidden" value="agregar">
+                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="1,2,3,4">
                                     <div class="card border-dark">
+                                        <form action="/RegistrarPreMedida" method="post">
                                         <div class="card-header bg-dark text-light">
-                                            <h5 class="m-0">Interfalangicas Proximales</h5>
+                                            <h5 class="m-0 text-white">Interfalangicas Proximales</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l4.PNG" style="height: 170px;">
                                         <div class="profile-card" style="height: 150px;">
-                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select>
-                                            <option value="">Seleccionar</option>
-                                            <option value="AL">Flexion</option>
+                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select name="rom">
+                                            <option value="" disabled>Seleccionar</option>
+                                            <option value="Flexion">Flexion</option>
 
 
                                         </select></div>
-                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                            <strong>Atencion!</strong> :Medida Seleccionada.</div>
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="button"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+<!--                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                            <span aria-hidden="true">&times;</span>-->
+<!--                                        </button>-->
+<!--                                            <strong>Atencion!</strong> :Medida Seleccionada.-->
+<!--                                        </div>-->
+                                            <input name="lugar" type="hidden" id="lugar4"  value="">
+                                        <input name="medida" type="hidden" value="interfalangicas proximales">
+                                        <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                        <input name="preMedida" type="hidden" value="agregar">
+                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="1,2,3,4">
                                     <div class="card border-dark">
+                                        <form action="/RegistrarPreMedida" method="post">
                                         <div class="card-header bg-dark text-light">
-                                            <h5 class="m-0">Metacarpofalangicas</h5>
+                                            <h5 class="m-0 text-white">Metacarpofalangicas</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l2.PNG" style="height: 170px;">
                                         <div class="profile-card" style="height: 150px;">
-                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select>
-                                            <option value="">Seleccionar</option>
-                                            <option value="AL">Flexion</option>
-                                            <option value="AK">Extension</option>
-                                            <option value="AZ">Abduccion</option>
-                                            <option value="AX">Aduccion</option>
+                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select name="rom">
+                                            <option value="" disabled>Seleccionar</option>
+                                            <option value="Flexion">Flexion</option>
+                                            <option value="Extension">Extension</option>
+                                            <option value="abduccion">Abduccion</option>
+                                            <option value="aduccion">Aduccion</option>
 
                                         </select></div>
-                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                            <strong>Atencion!</strong> :Medida Seleccionada.</div>
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="button"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+<!--                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                            <span aria-hidden="true">&times;</span>-->
+<!--                                        </button>-->
+<!--                                            <strong>Atencion!</strong> :Medida Seleccionada.-->
+<!--                                        </div>-->
+                                            <input name="lugar" type="hidden" id="lugar5"   value="">
+                                        <input name="medida" type="hidden" value="metocarpofalangicas">
+                                        <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                        <input name="preMedida" type="hidden" value="agregar">
+                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="1,2,3,4">
                                     <div class="card border-dark">
+                                        <form action="/RegistrarPreMedida" method="post">
                                         <div class="card-header bg-dark text-light">
-                                            <h5 class="m-0">Interfalangicas Distales</h5>
+                                            <h5 class="m-0 text-white">Interfalangicas Distales</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l5.PNG" style="height: 170px;">
                                         <div class="profile-card" style="height: 150px;">
-                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select>
-                                            <option value="">Seleccionar</option>
-                                            <option value="AL">Flexion</option>
-                                            <option value="AK">Extension</option>
+                                            <div class="profile-back" style="margin: 10px 0px -75px;height: 50px;background-color: #4e73df;"></div><img class="rounded-circle profile-pic" src="assets/img/dogs/Tienda%20de%20Etsy%20Icono%20Formas%20Azul.png" style="height: 80px;width: 80px;margin: 25px 90px 10px;"><select name="rom">
+                                            <option value="" disabled>Seleccionar</option>
+                                            <option value="Flexion">Flexion</option>
+                                            <option value="Extension">Extension</option>
 
 
                                         </select></div>
-                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                            <strong>Atencion!</strong> :Medida Seleccionada.</div>
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="button"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+<!--                                        <div class="alert alert-warning beautiful" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+<!--                                            <span aria-hidden="true">&times;</span>-->
+<!--                                        </button>-->
+<!--                                            <strong>Atencion!</strong> :Medida Seleccionada.-->
+<!--                                        </div>-->
+
+                                            <input name="lugar" type="hidden" id="lugar6"  value="">
+                                        <input name="medida" type="hidden" value="interfalangicas Distales">
+                                        <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                        <input name="preMedida" type="hidden" value="agregar">
+                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -340,6 +391,34 @@
 <script src="assets/js/Pricing-Tables.js"></script>
 <script src="assets/js/testimonialSlider.js"></script>
 <script src="assets/js/theme.js"></script>
+<script>
+    // On mouse-over, execute myFunction
+    function myFunction() {
+        console.log("click")
+        document.getElementById("menique").click(); // Click on the checkbox
+
+        document.getElementById("lugar1").value = "menique";
+        document.getElementById("lugar2").value = "menique";
+        document.getElementById("lugar3").value = "menique";
+        document.getElementById("lugar4").value = "menique";
+        document.getElementById("lugar5").value = "menique";
+        document.getElementById("lugar6").value = "menique";
+    }
+    $(document).ready(function(){
+        setTimeout(myFunction, 500);
+
+    });
+    function lugarClick(lug){
+        console.log("ya")
+        document.getElementById("lugar1").value = lug;
+        document.getElementById("lugar2").value = lug;
+        document.getElementById("lugar3").value = lug;
+        document.getElementById("lugar4").value = lug;
+        document.getElementById("lugar5").value = lug;
+        document.getElementById("lugar6").value = lug;
+    }
+
+</script>
 </body>
 
 </html>

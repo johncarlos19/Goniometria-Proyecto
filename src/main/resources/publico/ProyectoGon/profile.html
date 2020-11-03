@@ -294,6 +294,65 @@
                 </div>
                 <div class="card shadow mb-5">
                     <div class="card-header py-3">
+                        <p class="text-primary m-0 font-weight-bold">Medidas Seleccionadas</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right dataTables_filter" id="dataTable_filter">
+                                    <form action="/RegistrarPreMedida" method="post">
+                                    <label>
+                                        <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                        <input type="submit" class="form-control form-control-sm btn-success btn-sm btn" aria-controls="dataTable" name="preMedida" value="Agregar Pre Medida">
+                                    </label>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Medida</th>
+                                    <th>Lugar</th>
+                                    <th>Rom</th>
+                                    <th>Accion</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <th:block th:each="aux : ${preMedida}">
+
+
+                                    <tr>
+                                        <td th:text="${aux.idAngulo}">10128006</td>
+                                        <td th:text="${aux.articulaciones}">Joan Pena</td>
+                                        <td th:text="${aux.lugar}">(849)-846-3324</td>
+                                        <td th:text="${aux.rom}">pepe@hotmail.com</td>
+                                        <td>
+                                            <form method="post" action="/profile">
+                                                <input type="hidden" th:value="${paciente.idPaciente}" name="idPaciente">
+                                                <input type="hidden" th:value="${aux.idAngulo}" name="idPaciente">
+                                                <button class="btn border-pretty btn-danger text-white" role="button" style="color:#ce9c95;" type="submit" >Eliminar&nbsp;</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </th:block>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Comentarios</p>
                     </div>
                     <div class="card-body"><div class="container">
