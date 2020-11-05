@@ -2,6 +2,7 @@ package logico.goniometriaClass;
 
 import logico.servicios.DataBaseServices;
 import logico.servicios.PacienteServicios;
+import logico.servicios.PersonaServicios;
 import org.jasypt.contrib.org.apache.commons.codec_1_3.Encoder;
 import org.jasypt.util.text.AES256TextEncryptor;
 
@@ -341,6 +342,32 @@ public class Goniometria {
 
         return value.toString();
     }
+    public boolean insertQuery(String query){
+        Connection con = null;
+        try {
+
+
+            con = DataBaseServices.getInstancia().getConexion();
+            //
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            //Antes de ejecutar seteo los parametros.
+
+
+            //
+            int fila = prepareStatement.executeUpdate();
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return true;
+    }
     public String return_ID_Generate_Max_Id(String query, String code, int longitud){
         StringBuilder value = new StringBuilder();
         long number = 0;
@@ -363,15 +390,20 @@ public class Goniometria {
             while(rs.next()){
                 receiver = rs.getString(1);
             }
-            for (int i =0; i <receiver.length(); i++){
-                if(contin==true){
+            if (receiver!=null){
+                for (int i =0; i <receiver.length(); i++){
+                    if(contin==true){
 
-                    receiverConst.append(receiver.charAt(i));
-                }else if (receiver.charAt(i)=='-'){
-                    contin = true;
+                        receiverConst.append(receiver.charAt(i));
+                    }else if (receiver.charAt(i)=='-'){
+                        contin = true;
+                    }
                 }
+                number = Long.parseLong(receiverConst.toString());
+            }else{
+                number = 0;
             }
-            number = Long.parseLong(receiverConst.toString());
+
 
 
 

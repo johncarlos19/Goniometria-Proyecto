@@ -4,7 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+
+
+
     <title>Profile - Brand</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
@@ -316,7 +322,7 @@
                             </div>
                         </div>
                         <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="dataTable">
+                            <table class="table table-bordered table-striped dt-responsive tablas my-0" id="dataTable">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -388,14 +394,10 @@
                         </div>
                         <div class="card shadow mb-5">
                             <div class="card-header py-3">
-                                <p class="text-primary m-0 font-weight-bold">Formulario</p>
+                                <p class="text-primary m-0 font-weight-bold">Formulario Registro</p>
                             </div>
-                            <div class="card-body">
-                                <div class="jumbotron">
-                                    <h1>No se ha completado</h1>
-                                    <p>Favor completar la solicitud de formulario,&nbsp;</p>
-                                    <p><button class="btn btn-link border-pretty" style="color:#23b499;" type="button">Registrar Formulario <i class="icon ion-android-arrow-forward"></i></button></p>
-                                </div>
+                            <div class="card-body" id="formulario">
+
                             </div>
                         </div>
                     </div>
@@ -420,6 +422,67 @@
             <script src="assets/js/Pricing-Tables.js"></script>
             <script src="assets/js/testimonialSlider.js"></script>
             <script src="assets/js/theme.js"></script>
+            <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#dataTable').DataTable({
+                        "language": {
+
+                            "sProcessing":     "Procesando...",
+                            "sLengthMenu":     "Mostrar _MENU_ registros",
+                            "sZeroRecords":    "No se encontraron resultados",
+                            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+                            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+                            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                            "sInfoPostFix":    "",
+                            "sSearch":         "Buscar:",
+                            "sUrl":            "",
+                            "sInfoThousands":  ",",
+                            "sLoadingRecords": "Cargando...",
+                            "oPaginate": {
+                                "sFirst":    "Primero",
+                                "sLast":     "Último",
+                                "sNext":     "Siguiente",
+                                "sPrevious": "Anterior"
+                            },
+                            "oAria": {
+                                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                            }
+
+                        }
+                    });
+                    pdf()
+                } );
+
+
+                function pdf(){
+                    var pdf = document.getElementById("formulario")
+                    var cont = "[[${documento.getBase64()}]]"
+                    if (cont==""){
+                        pdf.innerHTML = '<div class="jumbotron">\n' +
+                            '                                    <h1>No se ha completado</h1>\n' +
+                            '                                    <p>Favor completar la solicitud de formulario,&nbsp;</p>\n' +
+                            '                                    <p>\n' +
+                            '                                        <form action="/register" method="post">\n' +
+                            '                                    <input type="hidden" value="subir" name="documento">\n' +
+                            '                                    <input name="idPaciente" type="hidden" value="[[${paciente.idPaciente}]]">\n' +
+                            '                                    <button class="btn btn-link border-pretty" style="color:#23b499;" type="submit">Registrar Formulario <i class="icon ion-android-arrow-forward"></i></button>\n' +
+                            '                                </form>\n' +
+
+                            '\n' +
+                            '\n' +
+                            '                                    </p>\n' +
+                            '                                </div>'
+                    }else{
+                        pdf.innerHTML = '<div class="jumbotron" style="height: 1000px;"><iframe width="100%" height="100%" src="data:[[${documento.mimeType}]];base64,[[${documento.getBase64()}]]"></iframe>'
+
+                    }
+
+
+                }
+            </script>
 </body>
 
 </html>

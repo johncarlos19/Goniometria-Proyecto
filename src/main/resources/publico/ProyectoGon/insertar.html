@@ -177,7 +177,9 @@
             </nav>
             <section class="py-5"><div class="container">
                 <h1 class="text-center mb-4">Registrar Paciente</h1>
-                <div class="filtr-controls text-center lead text-uppercase mb-3"><span class="active d-inline-block mx-3 py-1 position-relative" data-filter="1">SUBIR</span><a class="d-inline-block mx-3 py-1 position-relative" href="registrarPac.html"><span class="d-inline-block mx-3 py-1 position-relative" data-filter="3">COMPLETAR</span></a></div>
+                <div class="filtr-controls text-center lead text-uppercase mb-3">
+                    <span class="active d-inline-block mx-3 py-1 position-relative" data-filter="1">SUBIR</span>
+                    </div>
                 <div
                         class="row filtr-container">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 offset-3 float-md-center filtr-item" data-category="1,2,3">
@@ -191,21 +193,23 @@
                                     <div>
                                         <h6 class="text-muted card-subtitle mb-2"><i>Asegúrese de haber completado la hoja</i></h6><br /></div>
                                     <h6 class="text-muted card-subtitle mb-2 "></h6>
-                                    <form><input type="file" id="inputFileToLoad" />
+                                    <form enctype="multipart/form-data" action="/register" method="post">
+                                        <input name="idPaciente" type="hidden" th:value="${idPaciente}" >
+                                        <input type="file" id="inputFileToLoad" name="inputFileToLoad" required accept="application/pdf, image/*">
                                         <p style="  color: #4e73df;
-"><i>Formato: .JPG - .PNG - .DOC - .PDF</i></p>
-                                        <div class="form-row">
-                                            <div class="col" style="  padding: 0px 0px;
-">
-                                                <div class="alert alert-warning beautiful" style="  background-color: #5a5c69;
-  color: #ffffff;
-">
-                                                    <div><button type="button" class="close" data-dismiss="alert"><span>×</span></button><strong>Atencion!</strong> : Formato incorrecto, vuelva a intentar</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-4" style="  margin: 0px 0px 10px;
-"><button class="btn btn-success btn-lg" type="submit" style="  background-color: #4e73df;
+"><i>Formato: .JPG - .PNG  - .PDF</i></p>
+<!--                                        <div class="form-row">-->
+<!--                                            <div class="col" style="  padding: 0px 0px;-->
+<!--">-->
+<!--                                                <div class="alert alert-warning beautiful" style="  background-color: #5a5c69;-->
+<!--  color: #ffffff;-->
+<!--">-->
+<!--                                                    <div><button type="button" class="close" data-dismiss="alert"><span>×</span></button><strong>Atencion!</strong> : Formato incorrecto, vuelva a intentar</div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                        <div class="mt-5 " style="  margin: 0px 0px 10px;
+"><button class="btn btn-success btn-lg " type="submit" style="  background-color: #4e73df;
   padding: 8px 40px;
   margin: -30px 0px 10px;
 ">Subir</button></div>

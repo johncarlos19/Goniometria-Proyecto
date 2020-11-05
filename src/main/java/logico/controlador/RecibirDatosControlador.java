@@ -3,6 +3,7 @@ package logico.controlador;
 import io.javalin.Javalin;
 import io.jsonwebtoken.*;
 import logico.goniometriaClass.*;
+import logico.servicios.DocumentoServicios;
 import logico.servicios.PacienteServicios;
 import logico.servicios.PreMedidaServicios;
 import logico.servicios.TerapiaServicios;
@@ -10,6 +11,7 @@ import logico.util.BaseControlador;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -366,37 +368,70 @@ public class RecibirDatosControlador extends BaseControlador {
             path("/register", () -> {
 
                 get(ctx -> {
-                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
-                    if (ctx.cookie("User") != null) {
-                        Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",decodeJWT(user).getId());
-                        ctx.render("/publico/ProyectoGon/registrarPac.html",modelo);
-                    } else {
-                        ctx.redirect("/login");
-                    }
+
+
+
+
+                        String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+                        if (ctx.cookie("User") != null) {
+                            Map<String, Object> modelo = new HashMap<>();
+                            modelo.put("user",decodeJWT(user).getId());
+                            ctx.render("/publico/ProyectoGon/registrarPac.html",modelo);
+                        } else {
+                            ctx.redirect("/login");
+                        }
+
+
+
+
 
                         });
 
 
 
                 post(ctx -> {
-                    //String pais, String ciudad, String calle, String sector, String n_residencia
-                    Direccion dire = new Direccion("Republica Dominicana", ctx.formParam("ciudad"), ctx.formParam("calle"), ctx.formParam("sector"), null);
-                    String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
-
-
-                    Paciente aux = new Paciente(ctx.formParam("cedula"),user,
-                            ctx.formParam("nombre"), ctx.formParam("apellido"), ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
-                            ctx.formParam("telefono"), dire.getID_Direccion(), ctx.formParam("correo"), ctx.formParam("comentario") );
-
-                    PacienteServicios.getInstance().crearPaciente(aux, dire);
-
-                    if (Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User")) != null) {
+                    if(ctx.formParam("documento")!=null){
+                        String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                         Map<String, Object> modelo = new HashMap<>();
-                        modelo.put("user",decodeJWT(user).getId());
-                        ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
-                    } else {
-                        ctx.redirect("/login");
+                        modelo.put("user", decodeJWT(user).getId());
+                        modelo.put("idPaciente", ctx.formParam("idPaciente"));
+                        ctx.render("/publico/ProyectoGon/insertar.html", modelo);
+
+                    }else if(ctx.formParam("idPaciente")!=null){
+                            ctx.sessionAttribute("idPaciente",ctx.formParam("idPaciente"));
+                            ctx.uploadedFiles("inputFileToLoad").forEach(uploadedFile -> {
+                                try {
+                                    byte[] bytes = uploadedFile.getContent().readAllBytes();
+                                    String encodedString = Base64.getEncoder().encodeToString(bytes);
+                                    Documento foto = new Documento(encodedString, uploadedFile.getContentType(), uploadedFile.getFilename(), ctx.formParam("idPaciente"));
+                                    DocumentoServicios.getInstance().addDocumento(foto);
+                                } catch (IOException d ) {
+                                    d.printStackTrace();
+                                }
+                                ctx.redirect("/profile");
+                            });
+
+                    }else {
+
+
+                        //String pais, String ciudad, String calle, String sector, String n_residencia
+                        Direccion dire = new Direccion("Republica Dominicana", ctx.formParam("ciudad"), ctx.formParam("calle"), ctx.formParam("sector"), null);
+                        String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+
+
+                        Paciente aux = new Paciente(ctx.formParam("cedula"), user,
+                                ctx.formParam("nombre"), ctx.formParam("apellido"), ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
+                                ctx.formParam("telefono"), dire.getID_Direccion(), ctx.formParam("correo"), ctx.formParam("comentario"));
+
+                        PacienteServicios.getInstance().crearPaciente(aux, dire);
+
+                        if (Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User")) != null) {
+                            Map<String, Object> modelo = new HashMap<>();
+                            modelo.put("user", decodeJWT(user).getId());
+                            ctx.render("/publico/ProyectoGon/dashboard.html", modelo);
+                        } else {
+                            ctx.redirect("/login");
+                        }
                     }
                 });
             });
@@ -701,12 +736,21 @@ public class RecibirDatosControlador extends BaseControlador {
                             ctx.formParam("phone"), dire.getID_Direccion());    */
                         String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                         if (ctx.cookie("User") != null) {
+                            Documento aux1 = DocumentoServicios.getInstance().getDocumento(aux.getIdPaciente());
+                            try {
+                                if (aux1.getBase64()==null){
+                                    aux1 = null;
+                                }
+                            }catch (NullPointerException d){
+                                aux1 = new Documento("","","","");
+                            }
                             Map<String, Object> modelo = new HashMap<>();
                             modelo.put("user",decodeJWT(user).getId());
                             modelo.put("paciente",aux);
                             modelo.put("direccion",dire);
                             modelo.put("perfil","Editar");
                             modelo.put("preMedida",PreMedidaServicios.getInstance().listaPreMedida(aux.getIdPaciente()));
+                            modelo.put("documento",aux1);
                             ctx.render("/publico/ProyectoGon/profile.html",modelo);
                         } else {
                             ctx.redirect("/login");
@@ -729,12 +773,23 @@ public class RecibirDatosControlador extends BaseControlador {
                             ctx.formParam("phone"), dire.getID_Direccion());    */
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
                     if (ctx.cookie("User") != null) {
+                        Documento aux1 = DocumentoServicios.getInstance().getDocumento(aux.getIdPaciente());
+                        try {
+                            if (aux1.getBase64()==null){
+                                aux1 = null;
+
+                            }
+                        }catch (NullPointerException d){
+                            aux1 = new Documento("","","","");
+                        }
+
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",decodeJWT(user).getId());
                         modelo.put("paciente",aux);
                         modelo.put("direccion",dire);
                         modelo.put("perfil","Editar");
                         modelo.put("preMedida",PreMedidaServicios.getInstance().listaPreMedida(aux.getIdPaciente()));
+                        modelo.put("documento",aux1);
                         ctx.render("/publico/ProyectoGon/profile.html",modelo);
                     } else {
                         ctx.redirect("/login");
