@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Table - Brand</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
@@ -59,7 +62,7 @@
                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="tomarMedida.html">Tomar Medidas</a><a class="dropdown-item" role="presentation" href="insertarEvo.html">Hoja de Evolucion</a><a class="dropdown-item" role="presentation" href="#"></a></div>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a><a class="dropdown-item" role="presentation" href="#">Dar permisos</a></div>
@@ -180,48 +183,17 @@
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="row"><div class="filter">
-                            <form>
-                                <select>
-                                    <option value="">Destino</option>
-                                    <option value="">Meñique</option>
-                                    <option value="">Anular</option>
-                                    <option value="">Mayor</option>
-                                    <option value="">Indice</option>
-                                    <option value="">Pulgar</option>
-                                </select>
-                                <select>
-                                    <option value="">Tipo</option>
-                                    <option value="">Carpometacarpiana</option>
-                                    <option value="">Metacarpofalangicas</option>
-                                    <option value="">Interfalangica</option>
-                                    <option value="">Inter. Proximal</option>
-                                    <option value="">Inter. Distal</option>
-                                </select>
-                                <select>
-                                    <option value="">Rom</option>
-                                    <option value="">Flexion</option>
-                                    <option value="">Extension</option>
-                                    <option value="">Abduccion</option>
-                                    <option value="">Aduccion</option>
-                                </select>
 
-
-                            </form>
                         </div>
 
 
-                            <div class="col" style="height: 54px; padding: 9px;"><input class="form-control" type="date" style="width:200px"/></div>
+
                         </div></div>
                     <div class="row">
-                        <div class="col-md-6 text-nowrap" style="width: 170px;">
-                            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable" style="width: 170px;"><label>&nbsp;Mostrar&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
-                        </div>
-                        <div class="col-md-6" style="width: 170px;">
-                            <div class="float-left float-md-right mt-5 mt-md-0 search-area"><i class="fas fa-search float-left search-icon"></i><input type="search" class="float-left float-sm-right custom-search-input" placeholder="Buscar..." /></div>
-                        </div>
+
                     </div>
-                    <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
-                        <table class="table my-0" id="dataTable">
+                    <div class="card-body  mb-5 " role="grid" aria-describedby="dataTable_info">
+                        <table class="table table-hover dt-responsive  my-2" id="dataTable">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -229,7 +201,7 @@
                                 <th>Posicion</th>
                                 <th>ROM</th>
                                 <th>Resultado</th>
-                                <th>Usuario del Especialista</th>
+                                <th>Seleccionar</th>
                                 <th>Fecha</th>
                             </tr>
                             </thead>
@@ -242,7 +214,7 @@
                                     <td th:text="${aux.lugar}">Pulgar</td>
                                     <td th:text="${aux.rom}">Flexion</td>
                                     <td th:text="${aux.rom_value}">Flexion</td>
-                                    <td th:text="${aux.id_especialista}">Pepito</td>
+                                    <td th:text="${aux.id_especialista}"></td>
                                     <td th:text="${aux.fecha_realizacion}">24-7-2020</td>
                                 </tr>
                             </th:block>
@@ -252,22 +224,7 @@
 
                         </table>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 align-self-center">
-                            <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                        </div>
-                        <div class="col-md-6">
-                            <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -288,6 +245,40 @@
 <script src="assets/js/Pricing-Tables.js"></script>
 <script src="assets/js/testimonialSlider.js"></script>
 <script src="assets/js/theme.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "language": {
+
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+
+            }
+        });
+
+    } );
+</script>
 </body>
 <footer class="bg-white sticky-footer">
     <div class="container my-auto">

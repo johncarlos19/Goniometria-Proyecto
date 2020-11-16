@@ -234,10 +234,10 @@
                 <h1 class="text-center mb-4">Hoja de Evolucion</h1>
                 <div class="filtr-controls text center lead text-uppercase mb-1"><span
                         class="active d-inline-block mx-3 py-1 position-relative" data-filter="1">COMPLETAR</span>
-<!--                    <a-->
-<!--                        class="d-inline-block mx-3 py-1 position-relative" href="insertarEvo.html">-->
-<!--                        <span-->
-<!--                        class="d-inline-block mx-3 py-1 position-relative" data-filter="3">Subir</span></a>-->
+                    <!--                    <a-->
+                    <!--                        class="d-inline-block mx-3 py-1 position-relative" href="insertarEvo.html">-->
+                    <!--                        <span-->
+                    <!--                        class="d-inline-block mx-3 py-1 position-relative" data-filter="3">Subir</span></a>-->
                 </div>
 
 
@@ -283,9 +283,10 @@
                                                                                                         name="pulso"
                                                                                                         step="0.01"
                                                                                                         min="0"
+                                                                                                        th:value="${evolucion.pulso}"
                                                                                                         value="0.00"
                                                                                                         placeholder="0.00"
-                                                                                                        form="subir"
+                                                                                                         disabled
                                                                                                         class="form-control"
                                                                                                         style="width: 101px;height: 36px;margin: 5px 21px 0px;padding: 5px 20px;"/>
                                                                                 </div>
@@ -300,11 +301,12 @@
                                                                         </li>
                                                                         <li class="list-group-item plan-action"><input
                                                                                 name="temperatura"
-                                                                                form="subir"
+
                                                                                 value="0.00"
                                                                                 step="0.01"
                                                                                 min="0"
-
+                                                                                th:value="${evolucion.temperatura}"
+                                                                                disabled
                                                                                 type="number" placeholder="0.00"
                                                                                 class="form-control"
                                                                                 style="width: 101px;height: 36px;margin: 5px 21px 0px;padding: 5px 20px;"/>
@@ -317,10 +319,11 @@
                                                                                 style="color:white;">Presion</h5></li>
                                                                         <li class="list-group-item plan-action"><input
                                                                                 name="presion"
-                                                                                form="subir"
+
                                                                                 value="0.00"
                                                                                 step="0.01"
-
+                                                                                th:value="${evolucion.presion}"
+                                                                                disabled
                                                                                 min="0"
                                                                                 type="number" placeholder="0.00"
                                                                                 class="form-control"
@@ -347,13 +350,15 @@
                                                     class="required-input">*</span><textarea class="form-control"
                                                                                              id="from-comments-2"
                                                                                              name="respuestaTerapia"
-                                                                                             form="subir"
+
+                                                                                             th:text="${evolucion.respuesta_tratamiento}"
+                                                                                             disabled
                                                                                              placeholder="Ingresa un comentario"
                                                                                              rows="5"></textarea></div>
                                             <div class="form-group">
                                                 <div class="form-row">
                                                     <div class="col">
-<!--                                                        medida Tabla-->
+                                                        <!--                                                        medida Tabla-->
                                                     </div>
                                                     <div class="col"></div>
                                                 </div>
@@ -370,19 +375,18 @@
                                                                     class="input-group-text"><i
                                                                     class="fa fa-user-o"></i></span></div>
                                                             <input type="text" class="form-control" id="from-name"
-                                                                   name="name" form="subir" required placeholder="Nombre Completo"/>
+                                                                   name="name" th:value="${evolucion.colaborador}"
+                                                                   disabled  required placeholder="Nombre Completo"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group"><label
                                                             for="from-email">Profesion</label><span
                                                             class="required-input">*</span>
-                                                        <div class="form-row"><select form="subir" name="profesion"
-                                                                style="width: 150px; margin:0px 5px;">
-                                                            <option value>Seleccione</option>
-                                                            <option value="Medico">Medico</option>
-                                                            <option value="Terapeuta">Terapeuta</option>
-                                                            <option value="Enfermera">Enfermera</option>
-                                                            <option value="Pasante">Pasante</option>
+                                                        <div class="form-row"><select disabled  name="profesion"
+                                                                                      style="width: 150px; margin:0px 5px;">
+                                                            <option th:text="${evolucion.profesion}"
+                                                                    disabled selected>Seleccione</option>
+
                                                         </select></div>
                                                     </div>
                                                     <hr>
@@ -398,32 +402,14 @@
                                                         <div class="form-row">
                                                             <div class="col-sm-6 col-md-12 col-lg-6">
                                                                 <div></div>
-                                                                <div class="form-check"><input type="radio" name="razonamiento" value="Metas Cumplidas" form="subir" required
-                                                                                               class="form-check-input"
-                                                                                               id="formCheck"/><label
-                                                                        class="form-check-label" for="formCheck">Metas
-                                                                    cumplidas</label></div>
-                                                                <div class="form-check"><input type="radio" name="razonamiento" value="No necesita terapia" form="subir" required
-                                                                                               class="form-check-input"
-                                                                                               id="formCheck-2"/><label
-                                                                        class="form-check-label" for="formCheck">No
-                                                                    necesita terapia</label></div>
-                                                                <div></div>
-                                                                <hr class="d-sm-none d-md-block d-lg-none"/>
-                                                            </div>
-                                                            <div class="col-sm-6 col-md-12 col-lg-6">
-                                                                <div></div>
-                                                                <div class="form-check"><input type="radio" name="razonamiento" value="No hay progreso" form="subir" required
-                                                                                               class="form-check-input"
-                                                                                               id="formCheck-1"/><label
-                                                                        class="form-check-label" for="formCheck">No hay
-                                                                    progreso</label></div>
-                                                                <div class="form-check"><input type="radio" name="razonamiento" value="Prenscripcion medica" form="subir" required
-                                                                                               class="form-check-input"
-                                                                                               id="formCheck-3"/><label
-                                                                        class="form-check-label" for="formCheck">Prenscripcion
-                                                                    medica</label></div>
-                                                                <div></div>
+                                                                <div class="input-group">
+                                                                    <div class="input-group-prepend"><span
+                                                                            class="input-group-text"><i
+                                                                            class="fa fa-flag-checkered"></i></span></div>
+                                                                    <input type="text" class="form-control" id="from-name"
+                                                                           name="razonamiento" th:value="${evolucion.conclusion}"
+                                                                           disabled  required placeholder="Nombre Completo"/>
+                                                                </div>
                                                                 <hr class="d-sm-none d-md-block d-lg-none"/>
                                                             </div>
                                                             <hr class="d-sm-none"/>
@@ -448,32 +434,18 @@
                                                     <span><strong>Tratamiento de hoy:</strong><br></span>
                                                     <div class="form-row">
                                                         <div class="col-sm-6 col-md-12 col-lg-6">
-                                                            <div></div>
-                                                            <div class="form-check"><input class="form-check-input"
-                                                                                           type="radio" name="objetivo" value="Bien" form="subir" required
-                                                                                           id="formCheck"><label
-                                                                    class="form-check-label"
-                                                                    for="formCheck">Bien</label></div>
-                                                            <div class="form-check"><input class="form-check-input"
-                                                                                           type="radio" name="objetivo" value="Regular" form="subir" required
-                                                                                           id="formCheck-2"><label
-                                                                    class="form-check-label"
-                                                                    for="formCheck">Regular</label></div>
-                                                            <div></div>
-                                                            <hr class="d-sm-none d-md-block d-lg-none">
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend"><span
+                                                                        class="input-group-text"><i
+                                                                        class="fa fa-gratipay"></i></span></div>
+                                                                <input type="text" class="form-control" id="from-name"
+                                                                       name="razonamiento" th:value="${evolucion.objetivo}"
+                                                                       disabled  required placeholder="Nombre Completo"/>
+                                                            </div>
                                                         </div>
                                                         <div class="col-sm-6 col-md-12 col-lg-6">
                                                             <div></div>
-                                                            <div class="form-check"><input class="form-check-input"
-                                                                                           type="radio" name="objetivo" value="Mal" form="subir" required
-                                                                                           id="formCheck-1"><label
-                                                                    class="form-check-label" for="formCheck">Mal</label>
-                                                            </div>
-                                                            <div class="form-check"><input class="form-check-input"
-                                                                                           type="radio" name="objetivo" value="Sin Especificar" form="subir" required
-                                                                                           id="formCheck-3"><label
-                                                                    class="form-check-label" for="formCheck">Sin
-                                                                especificar</label></div>
+
                                                             <div></div>
                                                             <hr class="d-sm-none d-md-block d-lg-none">
                                                         </div>
@@ -484,156 +456,139 @@
                                                                 <div class="container">
                                                                     <div class="filtr-controls text-center lead text-uppercase mb-3"
                                                                          style="  margin: -50px 0px 0px;">
-                                                                        <span><strong>metas cumplidas:</strong><br/></span><span id="si"
-                                                                            class="active d-inline-block mx-3 py-1 position-relative"
-                                                                            data-filter="5">SI</span>
-                                                                        <span id="no"
-                                                                            class="d-inline-block mx-3 py-1 position-relative"
-                                                                            data-filter="1">NO</span></div>
+                                                                        <span><strong>metas cumplidas:</strong><br/></span></div>
                                                                     <div class="form-row filtr-container">
                                                                         <div>
-                                                                            <div class="col filtr-item"
-                                                                                 data-category="5,3" style="  margin: -30px 0px 0px;
-">
-                                                                                <article
-                                                                                        class="bg-light text-dark border-top border-bottom border-dark">
-                                                                                    <div class="col-12" style="  padding: -10px 12px;
+
+
+
+                                                                            <div th:if="${evolucion.isValidacion}">
+
+
+
+
+
+
+                                                                                <div class="col filtr-item"
+                                                                                     data-category="5,3" style="  margin: -30px 0px 0px;">
+                                                                                    <article
+                                                                                            class="bg-light text-dark border-top border-bottom border-dark">
+                                                                                        <div class="col-12" style="  padding: -10px 12px;
 "><span><strong>Actividades alcanzadas:</strong><br/></span>
 
-                                                                                        <div class="form-row"><form >
-                                                                                            <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                                            <div class="form-row"><form >
+                                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                                                    <div class="input-group">
+                                                                                                        <div class="input-group-prepend"><span
+                                                                                                                class="input-group-text"><i
+                                                                                                                class="fa fa-american-sign-language-interpreting"></i></span></div>
+                                                                                                        <input type="text" class="form-control" id="from-name"
+                                                                                                               name="actividad" th:value="${evolucion.actividad}"
+                                                                                                               disabled  required placeholder="Nombre Completo"/>
+                                                                                                    </div>
 
-
-
-                                                                                                <div class="form-check">
-
-                                                                                                    <input name="actividad" form="subir" value="Toma De Medidas"   type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-4"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Toma
-                                                                                                    de medidas</label>
                                                                                                 </div>
-                                                                                                <div class="form-check">
-                                                                                                    <input name="actividad" form="subir" value="Fecha Propuesta"  type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-5"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Fecha
-                                                                                                    propuesta</label>
+                                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
+
+
+
+
+                                                                                                    <div></div>
+                                                                                                    <hr class="d-sm-none d-md-block d-lg-none"/>
                                                                                                 </div>
-                                                                                                <div></div>
-                                                                                                <hr class="d-sm-none d-md-block d-lg-none"/>
+                                                                                            </form>
                                                                                             </div>
-                                                                                            <div class="col-sm-6 col-md-12 col-lg-6">
-
-                                                                                                <div class="form-check">
-                                                                                                    <input name="actividad" form="subir" value="Rendimiento" type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-6"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Rendimiento</label>
-                                                                                                </div>
-                                                                                                <div class="form-check">
-                                                                                                    <input name="actividad" form="subir" value="Tiempo Establecido" type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-7"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Tiempo
-                                                                                                    establecido</label>
-                                                                                                </div>
-
-
-                                                                                                <div></div>
-                                                                                                <hr class="d-sm-none d-md-block d-lg-none"/>
-                                                                                            </div>
-                                                                                        </form>
+                                                                                            <div class="form-group" style="  padding: 15px;
+"><label for="from-comments">Especificar</label><textarea  class="form-control" id="from-comments" name="actividadMeta" th:text="${evolucion.actividadEspecificar}" disabled
+                                                           placeholder="Ingresa un comentario" rows="5"></textarea></div>
                                                                                         </div>
-                                                                                        <div class="form-group" style="  padding: 15px;
-"><label for="from-comments">Especificar</label><textarea form="subir" class="form-control" id="from-comments" name="actividadMeta"
-                                                          placeholder="Ingresa un comentario" rows="5"></textarea></div>
-                                                                                    </div>
-                                                                                </article>
+                                                                                    </article>
+                                                                                </div>
+
+
+
                                                                             </div>
+                                                                            <!-- ELSE -->
+                                                                            <div th:unless="${evolucion.isValidacion}">
 
 
-                                                                            <div class="col filtr-item filteredOut"
-                                                                                 data-category="1"
-                                                                                 style="  margin: -30px 0px 0px ">
 
-                                                                                <article
-                                                                                        class="bg-light text-dark border-top border-bottom border-dark">
-                                                                                    <div class="col-12" style="  padding: -10px 12px;
+
+
+
+
+
+                                                                                <div class="col filtr-item filteredOut"
+                                                                                     data-category="1"
+                                                                                     style="  margin: -30px 0px 0px ">
+
+                                                                                    <article
+                                                                                            class="bg-light text-dark border-top border-bottom border-dark">
+                                                                                        <div class="col-12" style="  padding: -10px 12px;
 "><span><strong>Actividades alcanzadas:</strong><br/></span>
-                                                                                        <div class="form-row">
-                                                                                            <div class="col-sm-6 col-md-12 col-lg-6">
-                                                                                                <div></div>
-                                                                                                <div class="form-check">
+                                                                                            <div class="form-row">
+                                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                                                    <div></div>
+                                                                                                    <div class="input-group">
+                                                                                                        <div class="input-group-prepend"><span
+                                                                                                                class="input-group-text"><i
+                                                                                                                class="fa fa-american-sign-language-interpreting"></i></span></div>
+                                                                                                        <input type="text" class="form-control" id="from-name"
+                                                                                                               name="actividad" th:value="${evolucion.actividad}"
+                                                                                                               disabled  required placeholder="Nombre Completo"/>
+                                                                                                    </div>
+                                                                                                    <div></div>
+                                                                                                    <hr class="d-sm-none d-md-block d-lg-none"/>
+                                                                                                </div>
+                                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
 
-                                                                                                    <input name="actividad2" form="subir" value="Toma De Medidas"   type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-4"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Toma
-                                                                                                    de medidas</label>
-                                                                                                </div>
-                                                                                                <div class="form-check">
-                                                                                                    <input name="actividad2" form="subir" value="Fecha Propuesta"  type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-5"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Fecha
-                                                                                                    propuesta</label>
-                                                                                                </div>
-                                                                                                <div></div>
-                                                                                                <hr class="d-sm-none d-md-block d-lg-none"/>
-                                                                                            </div>
-                                                                                            <div class="col-sm-6 col-md-12 col-lg-6">
 
-                                                                                                <div class="form-check">
-                                                                                                    <input name="actividad2" form="subir" value="Rendimiento" type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-6"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Rendimiento</label>
+                                                                                                    <div></div>
+                                                                                                    <hr class="d-sm-none d-md-block d-lg-none"/>
                                                                                                 </div>
-                                                                                                <div class="form-check">
-                                                                                                    <input name="actividad2" form="subir" value="Tiempo Establecido" type="radio"
-                                                                                                           class="form-check-input"
-                                                                                                           id="formCheck-7"/><label
-                                                                                                        class="form-check-label"
-                                                                                                        for="formCheck">Tiempo
-                                                                                                    establecido</label>
-                                                                                                </div>
-                                                                                                <div></div>
-                                                                                                <hr class="d-sm-none d-md-block d-lg-none"/>
                                                                                             </div>
-                                                                                        </div>
-                                                                                        <hr/>
-                                                                                        <div><span style="  padding: -10px 12px;
-"><strong>Posible retraso:</strong><br/></span><select form="subir" name="retraso">
-                                                                                            <option value>Seleccione
-                                                                                            </option>
-                                                                                            <option value="Dias">Dias
-                                                                                            </option>
-                                                                                            <option value="Semanas">Semanas
-                                                                                            </option>
-                                                                                            <option value="Meses">Meses
-                                                                                            </option>
-                                                                                            <option value="Sin Especificar">Sin
-                                                                                                especificar
-                                                                                            </option>
-                                                                                        </select>
-                                                                                            <div class="form-group"
-                                                                                                 style="  padding: 15px;
-"><label for="from-comments">Explique los incovenientes</label><textarea class="form-control" id="from-comments" form="subir"  name="actividadMeta2"
+                                                                                            <hr/>
+                                                                                            <div><span style="  padding: -10px 12px;
+"><strong>Posible retraso:</strong><br/></span><select  name="retraso" disabled>
+                                                                                                <option th:text="${evolucion.retraso}">Seleccione
+                                                                                                </option>
+
+                                                                                            </select>
+                                                                                                <div class="form-group"
+                                                                                                     style="  padding: 15px;
+"><label for="from-comments">Explique los incovenientes</label><textarea class="form-control" id="from-comments"   name="actividadMeta2" th:text="${evolucion.actividadEspecificar}" disabled
 
                                                                          placeholder="Ingresa un comentario"
                                                                          rows="5"></textarea></div>
+                                                                                            </div>
                                                                                         </div>
-                                                                                    </div>
-                                                                                </article>
+                                                                                    </article>
+                                                                                </div>
+
+
+
+
                                                                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -809,7 +764,7 @@
                                         <th>Posicion</th>
                                         <th>ROM</th>
                                         <th>Resultado</th>
-                                        <th>Seleccionar</th>
+
                                         <th>Fecha</th>
                                     </tr>
                                     </thead>
@@ -822,10 +777,7 @@
                                             <td th:text="${aux.medida.lugar}">Pulgar</td>
                                             <td th:text="${aux.medida.rom}">Flexion</td>
                                             <td th:text="${aux.medida.rom_value}">Flexion</td>
-                                            <td><div class="custom-control custom-switch ">
-                                                <input type="checkbox" class="custom-control-input align-content-center" name="terapiaID" th:value="${aux.idTerapia}" form="subir" th:id="${aux.idTerapia}">
-                                                <label class="custom-control-label" th:for="${aux.idTerapia}"></label>
-                                            </div></td>
+
                                             <td th:text="${aux.medida.fecha_realizacion}">24-7-2020</td>
                                         </tr>
                                     </th:block>
@@ -849,11 +801,7 @@
 
 
                         </div>
-                        <form id="subir" action="/uploadEvlucion" method="post">
-                            <div class="mt-4">
-                                <button class="btn btn-success btn-lg" type="submit">Upload</button>
-                            </div>
-                        </form>
+
                     </div>
                 </div>
             </div>

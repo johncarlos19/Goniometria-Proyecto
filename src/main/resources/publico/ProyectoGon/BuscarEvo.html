@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>Table - Brand</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
@@ -174,149 +178,63 @@
                         </li>
                     </ul>
                 </div>
-            </nav><div class="profile-card">
-            <div class="profile-back" style="background-color: #000000;"></div><img class="rounded-circle profile-pic" src="assets/img/avatars/pedro.png" />
-            <h3 class="profile-name" style="background-color: #2c2222;" th:text="${especialista.nombre}+' '+${especialista.apellido}" >Dr. Joan Pena</h3>
-            <div data-ride="carousel" data-interval="10000" class="carousel slide" id="carousel-t">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="col-9 text-center mx-auto testimonial-content">
-                            <p class="text-center rating">5<i class="icon ion-star"></i></p>
-                            <p class="signature" style="  color: #000000;
-">Informacion</p>
-                            <p class="text-center" style="  color: #140000;
-"><a th:text="'Soy un '+${especialista.tipo_especialista}+'.'">&quot;especialista dedicado a la terapia fisica.&quot;</a><br /></p>
-                            <p class="text-center date">April 21, 2014<br /></p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-9 text-center mx-auto testimonial-content">
-                            <p class="text-center rating"><i class="icon ion-leaf"></i></p>
-                            <div class="card shadow mb-3">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 font-weight-bold">Informacion</p>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <div class="form-group"><label for="especialidad"><strong>Especialidad</strong><br /></label><input type="text" class="form-control" placeholder="Terapeuta de la mano" name="especialidad" th:value="${especialista.tipo_especialista}" disabled /></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group"><label for="correo"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${especialista.cuenta.correo}" disabled /></div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${especialista.cedula}" disabled /></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(###)-###-###" name="telefono" th:value="${especialista.telefono}" disabled /></div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="card shadow"></div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="col-9 text-center mx-auto testimonial-content">
-                            <p class="text-center rating"><i class="icon ion-location"></i></p>
-                            <div class="card shadow">
-                                <div class="card-header py-3">
-                                    <p class="text-primary m-0 font-weight-bold">Direccion</p>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="form-group"><label for="municipio"><strong>Municipio</strong><br /></label><input type="text" class="form-control" placeholder="?" name="municipio" th:value="${especialista.direccion.ciudad}" disabled/></div>
-                                        <div class="form-row">
-                                            <div class="col">
-                                                <div class="form-group"><label for="sector"><strong>Sector</strong><br /></label><input type="text" class="form-control" placeholder="?" name="sector" th:value="${especialista.direccion.sector}" disabled /></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group"><label for="calle"><strong>Calle</strong><br /></label><input type="text" class="form-control" placeholder="?" name="calle" th:value="${especialista.direccion.calle}+', Residencial #'+${especialista.direccion.n_residencia} " disabled /></div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div><a href="#carousel-t" data-slide="prev" class="carousel-control-prev"><i class="icon ion-android-arrow-dropleft-circle d-flex d-lg-flex justify-content-center align-items-center"></i><span class="sr-only">Previous</span></a><a href="#carousel-t"
-                                                                                                                                                                                                                                                        data-slide="next" class="carousel-control-next"><i class="icon ion-android-arrow-dropright-circle d-flex d-lg-flex justify-content-center align-items-center"></i><span class="sr-only">Next</span></a></div>
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-t" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-t" data-slide-to="1"></li>
-                    <li data-target="#carousel-t" data-slide-to="2"></li>
-
-                </ol>
-            </div>
-
-            <ul class="social-list">
-                <li><a href="#"><i class="fa fa-facebook-official"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-            </ul>
-        </div><button class="btn btn-primary btn-block" type="submit" style="padding: 6px 12px 10px;">Dar permisos para ver registros de mis pacientes&nbsp;<i class="fa fa-chevron-circle-right"></i></button></div>
-        <footer class="bg-white sticky-footer">
+            </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Buscar Paciente</h3>
+                <h3 class="text-dark mb-4">Seleccionar hoja de Evolucion</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Infomacion del paciente</p>
+                        <p class="text-primary m-0 font-weight-bold">Hoja de Evolucion</p>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Mostrar&nbsp;&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
-                            </div>
-                        </div>
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="dataTable">
+
+                        <div class=" table-borderless mt-2"  role="grid" aria-describedby="dataTable_info">
+                            <table class="table table-hover table-borderless  table-striped dt-responsive  my-0"  id="dataTable">
+
                                 <thead>
                                 <tr>
-                                    <th style="width: 170px;">ID</th>
-                                    <th>Nombre</th>
-                                    <th style="width: 270px;">Telefono</th>
-                                    <th style="width: 270px;">Permiso</th>
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Documento</th>
+                                    <th>Accion</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <th:block th:each="aux : ${listaEvolucion}">
 
 
+                                    <tr class=" ">
+                                        <td th:text="${aux.idEvolucion}">10128006</td>
+                                        <td th:text="${aux.fecha}">10128006</td>
+                                        <td><div th:if="${aux.isValidacion}">
+                                            <button class="btn btn-success btn-xs btnActivar" type="button" >Activado</button>
+                                        </div>
+                                            <!-- ELSE -->
+                                            <div th:unless="${aux.isValidacion}">
+                                                <button class="btn btn-danger btn-xs btnActivar" type="button" >Desactivado</button>
+                                            </div></td>
+                                        <td>
+                                            <form method="post" action="/evolucion">
+                                                <input type="hidden" th:value="${paciente.idPaciente}" name="idPaciente">
+                                                <input type="hidden" th:value="${aux.idEvolucion}" name="idEvolucion">
+
+                                                <button class="btn btn-link border-pretty" role="button" style="color:#ce9c95;" type="submit" >Seleccionar&nbsp;</button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+                                </th:block>
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <td><strong>Permiso</strong></td>
-                                    <td><strong>ID</strong></td>
-                                    <td>Nombre</td>
-                                    <td>Telefono</td>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-md-6"><button class="btn btn-link border-pretty" style="color:#ce9c95;" type="button">Ocultar tabla&nbsp;&nbsp;<i class="icon ion-android-arrow-forward"></i></button></div>
-                            <div class="col">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers" style="margin: 0px 115px;">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <footer class="bg-white sticky-footer">
             <div class="container my-auto">
                 <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
             </div>
@@ -336,6 +254,40 @@
 <script src="assets/js/Pricing-Tables.js"></script>
 <script src="assets/js/testimonialSlider.js"></script>
 <script src="assets/js/theme.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "language": {
+
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+
+            }
+        });
+
+    } );
+</script>
 </body>
 
 </html>

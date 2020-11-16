@@ -51,19 +51,19 @@
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="completarEvo.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link active" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item" role="presentation"></li>
                 <li class="nav-item" role="presentation"></li>
                 <li class="nav-item" role="presentation"></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="estadisticas.html"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
                 <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user"></i>Paciente</a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="registrarPac.html">Registrar&nbsp;</a><a class="dropdown-item" role="presentation" href="buscarPac.html">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
                 </li>
                 <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="tomarMedida.html">Tomar Medidas</a><a class="dropdown-item" role="presentation" href="insertarEvo.html">Hoja de Evolucion</a><a class="dropdown-item" role="presentation" href="#"></a></div>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
                 </li>
                 <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="medico.html">Informacion</a><a class="dropdown-item" role="presentation" href="#">Dar permisos</a></div>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a><a class="dropdown-item" role="presentation" href="#">Dar permisos</a></div>
                 </li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -199,7 +199,7 @@
 
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="5">
                                     <div class="card border-dark">
-                                        <form action="/RegistrarPreMedida" method="post">
+                                        <form th:action="${tipoMedida}" method="post">
                                         <div class="card-header bg-dark text-light" style="background-color: rgb(78,115,223);">
                                             <h5 class="m-0 text-white">Carpometacarpiana</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l1.PNG" style="width: 150px;height: 170px;">
@@ -224,7 +224,7 @@
                                             <input name="medida" type="hidden" value="carpometacarpiana">
                                             <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                             <input name="preMedida" type="hidden" value="agregar">
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                            <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;<a th:utext="${boton}">Agregar</a></button></div>
                                         </form>
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
 
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="5">
                                     <div class="card border-dark">
-                                        <form action="/RegistrarPreMedida" method="post">
+                                        <form th:action="${tipoMedida}" method="post">
                                         <div class="card-header bg-dark text-light">
                                             <h5 class="m-0 text-white">Metacarpofalangicas_P</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l3.PNG" style="height: 170px;">
@@ -253,13 +253,13 @@
                                         <input name="medida" type="hidden" value="metocarpofalangicas_p">
                                         <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                         <input name="preMedida" type="hidden" value="agregar">
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp; Agregar</button></div>
+                                            <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp; <a th:utext="${boton}">Agregar</a></button></div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="5">
                                     <div class="card border-dark">
-                                        <form action="/RegistrarPreMedida" method="post">
+                                        <form th:action="${tipoMedida}" method="post">
                                         <div class="card-header bg-dark text-light">
                                             <h5 class="m-0 text-white">Interfalangica</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l6.PNG" style="height: 170px;">
@@ -279,13 +279,13 @@
                                         <input name="medida" type="hidden" value="interfalangica">
                                         <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                         <input name="preMedida" type="hidden" value="agregar">
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                            <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;<a th:utext="${boton}">Agregar</a></button></div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="1,2,3,4">
                                     <div class="card border-dark">
-                                        <form action="/RegistrarPreMedida" method="post">
+                                        <form th:action="${tipoMedida}" method="post">
                                         <div class="card-header bg-dark text-light">
                                             <h5 class="m-0 text-white">Interfalangicas Proximales</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l4.PNG" style="height: 170px;">
@@ -305,13 +305,13 @@
                                         <input name="medida" type="hidden" value="interfalangicas proximales">
                                         <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                         <input name="preMedida" type="hidden" value="agregar">
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                            <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;<a th:utext="${boton}">Agregar</a></button></div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="1,2,3,4">
                                     <div class="card border-dark">
-                                        <form action="/RegistrarPreMedida" method="post">
+                                        <form th:action="${tipoMedida}" method="post">
                                         <div class="card-header bg-dark text-light">
                                             <h5 class="m-0 text-white">Metacarpofalangicas</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l2.PNG" style="height: 170px;">
@@ -333,13 +333,13 @@
                                         <input name="medida" type="hidden" value="metocarpofalangicas">
                                         <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                         <input name="preMedida" type="hidden" value="agregar">
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                            <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;<a th:utext="${boton}">Agregar</a></button></div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-lg-4 filtr-item" data-category="1,2,3,4">
                                     <div class="card border-dark">
-                                        <form action="/RegistrarPreMedida" method="post">
+                                        <form th:action="${tipoMedida}" method="post">
                                         <div class="card-header bg-dark text-light">
                                             <h5 class="m-0 text-white">Interfalangicas Distales</h5>
                                         </div><img class="img-fluid card-img w-100 d-block rounded-0" src="assets/img/dogs/l5.PNG" style="height: 170px;">
@@ -361,7 +361,7 @@
                                         <input name="medida" type="hidden" value="interfalangicas Distales">
                                         <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                         <input name="preMedida" type="hidden" value="agregar">
-                                        <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;Agregar</button></div>
+                                            <div class="d-flex card-footer"><button class="btn btn-outline-dark btn-sm ml-auto" type="submit"><i class="fa fa-plus"></i>&nbsp;<a th:utext="${boton}">Agregar</a></button></div>
                                         </form>
                                     </div>
                                 </div>

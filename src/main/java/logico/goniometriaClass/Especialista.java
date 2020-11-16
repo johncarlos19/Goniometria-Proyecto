@@ -3,6 +3,7 @@ package logico.goniometriaClass;
 public class Especialista extends Persona {
     private String Tipo_especialista;
     private Cuenta cuenta;
+    private Direccion direccion;
 
 
 
@@ -12,6 +13,14 @@ public class Especialista extends Persona {
         this.cuenta = cuenta;
     }
 
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
 
     public Cuenta getCuenta() {
         return cuenta;
