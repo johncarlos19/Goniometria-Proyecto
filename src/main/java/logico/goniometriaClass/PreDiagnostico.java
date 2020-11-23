@@ -1,16 +1,19 @@
 package logico.goniometriaClass;
 
 public class PreDiagnostico {
-    private String idpre_diagnostico;
-    private String idformulario_cirugia;
-    private String idformulario_pruebas;
-    private String molestias_zona;
-    private String tipo_lesion;
-    private String valoracion_dolor;
-    private String sintomas_asociados;
-    private String fecha_diagnostico;
-    private String hospital_pre;
-    private String tipo_prueba;
+    private String idpre_diagnostico = null;
+    private String idformulario_cirugia = null;
+    private String idformulario_pruebas = null;
+    private String molestias_zona = null;
+    private String tipo_lesion = null;
+    private String valoracion_dolor = null;
+    private String sintomas_asociados = null;
+    private String fecha_diagnostico = null;
+    private String hospital_pre = null;
+    private String tipo_prueba = null;
+
+    public PreDiagnostico() {
+    }
 
     public PreDiagnostico(String idpre_diagnostico, String idformulario_cirugia, String idformulario_pruebas, String molestias_zona, String tipo_lesion, String valoracion_dolor, String sintomas_asociados, String fecha_diagnostico, String hospital_pre, String tipo_prueba) {
         this.idpre_diagnostico = idpre_diagnostico;

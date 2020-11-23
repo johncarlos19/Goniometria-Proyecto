@@ -1,13 +1,16 @@
 package logico.goniometriaClass;
 
 public class FormularioMenor {
-    private String ID_fmenor;
-    private String Nombre_padre;
-    private String Apellido_padre;
-    private String Relacion_paciente;
-    private String FechaNac_padre;
-    private String Seguro_padre;
-    private String id_padre;
+    private String ID_fmenor = null;
+    private String Nombre_padre = null;
+    private String Apellido_padre = null;
+    private String Relacion_paciente = null;
+    private String FechaNac_padre = null;
+    private String Seguro_padre = null;
+    private String id_padre = null;
+
+    public FormularioMenor() {
+    }
 
     public FormularioMenor(String ID_fmenor, String nombre_padre, String apellido_padre, String relacion_paciente, String fechaNac_padre, String seguro_padre, String id_padre) {
         this.ID_fmenor = ID_fmenor;

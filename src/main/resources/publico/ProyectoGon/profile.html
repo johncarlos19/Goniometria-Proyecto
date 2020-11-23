@@ -360,45 +360,388 @@
                 </div>
                 <div class="card shadow mb-5">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Comentarios</p>
+                        <p class="text-primary m-0 font-weight-bold">Formulario Registro</p>
                     </div>
-                    <div class="card-body"><div class="container">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <img src="assets/img/avatars/pedro.png" width="120" height="120"/>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <p>
-                                            <a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>Dr. Joan Pena</strong></a>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
-                                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                    <div class="card-body"><div class="">
 
-                                        </p>
-                                        <div class="clearfix"></div>
-                                        <p> El paciente Rafael presenta problemas en la interfalangica distal, es un paciente delicado por favor no realizar terapia con pesas.</p>
-                                        <p>
-                                            <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Responder</a>
-                                            <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                                        </p>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="card shadow mb-5">
-                            <div class="card-body"></div>
-                        </div>
                         <div class="card shadow mb-5">
                             <div class="card-header py-3">
-                                <p class="text-primary m-0 font-weight-bold">Formulario Registro</p>
+                                <p class="text-primary m-0 font-weight-bold">Documento Fisico</p>
                             </div>
                             <div class="card-body" id="formulario">
 
+                            </div>
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 font-weight-bold">Documento Online</p>
+                            </div>
+                            <div class="card-body" id="formularioOnline">
+                                <div class="jumbotron">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Completar&nbsp; &gt; Formulario</h4>
+                                            <!--                        <div class="parallax"><video class="parallax-background" autoplay="" loop="" muted=""><source src="http://thenewcode.com/assets/videos/polina.mp4" type="video/mp4" wp-acf="[{'type':'url','name':'video','label':'Video','wrapper':{'width':25}},{'type':'text','name':'video_css','label':'Video CSS (eg. filters)','wrapper':{'width':25}}]" wp-attr="[{'target':'src','replace':'%1'},{'target':'parent_style','replace':'%2'}]"></video>-->
+                                            <!--                            <div-->
+                                            <!--                                    class="parallax-placeholder" style="background-image:url(&quot;assets/img/placeholder.jpg&quot;);"></div>-->
+                                            <!--                        </div>-->
+                                            <h6 class="text-muted card-subtitle mb-2">Asegúrese de completar todos&nbsp; los campos</h6>
+                                            <div>
+                                                <div class="col-md-6 col-xl-6 offset-lg-6 offset-xl-11"><button class="btn btn-warning" type="button" style="background-color: #5c99c7;padding: 5px 10px;">001</button></div>
+                                            </div>
+                                            <div>
+                                                <div class="container-fluid">
+                                                    <hr>
+                                                    <form id="contactForm" action="javascript:void(0);" method="get"><input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.awebsite.com"><input class="form-control" type="hidden" name="subject" value="Awebsite.com Contact Form"><input class="form-control"
+                                                                                                                                                                                                                                                                                                                                       type="hidden" name="to" value="email@awebsite.com">
+                                                        <div class="form-row">
+                                                            <div class="col-md-6">
+                                                                <div id="successfail"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-12 col-md-6" id="message">
+                                                                <h2 class="h4"><i class="fa fa-user-circle-o"></i>&nbsp;Datos Generales<small><small class="required-input">&nbsp;(*required)</small></small>
+                                                                </h2>
+                                                                <div class="form-group"><label for="from-name">Seguro social</label><span class="required-input">*</span>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-drivers-license-o"></i></span></div><input class="form-control" type="number" min="0" id="from-name" th:value="${formulario.seguro_social}" name="seguro_social" required="" placeholder="No. Afiliado" form="subir"></div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row">
+                                                                    <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                                                        <div class="form-group"><label for="from-phone">Altura</label><span class="required-input">*</span>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-info"></i></span></div><input class="form-control" type="number" step="0.01" min="0" id="from-phone" name="altura" th:value="${formulario.altura}"  required="" placeholder="metros" form="subir"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                                                        <div class="form-group"><label for="from-calltime">Peso</label>
+                                                                            <div class="input-group">
+                                                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-balance-scale"></i></span></div><input class="form-control" type="number" step="0.01" min="0" id="from-phone-1" th:value="${formulario.peso}" name="peso" required="" placeholder="libras" form="subir"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group"><label for="from-comments">Ocupacion</label><textarea class="form-control" id="from-comments" name="ocupacion" placeholder="Especifique" rows="5" form="subir"></textarea></div>
+                                                                <div class="form-group">
+                                                                    <div class="form-row">
+                                                                        <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                            <h2 class="h4"><i class="fa fa-plus-square"></i>&nbsp; Medicamentos</h2>
+                                                                            <div></div>
+                                                                            <div class="card shadow">
+                                                                                <div class="card-body text-center">
+                                                                                    <form>
+                                                                                        <div class="form-group"><label for="address" style="width: 200px;"><strong>Medicamento pre-escrito</strong><br></label><input class="form-control" type="text" th:value="${medicamentos.medicamento_pre}" placeholder="Jarabe/Pastilla/Inyeccion" name="medicamento_pre"
+                                                                                                                                                                                                                      form="subir"></div>
+                                                                                        <div class="form-group"><label for="address" style="width: 200px;"><strong>Tratamiento</strong><br></label><input class="form-control" th:value="${medicamentos.tratamiento}" type="text" placeholder="Aplicar en la espalda" name="tratamiento" form="subir"></div>
+                                                                                        <div
+                                                                                                class="form-row">
+                                                                                            <div class="col offset-xl-1">
+                                                                                                <div class="form-group"><label for="country"><strong>Dosis</strong><br></label><select class="form-control" id="from-calltime-8" name="dosis" form="subir" disabled ><optgroup label="- Seleccione - "><option th:text="${medicamentos.dosis}" value="diaria">Diaria</option></optgroup></select></div>
+                                                                                                <div
+                                                                                                        class="form-group"><label for="country"><strong>Tiempo</strong><br></label><select class="form-control" id="from-calltime-3" name="tiempo" form="subir" disabled><optgroup label="- Seleccione - "><option th:text="${medicamentos.tiempo}" value="menos">Menos de una semana</option></optgroup></select></div>
+                                                                                                <div
+                                                                                                        class="form-group"><label for="country"><strong>Efectos</strong><br></label><textarea class="form-control" id="from-comments-3"  th:text="${medicamentos.efectos}" name="efectos" placeholder="Especifique" rows="5" style="height: 90px;" form="subir"></textarea></div>
+                                                                                                <div
+                                                                                                        class="form-group"><label for="country"><strong>Revision medica</strong><br></label><textarea class="form-control" id="from-comments-1" th:text="${medicamentos.revision_medico}"  name="revision_medico" placeholder="Especifique" rows="5" style="height: 90px;"
+                                                                                                                                                                                                      form="subir"></textarea></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div></div>
+                                                                            <hr class="d-sm-none d-md-block d-lg-none">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                            <h2 class="h4"><i class="fa fa-heartbeat"></i>&nbsp;Estado de salud</h2>
+                                                                            <div class="card shadow">
+                                                                                <div class="card-body">
+                                                                                    <form>
+                                                                                        <div class="form-group"><label for="address"><strong>Condicion</strong><br></label><select class="form-control" id="from-calltime-4" name="condicion" form="subir" disabled><optgroup label="- Seleccione - " ><option value="estable" th:text="${estadoSalud.condicion}" selected>Estable</option></optgroup></select></div>
+                                                                                        <div
+                                                                                                class="form-group"><label for="address"><strong>Dificultades</strong><br></label><input class="form-control" type="text" placeholder="Estirar la espalda"  th:value="${estadoSalud.dificultad}" name="dificultad" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Molestias de dolor</strong><br></label><input class="form-control" type="text" placeholder="Dolor de espalda" th:value="${estadoSalud.molestia_dolor}"  name="molestia_dolor" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Estres</strong><br></label><select class="form-control" id="from-calltime-5" name="estres_nivel" form="subir" disabled><optgroup label="- Seleccione - "><option value="Bajo" th:text="${estadoSalud.estres_nivel}" selected>Bajo</option></optgroup></select></div>
+                                                                                        <div
+                                                                                                class="form-group"><label for="address"><strong>Enfermedades</strong><br></label><input class="form-control" type="text" placeholder="Cancer/Infecciones/Genetica" th:value="${estadoSalud.enfermedades}"  name="enfermedades" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Habitos toxicos</strong><br></label><input class="form-control" type="text" placeholder="No visitar un especialista " th:value="${estadoSalud.habitos_toxicos}" name="habitos_toxicos" form="subir"></div>
+                                                                                        <div class="form-row">
+                                                                                            <div class="col">
+                                                                                                <div class="form-group"><label for="city"><strong>Dieta pre-escrita</strong><br></label><input class="form-control" type="text" placeholder="Aumentar fibra" th:value="${estadoSalud.dieta_pre}" name="dieta_pre" form="subir"></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div></div>
+                                                                            <div></div>
+                                                                            <hr class="d-sm-none">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                            <h2 class="h4"><i class="fa fa-wheelchair"></i>&nbsp;Cirugias</h2>
+                                                                            <div class="card shadow">
+                                                                                <div class="card-body">
+                                                                                    <form>
+                                                                                        <div class="form-group"><label for="address"><strong>Tipo de cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.tipo_cirugia}" name="tipo_cirugia" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.hospital_cirugia}"  name="hospital_cirugia" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_cirugia" id="fecha_cirugia" th:value="${formularioCirugia.fecha_cirugia}" type="text" form="subir"></div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div></div>
+                                                                            <div></div>
+                                                                            <hr class="d-sm-none">
+                                                                        </div>
+                                                                        <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                            <h2 class="h4"><i class="fa fa-plus-square-o"></i>&nbsp;Pre-formulario</h2>
+                                                                            <div class="card shadow">
+                                                                                <div class="card-body">
+                                                                                    <form>
+                                                                                        <div class="form-group"><label for="address"><strong>Tipo de prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.tipo_prueba}" name="tipo_prueba" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.hospital_prueba}" name="hospital_prueba" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_prueba" id="fecha_prueba" th:value="${formularioPruebas.fecha_prueba}"  type="text" form="subir"></div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div></div>
+                                                                            <div></div>
+                                                                            <hr class="d-sm-none">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr class="d-flex d-md-none">
+                                                            </div>
+                                                            <div class="col-12 col-md-6">
+
+                                                                <div class="form-row">
+                                                                    <div class="col-12"><div class="card shadow mb-3">
+
+
+                                                                    </div></div>
+                                                                    <div class="col">
+                                                                        <h2 class="h4"><i class="fa fa-suitcase"></i>&nbsp; Ambiente Laboral</h2>
+                                                                        <div></div>
+                                                                        <div class="card shadow">
+                                                                            <div class="card-body text-center">
+                                                                                <form>
+
+
+                                                                                         <div class="form-row">
+                                                                                        <div class="col offset-xl-1">
+                                                                                            <div class="form-group ">
+                                                                                                <label for="address" ><strong>Posicion</strong><br></label><input class="form-control" type="text" th:value="${preguntasGenerales.posicion}" placeholder="Encargado/Supervisor/Gerente" name="posicion" form="subir"></div>
+
+                                                                                            <div class="form-group"><label for="country"><strong>Actividad</strong><br></label><select class="form-control" id="from-calltime-6" name="actividades" form="subir"><optgroup label="- Seleccione - "><option value="oficina" th:text="${preguntasGenerales.actividades}">Oficina</option></optgroup></select></div>
+                                                                                            <div
+                                                                                                    class="form-group"><label for="country"><strong>Accidente</strong><br></label></div><input class="form-control" type="text" placeholder="Especifique" th:value="${preguntasGenerales.accidentes}"  name="accidentes" form="subir"></div>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div></div>
+                                                                        <hr class="d-sm-none d-md-block d-lg-none">
+                                                                    </div>
+
+                                                                </div>
+                                                                <h2 class="h4" style="margin: 10px;"><i class="fa fa-user-md"></i>&nbsp;Pre-diagnostico</h2>
+                                                                <div class="card shadow">
+                                                                    <div class="card-body">
+                                                                        <form>
+                                                                            <div class="form-group"><label for="address"><strong>Zona de molestia</strong><br></label><input class="form-control" type="text" placeholder="Espalda baja" th:value="${preDiagnostico.molestias_zona}" name="molestias_zona" form="subir"></div>
+                                                                            <div class="form-group"><label for="address"><strong>Sintomas</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.sintomas_asociados}"  placeholder="Espalda baja" name="sintomas_asociados" form="subir"></div>
+                                                                            <div class="form-row">
+                                                                                <div class="col">
+                                                                                    <div class="form-group"><label for="city"><strong>Tipo de lesion</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.tipo_lesion}" placeholder="fractura" name="tipo_lesion" form="subir"></div>
+                                                                                    <div class="form-group"><label for="city"><strong>Fecha</strong><br></label>
+                                                                                        <div class="col-md-6" style="width: 275px;"><input class="form-control" name="fecha_diagnostico" id="fecha_diagnostico" th:value="${preDiagnostico.fecha_diagnostico}" type="text" style="width: 250px;" form="subir"></div>
+                                                                                    </div>
+                                                                                    <div></div>
+                                                                                </div>
+                                                                                <div class="col">
+                                                                                    <div class="form-group"><label for="country"><strong>Valoracion de dolor</strong><br></label><select class="form-control" id="from-calltime-2" form="subir" name="valoracion_dolor" disabled><optgroup label="- Seleccione - "><option selected value="Bajo" th:text="${preDiagnostico.valoracion_dolor}">Bajo</option></optgroup></select></div>
+                                                                                    <div
+                                                                                            class="form-group"><label for="country"><strong>Tipo de prueba</strong><br></label><select class="form-control" id="from-calltime-7" name="tipo_prueba" form="subir" disabled><optgroup label="- Seleccione - "><option selected value="Bajo" th:text="${preDiagnostico.tipo_prueba}">Bajo</option></optgroup></select></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group"><label for="address"><strong>Hospital</strong><br></label><input class="form-control" type="text" placeholder="HOMS" name="hospital_pre" th:value="${preDiagnostico.hospital_pre}" form="subir"></div>
+                                                                        </form>
+                                                                    </div>
+
+
+                                                                    <div id="formularioMenor"></div>
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" id="modal1">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Contact Information</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                                            <div class="modal-body">
+                                                                <form id="contactForm" action="javascript:void(0);" method="get"><input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.awebsite.com"><input class="form-control" type="hidden" name="subject" value="Awebsite.com Contact Form"><input class="form-control"
+                                                                                                                                                                                                                                                                                                                                                   type="hidden" name="to" value="email@awebsite.com">
+                                                                    <div class="form-row">
+                                                                        <div class="col-md-6">
+                                                                            <div id="successfail"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="col-12 col-md-6" id="message">
+                                                                            <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us<small><small class="required-input">&nbsp;(*required)</small></small>
+                                                                            </h2>
+                                                                            <div class="form-group"><label for="from-name">Name</label><span class="required-input">*</span>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div><input class="form-control" type="text" id="from-name" name="name" required="" placeholder="Full Name"></div>
+                                                                            </div>
+                                                                            <div class="form-group"><label for="from-email">Email</label><span class="required-input">*</span>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="text" id="from-email" name="email" required="" placeholder="Email Address"></div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                                                                    <div class="form-group"><label for="from-phone">Phone</label><span class="required-input">*</span>
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" id="from-phone" name="phone" required="" placeholder="Primary Phone"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                                                                    <div class="form-group"><label for="from-calltime">Best Time to Call</label>
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></div><select class="form-control" id="from-calltime" name="call time"><optgroup label="Best Time to Call"><option value="Morning" selected="">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option></optgroup></select></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group"><label for="from-comments">Comments</label><textarea class="form-control" id="from-comments" name="comments" placeholder="Enter Comments" rows="5"></textarea></div>
+                                                                            <div class="form-group">
+                                                                                <div class="form-row">
+                                                                                    <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
+                                                                                    <div class="col"><button class="btn btn-primary btn-block" type="submit">Submit <i class="fa fa-chevron-circle-right"></i></button></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr class="d-flex d-md-none">
+                                                                        </div>
+                                                                        <div class="col-12 col-md-6">
+                                                                            <h2 class="h4"><i class="fa fa-location-arrow"></i> Locate Us</h2>
+                                                                            <div class="form-row">
+                                                                                <div class="col-12">
+                                                                                    <div class="static-map"><a rel="noopener" href="https://www.google.com/maps/place/Daytona+International+Speedway/@29.1815062,-81.0744275,15z/data=!4m13!1m7!3m6!1s0x88e6d935da1cced3:0xa6b3e1bc0f2fc83a!2s1801+W+International+Speedway+Blvd,+Daytona+Beach,+FL+32114!3b1!8m2!3d29.187028!4d-81.0703076!3m4!1s0x88e6d949a4cb8593:0x1387c6c0b5c8cc97!8m2!3d29.1851681!4d-81.0705292"
+                                                                                                               target="_blank"> <img class="img-fluid" src="http://maps.googleapis.com/maps/api/staticmap?autoscale=2&amp;size=600x210&amp;maptype=roadmap&amp;format=png&amp;visual_refresh=true&amp;markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C582+1801+W+International+Speedway+Blvd+Daytona+Beach+FL+32114&amp;zoom=12" alt="Google Map of Daytona International Speedway"></a></div>
+                                                                                </div>
+                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                                    <h2 class="h4"><i class="fa fa-user"></i> Our Info</h2>
+                                                                                    <div><span><strong>Name</strong></span></div>
+                                                                                    <div><span>email@awebsite.com</span></div>
+                                                                                    <div><span>www.awebsite.com</span></div>
+                                                                                    <hr class="d-sm-none d-md-block d-lg-none">
+                                                                                </div>
+                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                                    <h2 class="h4"><i class="fa fa-location-arrow"></i> Our Address</h2>
+                                                                                    <div><span><strong>Office Name</strong></span></div>
+                                                                                    <div><span>55 Icannot Dr</span></div>
+                                                                                    <div><span>Daytone Beach, FL 85150</span></div>
+                                                                                    <div><abbr data-toggle="tooltip" data-placement="top" title="Office Phone: 555-867-5309">O:</abbr> 555-867-5309</div>
+                                                                                    <hr class="d-sm-none">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" id="modal1">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Contact Information</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                                                            <div class="modal-body">
+                                                                <form id="contactForm" action="javascript:void(0);" method="get"><input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.awebsite.com"><input class="form-control" type="hidden" name="subject" value="Awebsite.com Contact Form"><input class="form-control"
+                                                                                                                                                                                                                                                                                                                                                   type="hidden" name="to" value="email@awebsite.com">
+                                                                    <div class="form-row">
+                                                                        <div class="col-md-6">
+                                                                            <div id="successfail"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="col-12 col-md-6" id="message">
+                                                                            <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us<small><small class="required-input">&nbsp;(*required)</small></small>
+                                                                            </h2>
+                                                                            <div class="form-group"><label for="from-name">Name</label><span class="required-input">*</span>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div><input class="form-control" type="text" id="from-name" name="name" required="" placeholder="Full Name"></div>
+                                                                            </div>
+                                                                            <div class="form-group"><label for="from-email">Email</label><span class="required-input">*</span>
+                                                                                <div class="input-group">
+                                                                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="text" id="from-email" name="email" required="" placeholder="Email Address"></div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                                                                    <div class="form-group"><label for="from-phone">Phone</label><span class="required-input">*</span>
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" id="from-phone" name="phone" required="" placeholder="Primary Phone"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-12 col-sm-6 col-md-12 col-lg-6">
+                                                                                    <div class="form-group"><label for="from-calltime">Best Time to Call</label>
+                                                                                        <div class="input-group">
+                                                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></div><select class="form-control" id="from-calltime" name="call time"><optgroup label="Best Time to Call"><option value="Morning" selected="">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option></optgroup></select></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group"><label for="from-comments">Comments</label><textarea class="form-control" id="from-comments" name="comments" placeholder="Enter Comments" rows="5"></textarea></div>
+                                                                            <div class="form-group">
+                                                                                <div class="form-row">
+                                                                                    <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
+                                                                                    <div class="col"><button class="btn btn-primary btn-block" type="submit">Submit <i class="fa fa-chevron-circle-right"></i></button></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <hr class="d-flex d-md-none">
+                                                                        </div>
+                                                                        <div class="col-12 col-md-6">
+                                                                            <h2 class="h4"><i class="fa fa-location-arrow"></i> Locate Us</h2>
+                                                                            <div class="form-row">
+                                                                                <div class="col-12">
+                                                                                    <div class="static-map"><a rel="noopener" href="https://www.google.com/maps/place/Daytona+International+Speedway/@29.1815062,-81.0744275,15z/data=!4m13!1m7!3m6!1s0x88e6d935da1cced3:0xa6b3e1bc0f2fc83a!2s1801+W+International+Speedway+Blvd,+Daytona+Beach,+FL+32114!3b1!8m2!3d29.187028!4d-81.0703076!3m4!1s0x88e6d949a4cb8593:0x1387c6c0b5c8cc97!8m2!3d29.1851681!4d-81.0705292"
+                                                                                                               target="_blank"> <img class="img-fluid" src="http://maps.googleapis.com/maps/api/staticmap?autoscale=2&amp;size=600x210&amp;maptype=roadmap&amp;format=png&amp;visual_refresh=true&amp;markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C582+1801+W+International+Speedway+Blvd+Daytona+Beach+FL+32114&amp;zoom=12" alt="Google Map of Daytona International Speedway"></a></div>
+                                                                                </div>
+                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                                    <h2 class="h4"><i class="fa fa-user"></i> Our Info</h2>
+                                                                                    <div><span><strong>Name</strong></span></div>
+                                                                                    <div><span>email@awebsite.com</span></div>
+                                                                                    <div><span>www.awebsite.com</span></div>
+                                                                                    <hr class="d-sm-none d-md-block d-lg-none">
+                                                                                </div>
+                                                                                <div class="col-sm-6 col-md-12 col-lg-6">
+                                                                                    <h2 class="h4"><i class="fa fa-location-arrow"></i> Our Address</h2>
+                                                                                    <div><span><strong>Office Name</strong></span></div>
+                                                                                    <div><span>55 Icannot Dr</span></div>
+                                                                                    <div><span>Daytone Beach, FL 85150</span></div>
+                                                                                    <div><abbr data-toggle="tooltip" data-placement="top" title="Office Phone: 555-867-5309">O:</abbr> 555-867-5309</div>
+                                                                                    <hr class="d-sm-none">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -478,11 +821,71 @@
                             '                                    </p>\n' +
                             '                                </div>'
                     }else{
-                        pdf.innerHTML = '<div class="jumbotron" style="height: 1000px;"><iframe width="100%" height="100%" src="data:[[${documento.mimeType}]];base64,[[${documento.getBase64()}]]"></iframe>'
+                        pdf.innerHTML = '<div class="jumbotron" style=""><input onclick="openPDF()" class="btn btn-primary btn-sm text-left" type="button" value="Abrir">'
+
+                    }
+
+                    var pdf = document.getElementById("formularioOnline")
+                    var cont = "[[${formulario.getID_formulario()}]]"
+                    if (cont==""){
+                        pdf.innerHTML = '<div class="jumbotron">\n' +
+                            '                                    <h1>No se ha completado El Formulario Online</h1>\n' +
+                            '                                    <p>Favor completar la solicitud de formulario,&nbsp;</p>\n' +
+                            '                                    <p>\n' +
+                            '                                        <form action="/saveformulario" method="post">\n' +
+                            '                                    <input name="idPaciente" type="hidden" value="[[${paciente.idPaciente}]]">\n' +
+                            '                                    <button class="btn btn-link border-pretty" style="color:#23b499;" type="submit">Registrar Formulario <i class="icon ion-android-arrow-forward"></i></button>\n' +
+                            '                                </form>\n' +
+
+                            '\n' +
+                            '\n' +
+                            '                                    </p>\n' +
+                            '                                </div>'
+                    }else{
+                        var form = "[[${formularioMenor.getID_fmenor()}]]"
+                        if (form!=""){
+                            document.getElementById("formularioMenor").innerHTML =
+                                '<div class="col-sm-6 col-md-12 col-lg-6" style="width: 762.5px;">\n' +
+                                '                                                                        <h2 class="h4" style="width: 742.5px;"><i class="fa fa-child"></i>&nbsp;Formulario menor</h2>\n' +
+                                '                                                                        <div></div>\n' +
+                                '                                                                        <div></div>\n' +
+                                '                                                                        <hr class="d-sm-none">\n' +
+                                '                                                                    </div>\n' +
+                                '                                                                    \n' +
+                                '                                                                    \n' +
+                                '                                                                    <div class="card-body">\n' +
+                                '                                                                        <form>\n' +
+                                '                                                                            <div class="form-group"><label for="address"><strong>Nombre del padre</strong><br></label><input class="form-control" type="text" placeholder="Pedro" value="[[${formularioMenor.nombre_padre}]]" name="nombre_padre" form="subir"></div>\n' +
+                                '                                                                            <div class="form-group"><label for="address"><strong>Apellido del padre</strong><br></label><input class="form-control" type="text" placeholder="Castillo" name="apellido_padre" form="subir"></div>\n' +
+                                '                                                                            <div class="form-row">\n' +
+                                '                                                                                <div class="col">\n' +
+                                '                                                                                    <div class="form-group"><label for="city"><strong>Documento de identidad del padre</strong><br></label><input class="form-control" type="number" placeholder="(###)-(#####)-(#)" min="0" tvalue="[[${formularioMenor.id_padre}]]" name="id_padre" form="subir"></div>\n' +
+                                '                                                                                    <div class="form-group"><label for="city"><strong>Fecha de nacimiento del padre</strong><br></label>\n' +
+                                '                                                                                        <div class="col-md-6" style="width: 275px;"><input class="form-control" value="[[${formularioMenor.fechanac_padre}]]" id="fechanac_padre" name="fechanac_padre" type="date" style="width: 250px;" form="subir"></div>\n' +
+                                '                                                                                    </div>\n' +
+                                '                                                                                    <div></div>\n' +
+                                '                                                                                </div>\n' +
+                                '                                                                                <div class="col">\n' +
+                                '                                                                                    <div class="form-group"><label for="country"><strong>Relacion con el padre</strong><br></label><select class="form-control" id="from-calltime-1" name="relacion_paciente"  form="subir" disabled><optgroup label="- Seleccione - "><option value="mala" >[[${formularioMenor.relacion_paciente}]]</option></optgroup></select></div>\n' +
+                                '                                                                                    <div\n' +
+                                '                                                                                            class="form-group"><label for="country"><strong>Seguro del padre</strong><br></label><input class="form-control" type="number" min="0" placeholder="(###)-(#####)-(#)" name="seguro_padre" form="subir" disabled value="[[${formularioMenor.seguro_padre}]]"></div>\n' +
+                                '                                                                                </div>\n' +
+                                '                                                                            </div>\n' +
+                                '                                                                        </form>\n' +
+                                '                                                                    </div>'
+                        }
+                        // pdf.innerHTML = ''
 
                     }
 
 
+                }
+                function openPDF(){
+                    let pdfWindow = window.open("")
+                    pdfWindow.document.write(
+                        "<iframe width='100%' height='100%' src='data:[[${documento.mimeType}]];base64, " +
+                        encodeURI("[[${documento.getBase64()}]]") + "'></iframe>"
+                    )
                 }
             </script>
 </body>

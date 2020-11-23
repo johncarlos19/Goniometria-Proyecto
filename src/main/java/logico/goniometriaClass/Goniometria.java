@@ -115,6 +115,49 @@ public class Goniometria {
         this.userEncryptor = userEncryptor;
     }
 
+
+
+
+    public boolean send_correo_online(String correo, String mensaje, String asunto){
+        Properties propiedad = new Properties();
+        propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+        propiedad.setProperty("mail.smtp.starttls.enable", "true");
+        propiedad.setProperty("mail.smtp.port", "587");
+        propiedad.setProperty("mail.smtp.auth", "true");
+
+
+
+        Session sesion = Session.getDefaultInstance(propiedad);
+        String correoEnvia = "goniometria.project@gmail.com";
+        String contrasena = "castillo30";
+        String receptor = correo;
+
+
+
+
+        MimeMessage mail = new MimeMessage(sesion);
+        try {
+            mail.setFrom(new InternetAddress(correoEnvia));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress (receptor));
+            mail.setSubject(asunto);
+            mail.setContent(mensaje,"text/html");
+
+            Transport transportar = sesion.getTransport("smtp");
+            transportar.connect(correoEnvia,contrasena);
+            transportar.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+            transportar.close();
+
+            return true;
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
+
     public boolean send_correo(String correo, String user){
         Properties propiedad = new Properties();
         propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -134,7 +177,7 @@ public class Goniometria {
         try {
             String enc = userEncryptor.encrypt(user);
             System.out.println("encriptart ante" + enc);
-            mensaje = "Verifica cuenta en el siguiente enlace: https://app1.goniometer-exoglove.me/verification/?username="+ URLEncoder.encode( enc, StandardCharsets.UTF_8.toString() );
+            mensaje = "Verifica cuenta en el siguiente enlace: <button>https://app1.goniometer-exoglove.me/verification/?username="+ URLEncoder.encode( enc, StandardCharsets.UTF_8.toString() )+"</button>";
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -144,7 +187,7 @@ public class Goniometria {
             mail.setFrom(new InternetAddress(correoEnvia));
             mail.addRecipient(Message.RecipientType.TO, new InternetAddress (receptor));
             mail.setSubject(asunto);
-            mail.setText(mensaje);
+            mail.setContent(mensaje,"text/html");
 
             Transport transportar = sesion.getTransport("smtp");
             transportar.connect(correoEnvia,contrasena);
@@ -235,6 +278,38 @@ public class Goniometria {
             con.close();
         }
     }
+
+    public String getTimestamp(){
+
+
+        Connection con = null; //objeto conexion.
+        String fecha = null;
+        try {
+            //
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+            PreparedStatement prepareStatement = con.prepareStatement("select DATE_ADD(current_timestamp , INTERVAL -4 HOUR);");
+            ResultSet rs = prepareStatement.executeQuery();
+
+            while(rs.next()){
+                Timestamp date = rs.getTimestamp(1);
+                fecha = date.toString();
+            }
+            return fecha;
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PacienteServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return null;
+
+
+    }
+
     public boolean Execute_insert(String query){
 
 
@@ -390,19 +465,24 @@ public class Goniometria {
             while(rs.next()){
                 receiver = rs.getString(1);
             }
-            if (receiver!=null){
-                for (int i =0; i <receiver.length(); i++){
-                    if(contin==true){
+            try {
+                if (receiver!=null || receiver!=""){
+                    for (int i =0; i <receiver.length(); i++){
+                        if(contin==true){
 
-                        receiverConst.append(receiver.charAt(i));
-                    }else if (receiver.charAt(i)=='-'){
-                        contin = true;
+                            receiverConst.append(receiver.charAt(i));
+                        }else if (receiver.charAt(i)=='-'){
+                            contin = true;
+                        }
                     }
+                    number = Long.parseLong(receiverConst.toString());
+                }else{
+                    number = 0;
                 }
-                number = Long.parseLong(receiverConst.toString());
-            }else{
+            }catch (NullPointerException E){
                 number = 0;
             }
+
 
 
 

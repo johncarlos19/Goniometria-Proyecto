@@ -1,15 +1,18 @@
 package logico.goniometriaClass;
 
 public class EstadoSalud {
-    private String idestado_salud;
-    private String condicion;
-    private String ejercicios;
-    private String dificultad;
-    private String molestia_dolor;
-    private String enfermedades;
-    private String dieta_pre;
-    private String habitos_toxicos;
-    private String estres_nivel;
+    private String idestado_salud = null;
+    private String condicion = null;
+    private String ejercicios = null;
+    private String dificultad = null;
+    private String molestia_dolor = null;
+    private String enfermedades = null;
+    private String dieta_pre = null;
+    private String habitos_toxicos = null;
+    private String estres_nivel = null;
+
+    public EstadoSalud() {
+    }
 
     public EstadoSalud(String idestado_salud, String condicion, String ejercicios, String dificultad, String molestia_dolor, String enfermedades, String dieta_pre, String habitos_toxicos, String estres_nivel) {
         this.idestado_salud = idestado_salud;

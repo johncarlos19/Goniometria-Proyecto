@@ -1,11 +1,14 @@
 package logico.goniometriaClass;
 
 public class FormularioCirugia {
-    private String idformulario_cirugia;
-    private String tipo_cirugia;
-    private String fecha_cirugia;
-    private String hospital_cirugia;
-    private String formulario_cirugiaco;
+    private String idformulario_cirugia = null;
+    private String tipo_cirugia = null;
+    private String fecha_cirugia = null;
+    private String hospital_cirugia = null;
+    private String formulario_cirugiaco = null;
+
+    public FormularioCirugia() {
+    }
 
     public FormularioCirugia(String idformulario_cirugia, String tipo_cirugia, String fecha_cirugia, String hospital_cirugia, String formulario_cirugiaco) {
         this.idformulario_cirugia = idformulario_cirugia;

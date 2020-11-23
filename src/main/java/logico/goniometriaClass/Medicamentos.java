@@ -1,13 +1,16 @@
 package logico.goniometriaClass;
 
 public class Medicamentos {
-    private String idmedicamentos;
-    private String tratamiento;
-    private String dosis;
-    private String efectos;
-    private String tiempo;
-    private String revision_medico;
-    private String medicamento_pre;
+    private String idmedicamentos = null;
+    private String tratamiento = null;
+    private String dosis = null;
+    private String efectos = null;
+    private String tiempo = null;
+    private String revision_medico = null;
+    private String medicamento_pre = null;
+
+    public Medicamentos() {
+    }
 
     public Medicamentos(String idmedicamentos, String tratamiento, String dosis, String efectos, String tiempo, String revision_medico, String medicamento_pre) {
         this.idmedicamentos = idmedicamentos;

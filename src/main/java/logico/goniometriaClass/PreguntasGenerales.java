@@ -1,18 +1,21 @@
 package logico.goniometriaClass;
 
 public class PreguntasGenerales {
-    private String idpreguntas_generales;
-    private String medicamento_prescrito;
-    private String enfermedades_reciente;
-    private String bulto_piel;
-    private String habitos_toxicos;
-    private String dieta_prescrita;
-    private String posicion;
-    private String actividades;
-    private String accidentes;
-    private String idmedicamentos;
-    private String idestado_salud;
-    private String idpre_diagnostico;
+    private String idpreguntas_generales = null;
+    private String medicamento_prescrito = null;
+    private String enfermedades_reciente = null;
+    private String bulto_piel = null;
+    private String habitos_toxicos = null;
+    private String dieta_prescrita = null;
+    private String posicion = null;
+    private String actividades = null;
+    private String accidentes = null;
+    private String idmedicamentos = null;
+    private String idestado_salud = null;
+    private String idpre_diagnostico = null;
+
+    public PreguntasGenerales() {
+    }
 
     public PreguntasGenerales(String idpreguntas_generales, String medicamento_prescrito, String enfermedades_reciente, String bulto_piel, String habitos_toxicos, String dieta_prescrita, String posicion, String actividades, String accidentes, String idmedicamentos, String idestado_salud, String idpre_diagnostico) {
         this.idpreguntas_generales = idpreguntas_generales;

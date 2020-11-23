@@ -1,17 +1,20 @@
 package logico.goniometriaClass;
 
 public class Formulario {
-    private String ID_formulario;
-    private String Seguro_social;
-    private String Fecha_realizacion;
-    private String Altura;
-    private String Peso;
-    private String Ocupacion;
-    private String Precio_total;
-    private String formulariocol;
-    private String ID_paciente;
-    private String ID_fmenor;
-    private String idpreguntas_generales;
+    private String ID_formulario = null;
+    private String Seguro_social = null;
+    private String Fecha_realizacion = null;
+    private String Altura = null;
+    private String Peso = null;
+    private String Ocupacion = null;
+    private String Precio_total = null;
+    private String formulariocol = null;
+    private String ID_paciente = null;
+    private String ID_fmenor = null;
+    private String idpreguntas_generales = null;
+
+    public Formulario() {
+    }
 
     public Formulario(String ID_formulario, String seguro_social, String fecha_realizacion, String altura, String peso, String ocupacion, String precio_total, String formulariocol, String ID_paciente, String ID_fmenor, String idpreguntas_generales) {
         this.ID_formulario = ID_formulario;

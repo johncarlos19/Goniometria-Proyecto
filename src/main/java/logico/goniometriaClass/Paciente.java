@@ -1,5 +1,8 @@
 package logico.goniometriaClass;
 
+import logico.servicios.PacienteServicios;
+import logico.servicios.PersonaServicios;
+
 public class Paciente extends Persona {
     private String idPaciente;
     private String correo;
@@ -11,6 +14,11 @@ public class Paciente extends Persona {
         this.correo = correo;
 
     }
+
+    public Direccion getDireccion() {
+        return PacienteServicios.getInstance().getDireccion(ID_Direccion);
+    }
+
 
     public String getIdPaciente() {
         return idPaciente;
