@@ -1,10 +1,12 @@
 package logico.servicios;
 
 import logico.goniometriaClass.FormularioMenor;
+import logico.goniometriaClass.FormularioPruebas;
 import logico.goniometriaClass.PreguntasGenerales;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,6 +19,59 @@ public class FormularioMenorServicios {
         if (instancia == null)
             instancia = new FormularioMenorServicios();
         return instancia;
+    }
+
+    public FormularioMenor getFormularioMenor(String id){
+        Connection con = null;
+        FormularioMenor formularioMenor = new FormularioMenor();
+        try {
+
+
+            con = DataBaseServices.getInstancia().getConexion();
+            String query = "select formulario_menor(ID_fmenor, Nombre_padre, Apellido_padre, Relacion_paciente, FechaNac_padre, Seguro_padre, id_padre from goniometria.formulario_menor where ID_fmenor = ?;";
+            //
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            prepareStatement.setString(1,id);
+
+
+
+            //Antes de ejecutar seteo los parametros.
+
+
+            //
+            ResultSet rs  = prepareStatement.executeQuery();
+
+            while(rs.next()){
+                formularioMenor.setID_fmenor(rs.getString(1));
+                formularioMenor.setNombre_padre(rs.getString(2));
+                formularioMenor.setApellido_padre(rs.getString(3));
+                formularioMenor.setRelacion_paciente(rs.getString(4));
+                formularioMenor.setFechaNac_padre(rs.getString(5));
+                formularioMenor.setSeguro_padre(rs.getString(6));
+                formularioMenor.setId_padre(rs.getString(7));
+
+
+            }
+//            for (String aux: evolucion.getTerapiaIdList()
+//            ) {
+//                query = "update terapia set ID_evolucion = ? where idterapia = ?;";
+//                prepareStatement = con.prepareStatement(query);
+//                prepareStatement.setString(1,evolucion.getIdEvolucion());
+//                prepareStatement.setString(2,aux);
+//                fila = prepareStatement.executeUpdate();
+//            }
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return formularioMenor;
     }
 
 

@@ -1547,14 +1547,24 @@ public class RecibirDatosControlador extends BaseControlador {
                                 aux1 = new Documento("","","","");
                             }
 
-                            FormularioCirugia formularioCirugia = new FormularioCirugia();
-                            FormularioPruebas formularioPruebas = new FormularioPruebas();
-                            PreDiagnostico preDiagnostico = new PreDiagnostico();
-                            EstadoSalud estadoSalud = new EstadoSalud();
-                            Medicamentos medicamentos = new Medicamentos();
-                            PreguntasGenerales preguntasGenerales = new PreguntasGenerales();
+                            Formulario formulario = FormularioServicios.getInstance().getFormulario(aux.getIdPaciente());
                             FormularioMenor formularioMenor = new FormularioMenor();
-                            Formulario formulario = new Formulario();
+                            if(formulario.getID_fmenor() != null){
+                                formularioMenor = FormularioMenorServicios.getInstance().getFormularioMenor(formulario.getID_fmenor());
+                            }
+
+                            PreguntasGenerales preguntasGenerales = PreguntasGeneralesServicios.getInstance().getPreguntasGenerales(formulario.getIdpreguntas_generales());
+                            Medicamentos medicamentos = MedicamentosServicios.getInstance().getMedicamentos(preguntasGenerales.getIdmedicamentos());
+                            EstadoSalud estadoSalud = EstadoSaludServicios.getInstance().getEstadoSalud(preguntasGenerales.getIdestado_salud());
+                            PreDiagnostico preDiagnostico = PreDiagnosticoServicios.getInstance().getPreDiagnostico(preguntasGenerales.getIdpre_diagnostico());
+                            FormularioPruebas formularioPruebas = FormularioPruebasServicios.getInstance().getFormularioPruebas(preDiagnostico.getIdformulario_pruebas());
+                            FormularioCirugia formularioCirugia = FormularioCirugiaServicios.getInstance().getFormularioCirugia(preDiagnostico.getIdformulario_cirugia());
+
+
+
+
+
+
 
 
                             Map<String, Object> modelo = new HashMap<>();
@@ -1607,14 +1617,20 @@ public class RecibirDatosControlador extends BaseControlador {
                         }
 
 
-                        FormularioCirugia formularioCirugia = new FormularioCirugia();
-                        FormularioPruebas formularioPruebas = new FormularioPruebas();
-                        PreDiagnostico preDiagnostico = new PreDiagnostico();
-                        EstadoSalud estadoSalud = new EstadoSalud();
-                        Medicamentos medicamentos = new Medicamentos();
-                        PreguntasGenerales preguntasGenerales = new PreguntasGenerales();
+                        Formulario formulario = FormularioServicios.getInstance().getFormulario(aux.getIdPaciente());
                         FormularioMenor formularioMenor = new FormularioMenor();
-                        Formulario formulario = new Formulario();
+                        if(formulario.getID_fmenor() != null){
+                            formularioMenor = FormularioMenorServicios.getInstance().getFormularioMenor(formulario.getID_fmenor());
+                        }
+
+                        PreguntasGenerales preguntasGenerales = PreguntasGeneralesServicios.getInstance().getPreguntasGenerales(formulario.getIdpreguntas_generales());
+                        Medicamentos medicamentos = MedicamentosServicios.getInstance().getMedicamentos(preguntasGenerales.getIdmedicamentos());
+                        EstadoSalud estadoSalud = EstadoSaludServicios.getInstance().getEstadoSalud(preguntasGenerales.getIdestado_salud());
+                        PreDiagnostico preDiagnostico = PreDiagnosticoServicios.getInstance().getPreDiagnostico(preguntasGenerales.getIdpre_diagnostico());
+                        FormularioPruebas formularioPruebas = FormularioPruebasServicios.getInstance().getFormularioPruebas(preDiagnostico.getIdformulario_pruebas());
+                        FormularioCirugia formularioCirugia = FormularioCirugiaServicios.getInstance().getFormularioCirugia(preDiagnostico.getIdformulario_cirugia());
+
+
 
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("formularioCirugia",formularioCirugia);
