@@ -84,7 +84,7 @@ public class PreDiagnosticoServicios {
 
 
             con = DataBaseServices.getInstancia().getConexion();
-            String query = "insert into pre_diagnostico(idpre_diagnostico, molestias_zona, tipo_lesion, valoracion_dolor, sintomas_asociados, idformulario_cirugia, idformulario_pruebas, fecha_diagnostico, hospital_pre, tipo_prueba) VALUES (?,?,?,?,?,?,?,?,?,?);";
+            String query = "insert into idpre_diagnostico, molestias_zona, tipo_lesion, valoracion_dolor, sintomas_asociados, idformulario_cirugia, idformulario_pruebas, fecha_diagnostico, hospital_pre, tipo_prueba) VALUES (?,?,?,?,?,?,?,?,?,?);";
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             prepareStatement.setString(1,preDiagnostico.getIdpre_diagnostico());

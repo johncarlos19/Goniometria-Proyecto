@@ -28,7 +28,7 @@ public class FormularioMenorServicios {
 
 
             con = DataBaseServices.getInstancia().getConexion();
-            String query = "select formulario_menor(ID_fmenor, Nombre_padre, Apellido_padre, Relacion_paciente, FechaNac_padre, Seguro_padre, id_padre from goniometria.formulario_menor where ID_fmenor = ?;";
+            String query = "select ID_fmenor, Nombre_padre, Apellido_padre, Relacion_paciente, FechaNac_padre, Seguro_padre, id_padre from goniometria.formulario_menor where ID_fmenor = ?;";
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             prepareStatement.setString(1,id);

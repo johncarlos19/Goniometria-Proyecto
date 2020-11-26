@@ -4,10 +4,7 @@ import logico.goniometriaClass.Formulario;
 import logico.goniometriaClass.FormularioMenor;
 import logico.goniometriaClass.FormularioPruebas;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,14 +41,17 @@ public class FormularioServicios {
             while(rs.next()){
                formulario.setID_formulario(rs.getString(1));
                formulario.setSeguro_social(rs.getString(2));
-               formulario.setAltura(rs.getString(3));
-               formulario.setPeso(rs.getString(4));
-               formulario.setOcupacion(rs.getString(5));
-               formulario.setPrecio_total(rs.getString(6));
-               formulario.setID_paciente(rs.getString(7));
-               formulario.setID_fmenor(rs.getString(8));
-               formulario.setIdpreguntas_generales(rs.getString(9));
-               formulario.setFormulariocol(rs.getString(10));
+                Timestamp date = rs.getTimestamp(3);
+
+                formulario.setFecha_realizacion(date.toString());
+               formulario.setAltura(rs.getString(4));
+               formulario.setPeso(rs.getString(5));
+               formulario.setOcupacion(rs.getString(6));
+               formulario.setPrecio_total(rs.getString(7));
+               formulario.setID_paciente(rs.getString(8));
+               formulario.setID_fmenor(rs.getString(9));
+               formulario.setIdpreguntas_generales(rs.getString(10));
+               formulario.setFormulariocol(rs.getString(11));
 
             }
 //            for (String aux: evolucion.getTerapiaIdList()

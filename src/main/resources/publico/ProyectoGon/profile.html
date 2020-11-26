@@ -385,7 +385,7 @@
                                             <!--                        </div>-->
                                             <h6 class="text-muted card-subtitle mb-2">Asegúrese de completar todos&nbsp; los campos</h6>
                                             <div>
-                                                <div class="col-md-6 col-xl-6 offset-lg-6 offset-xl-11"><button class="btn btn-warning" type="button" style="background-color: #5c99c7;padding: 5px 10px;">001</button></div>
+                                                <div class="col-md-6 col-xl-6 offset-lg-6 offset-xl-9"><button class="btn btn-warning" type="button" style="background-color: #5c99c7;padding: 5px 10px;" th:text="${formulario.getID_formulario()}">001</button></div>
                                             </div>
                                             <div>
                                                 <div class="container-fluid">
@@ -403,7 +403,7 @@
                                                                 </h2>
                                                                 <div class="form-group"><label for="from-name">Seguro social</label><span class="required-input">*</span>
                                                                     <div class="input-group">
-                                                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-drivers-license-o"></i></span></div><input class="form-control" type="number" min="0" id="from-name" th:value="${formulario.seguro_social}" name="seguro_social" required="" placeholder="No. Afiliado" form="subir"></div>
+                                                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-drivers-license-o"></i></span></div><input class="form-control" type="number" min="0" id="from-name" th:value="${formulario.seguro_social}" name="seguro_social" required="" placeholder="No. Afiliado" form="subir" disabled></div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="input-group">
@@ -414,17 +414,17 @@
                                                                     <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                                                         <div class="form-group"><label for="from-phone">Altura</label><span class="required-input">*</span>
                                                                             <div class="input-group">
-                                                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-info"></i></span></div><input class="form-control" type="number" step="0.01" min="0" id="from-phone" name="altura" th:value="${formulario.altura}"  required="" placeholder="metros" form="subir"></div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-info"></i></span></div><input class="form-control" type="number" step="0.01" min="0" id="from-phone" name="altura" th:value="${formulario.altura}"  required="" placeholder="metros" form="subir" disabled></div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                                                         <div class="form-group"><label for="from-calltime">Peso</label>
                                                                             <div class="input-group">
-                                                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-balance-scale"></i></span></div><input class="form-control" type="number" step="0.01" min="0" id="from-phone-1" th:value="${formulario.peso}" name="peso" required="" placeholder="libras" form="subir"></div>
+                                                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-balance-scale"></i></span></div><input class="form-control" type="number" step="0.01" min="0" id="from-phone-1" th:value="${formulario.peso}" name="peso" required="" placeholder="libras" form="subir" disabled></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group"><label for="from-comments">Ocupacion</label><textarea class="form-control" id="from-comments" name="ocupacion" placeholder="Especifique" rows="5" form="subir"></textarea></div>
+                                                                <div class="form-group"><label for="from-comments">Ocupacion</label><textarea class="form-control" id="from-comments" name="ocupacion" placeholder="Especifique" rows="5" form="subir" disabled></textarea></div>
                                                                 <div class="form-group">
                                                                     <div class="form-row">
                                                                         <div class="col-sm-6 col-md-12 col-lg-6">
@@ -434,19 +434,19 @@
                                                                                 <div class="card-body text-center">
                                                                                     <form>
                                                                                         <div class="form-group"><label for="address" style="width: 200px;"><strong>Medicamento pre-escrito</strong><br></label><input class="form-control" type="text" th:value="${medicamentos.medicamento_pre}" placeholder="Jarabe/Pastilla/Inyeccion" name="medicamento_pre"
-                                                                                                                                                                                                                      form="subir"></div>
-                                                                                        <div class="form-group"><label for="address" style="width: 200px;"><strong>Tratamiento</strong><br></label><input class="form-control" th:value="${medicamentos.tratamiento}" type="text" placeholder="Aplicar en la espalda" name="tratamiento" form="subir"></div>
+                                                                                                                                                                                                                      form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address" style="width: 200px;"><strong>Tratamiento</strong><br></label><input class="form-control" th:value="${medicamentos.tratamiento}" type="text" placeholder="Aplicar en la espalda" name="tratamiento" form="subir" disabled></div>
                                                                                         <div
                                                                                                 class="form-row">
                                                                                             <div class="col offset-xl-1">
-                                                                                                <div class="form-group"><label for="country"><strong>Dosis</strong><br></label><select class="form-control" id="from-calltime-8" name="dosis" form="subir" disabled ><optgroup label="- Seleccione - "><option th:text="${medicamentos.dosis}" value="diaria">Diaria</option></optgroup></select></div>
+                                                                                                <div class="form-group"><label for="country"><strong>Dosis</strong><br></label><input th:value="${medicamentos.dosis}"  type="text" class="form-control" id="from-calltime-8" name="dosis" form="subir" disabled ></input></div>
                                                                                                 <div
-                                                                                                        class="form-group"><label for="country"><strong>Tiempo</strong><br></label><select class="form-control" id="from-calltime-3" name="tiempo" form="subir" disabled><optgroup label="- Seleccione - "><option th:text="${medicamentos.tiempo}" value="menos">Menos de una semana</option></optgroup></select></div>
+                                                                                                        class="form-group"><label for="country"><strong>Tiempo</strong><br></label><input class="form-control" id="from-calltime-3" name="tiempo" form="subir" disabled th:value="${medicamentos.tiempo}" ></input></div>
                                                                                                 <div
-                                                                                                        class="form-group"><label for="country"><strong>Efectos</strong><br></label><textarea class="form-control" id="from-comments-3"  th:text="${medicamentos.efectos}" name="efectos" placeholder="Especifique" rows="5" style="height: 90px;" form="subir"></textarea></div>
+                                                                                                        class="form-group"><label for="country"><strong>Efectos</strong><br></label><textarea class="form-control" id="from-comments-3"  th:text="${medicamentos.efectos}" name="efectos" placeholder="Especifique" rows="5" style="height: 90px;" form="subir" disabled></textarea></div>
                                                                                                 <div
                                                                                                         class="form-group"><label for="country"><strong>Revision medica</strong><br></label><textarea class="form-control" id="from-comments-1" th:text="${medicamentos.revision_medico}"  name="revision_medico" placeholder="Especifique" rows="5" style="height: 90px;"
-                                                                                                                                                                                                      form="subir"></textarea></div>
+                                                                                                                                                                                                      form="subir" disabled></textarea></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
@@ -460,17 +460,17 @@
                                                                             <div class="card shadow">
                                                                                 <div class="card-body">
                                                                                     <form>
-                                                                                        <div class="form-group"><label for="address"><strong>Condicion</strong><br></label><select class="form-control" id="from-calltime-4" name="condicion" form="subir" disabled><optgroup label="- Seleccione - " ><option value="estable" th:text="${estadoSalud.condicion}" selected>Estable</option></optgroup></select></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Condicion</strong><br></label><input class="form-control" id="from-calltime-4" name="condicion" form="subir" disabled type="text" th:value="${estadoSalud.condicion}"></input></div>
                                                                                         <div
-                                                                                                class="form-group"><label for="address"><strong>Dificultades</strong><br></label><input class="form-control" type="text" placeholder="Estirar la espalda"  th:value="${estadoSalud.dificultad}" name="dificultad" form="subir"></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Molestias de dolor</strong><br></label><input class="form-control" type="text" placeholder="Dolor de espalda" th:value="${estadoSalud.molestia_dolor}"  name="molestia_dolor" form="subir"></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Estres</strong><br></label><select class="form-control" id="from-calltime-5" name="estres_nivel" form="subir" disabled><optgroup label="- Seleccione - "><option value="Bajo" th:text="${estadoSalud.estres_nivel}" selected>Bajo</option></optgroup></select></div>
+                                                                                                class="form-group"><label for="address"><strong>Dificultades</strong><br></label><input class="form-control" type="text" placeholder="Estirar la espalda"  th:value="${estadoSalud.dificultad}" name="dificultad" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Molestias de dolor</strong><br></label><input class="form-control" type="text" placeholder="Dolor de espalda" th:value="${estadoSalud.molestia_dolor}"  name="molestia_dolor" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Estres</strong><br></label><input class="form-control" id="from-calltime-5" name="estres_nivel" type="text" form="subir" disabled th:value="${estadoSalud.estres_nivel}" ></input></div>
                                                                                         <div
-                                                                                                class="form-group"><label for="address"><strong>Enfermedades</strong><br></label><input class="form-control" type="text" placeholder="Cancer/Infecciones/Genetica" th:value="${estadoSalud.enfermedades}"  name="enfermedades" form="subir"></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Habitos toxicos</strong><br></label><input class="form-control" type="text" placeholder="No visitar un especialista " th:value="${estadoSalud.habitos_toxicos}" name="habitos_toxicos" form="subir"></div>
+                                                                                                class="form-group"><label for="address"><strong>Enfermedades</strong><br></label><input class="form-control" type="text" placeholder="Cancer/Infecciones/Genetica" th:value="${estadoSalud.enfermedades}"  name="enfermedades" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Habitos toxicos</strong><br></label><input class="form-control" type="text" placeholder="No visitar un especialista " th:value="${estadoSalud.habitos_toxicos}" name="habitos_toxicos" form="subir" disabled></div>
                                                                                         <div class="form-row">
                                                                                             <div class="col">
-                                                                                                <div class="form-group"><label for="city"><strong>Dieta pre-escrita</strong><br></label><input class="form-control" type="text" placeholder="Aumentar fibra" th:value="${estadoSalud.dieta_pre}" name="dieta_pre" form="subir"></div>
+                                                                                                <div class="form-group"><label for="city"><strong>Dieta pre-escrita</strong><br></label><input class="form-control" type="text" placeholder="Aumentar fibra" th:value="${estadoSalud.dieta_pre}" name="dieta_pre" form="subir" disabled></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
@@ -485,9 +485,9 @@
                                                                             <div class="card shadow">
                                                                                 <div class="card-body">
                                                                                     <form>
-                                                                                        <div class="form-group"><label for="address"><strong>Tipo de cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.tipo_cirugia}" name="tipo_cirugia" form="subir"></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.hospital_cirugia}"  name="hospital_cirugia" form="subir"></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_cirugia" id="fecha_cirugia" th:value="${formularioCirugia.fecha_cirugia}" type="text" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Tipo de cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.tipo_cirugia}" name="tipo_cirugia" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.hospital_cirugia}"  name="hospital_cirugia" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_cirugia" id="fecha_cirugia" th:value="${formularioCirugia.fecha_cirugia}" type="text" form="subir" disabled></div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
@@ -500,9 +500,9 @@
                                                                             <div class="card shadow">
                                                                                 <div class="card-body">
                                                                                     <form>
-                                                                                        <div class="form-group"><label for="address"><strong>Tipo de prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.tipo_prueba}" name="tipo_prueba" form="subir"></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.hospital_prueba}" name="hospital_prueba" form="subir"></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_prueba" id="fecha_prueba" th:value="${formularioPruebas.fecha_prueba}"  type="text" form="subir"></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Tipo de prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.tipo_prueba}" name="tipo_prueba" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.hospital_prueba}" name="hospital_prueba" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_prueba" id="fecha_prueba" th:value="${formularioPruebas.fecha_prueba}"  type="text" form="subir" disabled></div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
@@ -532,11 +532,11 @@
                                                                                          <div class="form-row">
                                                                                         <div class="col offset-xl-1">
                                                                                             <div class="form-group ">
-                                                                                                <label for="address" ><strong>Posicion</strong><br></label><input class="form-control" type="text" th:value="${preguntasGenerales.posicion}" placeholder="Encargado/Supervisor/Gerente" name="posicion" form="subir"></div>
+                                                                                                <label for="address" ><strong>Posicion</strong><br></label><input class="form-control" type="text" th:value="${preguntasGenerales.posicion}" placeholder="Encargado/Supervisor/Gerente" name="posicion" form="subir" disabled></div>
 
-                                                                                            <div class="form-group"><label for="country"><strong>Actividad</strong><br></label><select class="form-control" id="from-calltime-6" name="actividades" form="subir"><optgroup label="- Seleccione - "><option value="oficina" th:text="${preguntasGenerales.actividades}">Oficina</option></optgroup></select></div>
+                                                                                            <div class="form-group"><label for="country"><strong>Actividad</strong><br></label><input disabled class="form-control" id="from-calltime-6" name="actividades" form="subir" type="text" th:value="${preguntasGenerales.actividades}"></input></div>
                                                                                             <div
-                                                                                                    class="form-group"><label for="country"><strong>Accidente</strong><br></label></div><input class="form-control" type="text" placeholder="Especifique" th:value="${preguntasGenerales.accidentes}"  name="accidentes" form="subir"></div>
+                                                                                                    class="form-group"><label for="country"><strong>Accidente</strong><br></label></div><input class="form-control" type="text" placeholder="Especifique" th:value="${preguntasGenerales.accidentes}"  name="accidentes" form="subir" disabled></div>
                                                                                     </div>
                                                                                 </form>
                                                                             </div>
@@ -550,23 +550,23 @@
                                                                 <div class="card shadow">
                                                                     <div class="card-body">
                                                                         <form>
-                                                                            <div class="form-group"><label for="address"><strong>Zona de molestia</strong><br></label><input class="form-control" type="text" placeholder="Espalda baja" th:value="${preDiagnostico.molestias_zona}" name="molestias_zona" form="subir"></div>
-                                                                            <div class="form-group"><label for="address"><strong>Sintomas</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.sintomas_asociados}"  placeholder="Espalda baja" name="sintomas_asociados" form="subir"></div>
+                                                                            <div class="form-group"><label for="address"><strong>Zona de molestia</strong><br></label><input class="form-control" type="text" placeholder="Espalda baja" th:value="${preDiagnostico.molestias_zona}" name="molestias_zona" form="subir" disabled></div>
+                                                                            <div class="form-group"><label for="address"><strong>Sintomas</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.sintomas_asociados}"  placeholder="Espalda baja" name="sintomas_asociados" form="subir" disabled></div>
                                                                             <div class="form-row">
                                                                                 <div class="col">
-                                                                                    <div class="form-group"><label for="city"><strong>Tipo de lesion</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.tipo_lesion}" placeholder="fractura" name="tipo_lesion" form="subir"></div>
+                                                                                    <div class="form-group"><label for="city"><strong>Tipo de lesion</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.tipo_lesion}" disabled placeholder="fractura" name="tipo_lesion" form="subir"></div>
                                                                                     <div class="form-group"><label for="city"><strong>Fecha</strong><br></label>
-                                                                                        <div class="col-md-6" style="width: 275px;"><input class="form-control" name="fecha_diagnostico" id="fecha_diagnostico" th:value="${preDiagnostico.fecha_diagnostico}" type="text" style="width: 250px;" form="subir"></div>
+                                                                                        <div class="col-md-6" style="width: 275px;"><input class="form-control" name="fecha_diagnostico" id="fecha_diagnostico" th:value="${preDiagnostico.fecha_diagnostico}" type="text" style="width: 250px;" form="subir" disabled></div>
                                                                                     </div>
                                                                                     <div></div>
                                                                                 </div>
                                                                                 <div class="col">
-                                                                                    <div class="form-group"><label for="country"><strong>Valoracion de dolor</strong><br></label><select class="form-control" id="from-calltime-2" form="subir" name="valoracion_dolor" disabled><optgroup label="- Seleccione - "><option selected value="Bajo" th:text="${preDiagnostico.valoracion_dolor}">Bajo</option></optgroup></select></div>
+                                                                                    <div class="form-group"><label for="country"><strong>Valoracion de dolor</strong><br></label><input class="form-control" id="from-calltime-2" type="text" form="subir" name="valoracion_dolor" disabled th:value="${preDiagnostico.valoracion_dolor}"></input></div>
                                                                                     <div
-                                                                                            class="form-group"><label for="country"><strong>Tipo de prueba</strong><br></label><select class="form-control" id="from-calltime-7" name="tipo_prueba" form="subir" disabled><optgroup label="- Seleccione - "><option selected value="Bajo" th:text="${preDiagnostico.tipo_prueba}">Bajo</option></optgroup></select></div>
+                                                                                            class="form-group"><label for="country"><strong>Tipo de prueba</strong><br></label><input class="form-control" id="from-calltime-7" type="text" name="tipo_prueba" form="subir" disabled th:value="${preDiagnostico.tipo_prueba}"></input></div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="form-group"><label for="address"><strong>Hospital</strong><br></label><input class="form-control" type="text" placeholder="HOMS" name="hospital_pre" th:value="${preDiagnostico.hospital_pre}" form="subir"></div>
+                                                                            <div class="form-group"><label for="address"><strong>Hospital</strong><br></label><input DISABLED class="form-control" type="text" placeholder="HOMS" name="hospital_pre" th:value="${preDiagnostico.hospital_pre}" form="subir"></div>
                                                                         </form>
                                                                     </div>
 
@@ -615,7 +615,7 @@
                                                                                 <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                                                                     <div class="form-group"><label for="from-calltime">Best Time to Call</label>
                                                                                         <div class="input-group">
-                                                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></div><select class="form-control" id="from-calltime" name="call time"><optgroup label="Best Time to Call"><option value="Morning" selected="">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option></optgroup></select></div>
+                                                                                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-clock-o"></i></span></div><input class="form-control" id="from-calltime" name="call time"><optgroup label="Best Time to Call"><option value="Morning" selected="">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option></optgroup></input></div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -821,14 +821,14 @@
                             '                                    </p>\n' +
                             '                                </div>'
                     }else{
-                        pdf.innerHTML = '<div class="jumbotron" style=""><input onclick="openPDF()" class="btn btn-primary btn-sm text-left" type="button" value="Abrir">'
+                        pdf.innerHTML = '<div class="jumbotron" style=""><input onclick="openPDF()" class="btn btn-primary  text-center btn-block" type="button" value="Abrir">'
 
                     }
 
-                    var pdf1 = document.getElementById("formularioOnline")
+                    var pdf = document.getElementById("formularioOnline")
                     var cont = "[[${formulario.getID_formulario()}]]"
                     if (cont==""){
-                        pdf1.innerHTML = '<div class="jumbotron">\n' +
+                        pdf.innerHTML = '<div class="jumbotron">\n' +
                             '                                    <h1>No se ha completado El Formulario Online</h1>\n' +
                             '                                    <p>Favor completar la solicitud de formulario,&nbsp;</p>\n' +
                             '                                    <p>\n' +
@@ -855,20 +855,20 @@
                                 '                                                                    \n' +
                                 '                                                                    <div class="card-body">\n' +
                                 '                                                                        <form>\n' +
-                                '                                                                            <div class="form-group"><label for="address"><strong>Nombre del padre</strong><br></label><input class="form-control" type="text" placeholder="Pedro" value="[[${formularioMenor.nombre_padre}]]" name="nombre_padre" form="subir"></div>\n' +
-                                '                                                                            <div class="form-group"><label for="address"><strong>Apellido del padre</strong><br></label><input class="form-control" type="text" placeholder="Castillo" name="apellido_padre" form="subir"></div>\n' +
+                                '                                                                            <div class="form-group"><label for="address"><strong>Nombre del padre</strong><br></label><input disabled class="form-control" type="text" placeholder="Pedro" value="[[${formularioMenor.nombre_padre}]]" name="nombre_padre" form="subir"></div>\n' +
+                                '                                                                            <div class="form-group"><label for="address"><strong>Apellido del padre</strong><br></label><input disabled class="form-control" type="text" placeholder="Castillo" name="apellido_padre" form="subir"></div>\n' +
                                 '                                                                            <div class="form-row">\n' +
                                 '                                                                                <div class="col">\n' +
-                                '                                                                                    <div class="form-group"><label for="city"><strong>Documento de identidad del padre</strong><br></label><input class="form-control" type="number" placeholder="(###)-(#####)-(#)" min="0" tvalue="[[${formularioMenor.id_padre}]]" name="id_padre" form="subir"></div>\n' +
+                                '                                                                                    <div class="form-group"><label for="city"><strong>Documento de identidad del padre</strong><br></label><input disabled class="form-control" type="number" placeholder="(###)-(#####)-(#)" min="0" tvalue="[[${formularioMenor.id_padre}]]" name="id_padre" form="subir"></div>\n' +
                                 '                                                                                    <div class="form-group"><label for="city"><strong>Fecha de nacimiento del padre</strong><br></label>\n' +
                                 '                                                                                        <div class="col-md-6" style="width: 275px;"><input class="form-control" value="[[${formularioMenor.fechanac_padre}]]" id="fechanac_padre" name="fechanac_padre" type="date" style="width: 250px;" form="subir"></div>\n' +
                                 '                                                                                    </div>\n' +
                                 '                                                                                    <div></div>\n' +
                                 '                                                                                </div>\n' +
                                 '                                                                                <div class="col">\n' +
-                                '                                                                                    <div class="form-group"><label for="country"><strong>Relacion con el padre</strong><br></label><select class="form-control" id="from-calltime-1" name="relacion_paciente"  form="subir" disabled><optgroup label="- Seleccione - "><option value="mala" >[[${formularioMenor.relacion_paciente}]]</option></optgroup></select></div>\n' +
+                                '                                                                                    <div class="form-group"><label for="country"><strong>Relacion con el padre</strong><br></label><input type="text" value="[[${formularioMenor.relacion_paciente}]]" class="form-control" id="from-calltime-1" name="relacion_paciente"  form="subir" disabled></input></div>\n' +
                                 '                                                                                    <div\n' +
-                                '                                                                                            class="form-group"><label for="country"><strong>Seguro del padre</strong><br></label><input class="form-control" type="number" min="0" placeholder="(###)-(#####)-(#)" name="seguro_padre" form="subir" disabled value="[[${formularioMenor.seguro_padre}]]"></div>\n' +
+                                '                                                                                            class="form-group"><label for="country"><strong>Seguro del padre</strong><br></label><input  disabled class="form-control" type="number" min="0" placeholder="(###)-(#####)-(#)" name="seguro_padre" form="subir" disabled value="[[${formularioMenor.seguro_padre}]]"></div>\n' +
                                 '                                                                                </div>\n' +
                                 '                                                                            </div>\n' +
                                 '                                                                        </form>\n' +

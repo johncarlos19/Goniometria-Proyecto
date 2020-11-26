@@ -28,7 +28,7 @@ public class PreguntasGeneralesServicios {
 
 
             con = DataBaseServices.getInstancia().getConexion();
-            String query = "select preguntas_generales(idpreguntas_generales, medicamento_prescrito, enfermedades_reciente, bulto_piel, habitos_toxicos, dieta_prescrita, idmedicamentos, idestado_salud, idpre_diagnostico, posicion, actividades, accidentes from goniometria.preguntas_generales where idpreguntas_generales = ?;";
+            String query = "select idpreguntas_generales, medicamento_prescrito, enfermedades_reciente, bulto_piel, habitos_toxicos, dieta_prescrita, idmedicamentos, idestado_salud, idpre_diagnostico, posicion, actividades, accidentes from goniometria.preguntas_generales where idpreguntas_generales = ?;";
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             prepareStatement.setString(1,id);

@@ -28,7 +28,7 @@ public class MedicamentosServicios {
 
 
             con = DataBaseServices.getInstancia().getConexion();
-            String query = "select medicamentos(idmedicamentos, tratamiento, dosis, efectos, tiempo, revision_medico, medicamento_pre from goniometria.medicamentos where idmedicamentos = ?;";
+            String query = "select idmedicamentos, tratamiento, dosis, efectos, tiempo, revision_medico, medicamento_pre from goniometria.medicamentos where idmedicamentos = ?;";
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             prepareStatement.setString(1,id);
