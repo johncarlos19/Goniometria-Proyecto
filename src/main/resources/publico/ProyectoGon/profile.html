@@ -343,10 +343,10 @@
                                         <td th:text="${aux.lugar}">(849)-846-3324</td>
                                         <td th:text="${aux.rom}">pepe@hotmail.com</td>
                                         <td>
-                                            <form method="post" action="/profile">
+                                            <form method="post" action="/RegistrarPreMedida">
                                                 <input type="hidden" th:value="${paciente.idPaciente}" name="idPaciente">
-                                                <input type="hidden" th:value="${aux.idAngulo}" name="idPaciente">
-                                                <button class="btn border-pretty btn-danger text-white" role="button" style="color:#ce9c95;" type="submit" >Eliminar&nbsp;</button>
+                                                <input type="hidden" th:value="${aux.idAngulo}" name="idAngulo">
+                                                <input class="btn border-pretty btn-danger text-white" role="button" style="color:#ce9c95;" name="preMedida" type="submit" value="Eliminar" >
                                             </form>
                                         </td>
                                     </tr>
@@ -825,10 +825,10 @@
 
                     }
 
-                    var pdf = document.getElementById("formularioOnline")
+                    var pdf1 = document.getElementById("formularioOnline")
                     var cont = "[[${formulario.getID_formulario()}]]"
                     if (cont==""){
-                        pdf.innerHTML = '<div class="jumbotron">\n' +
+                        pdf1.innerHTML = '<div class="jumbotron">\n' +
                             '                                    <h1>No se ha completado El Formulario Online</h1>\n' +
                             '                                    <p>Favor completar la solicitud de formulario,&nbsp;</p>\n' +
                             '                                    <p>\n' +

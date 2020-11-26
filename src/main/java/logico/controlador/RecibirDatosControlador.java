@@ -657,11 +657,16 @@ public class RecibirDatosControlador extends BaseControlador {
                         String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
 
 
-                        Paciente aux = new Paciente(ctx.formParam("cedula"), user,
+
+
+                                Paciente aux = new Paciente(ctx.formParam("cedula"), decodeJWT(user).getId(),
                                 ctx.formParam("nombre"), ctx.formParam("apellido"), ctx.formParam("sexo"), ctx.formParam("fechaNacimiento"),
                                 ctx.formParam("telefono"), dire.getID_Direccion(), ctx.formParam("correo"), ctx.formParam("comentario"));
 
                         PacienteServicios.getInstance().crearPaciente(aux, dire);
+                        aux = PacienteServicios.getInstance().crearPaciente(aux, dire);
+                        ctx.sessionAttribute("idPaciente",aux.getIdPaciente());
+                        ctx.redirect("/profile");
 
                         if (Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User")) != null) {
                             Map<String, Object> modelo = new HashMap<>();
@@ -1730,7 +1735,13 @@ public class RecibirDatosControlador extends BaseControlador {
                             PreMedidaServicios.getInstance().addPreMedida(preMedida,ctx.formParam("idPaciente"));
                             ctx.sessionAttribute("idPaciente",ctx.formParam("idPaciente"));
                             ctx.redirect("/profile");
+
+                        }else if (ctx.formParam("preMedida").equalsIgnoreCase("Eliminar")){
+                            ctx.sessionAttribute("idPaciente",ctx.formParam("idPaciente"));
+                            PreMedidaServicios.getInstance().borrarMedida(ctx.formParam("idAngulo"),ctx.formParam("idPaciente"));
+                            ctx.redirect("/profile");
                         }
+
 
                     } else {
                         ctx.redirect("/login");

@@ -114,10 +114,11 @@ public ArrayList<Paciente> listaPaciente(String idEspecialista){
         return aux;
     }
 
-    public boolean crearPaciente(Paciente pac, Direccion dir ){
+    public Paciente crearPaciente(Paciente pac, Direccion dir ){
         boolean sub = false;
 
         String subio =pac.return_id_generate();
+        pac.setIdPaciente(subio);
         Persona per = pac;
         String cedula = PersonaServicios.getInstance().crearPersona(per,dir);
         Connection con = null;
@@ -149,7 +150,7 @@ public ArrayList<Paciente> listaPaciente(String idEspecialista){
             }
         }
 
-        return sub;
+        return pac;
     }
 
 }

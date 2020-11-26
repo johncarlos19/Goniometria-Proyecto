@@ -118,6 +118,10 @@ public class Goniometria {
 
 
 
+    public void correoException(Exception e){
+
+    }
+
     public boolean send_correo_online(String correo, String mensaje, String asunto){
         Properties propiedad = new Properties();
         propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");

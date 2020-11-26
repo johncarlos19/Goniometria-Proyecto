@@ -1,5 +1,6 @@
 package logico.servicios;
 
+import logico.goniometriaClass.EstadoSalud;
 import logico.goniometriaClass.Goniometria;
 import logico.goniometriaClass.PreMedida;
 
@@ -20,6 +21,55 @@ public class PreMedidaServicios {
             instancia = new PreMedidaServicios();
         return instancia;
     }
+
+
+    public boolean borrarMedida(String angulo, String idPaciente){
+        Connection con = null;
+        try {
+
+
+            con = DataBaseServices.getInstancia().getConexion();
+            String query = "delete from registro_medida_a_tomar where ID_paciente = ? and ID_angulo = ?;";
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            prepareStatement.setString(1,idPaciente);
+            prepareStatement.setString(2,angulo);
+
+
+
+
+
+
+            //Antes de ejecutar seteo los parametros.
+
+
+            //
+            int fila = prepareStatement.executeUpdate();
+//            for (String aux: evolucion.getTerapiaIdList()
+//            ) {
+//                query = "update terapia set ID_evolucion = ? where idterapia = ?;";
+//                prepareStatement = con.prepareStatement(query);
+//                prepareStatement.setString(1,evolucion.getIdEvolucion());
+//                prepareStatement.setString(2,aux);
+//                fila = prepareStatement.executeUpdate();
+//            }
+
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return true;
+    }
+
+
+
+
     public List<PreMedida> listaPreMedida(String idPaciente){
         List<PreMedida> preMedidas = new ArrayList<PreMedida>();
         Connection con = null;
