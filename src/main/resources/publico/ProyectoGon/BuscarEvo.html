@@ -206,16 +206,30 @@
                                         <td th:text="${aux.idEvolucion}">10128006</td>
                                         <td th:text="${aux.fecha}">10128006</td>
                                         <td><div th:if="${aux.isValidacion}">
-                                            <button class="btn btn-success btn-xs btnActivar" type="button" >Activado</button>
+                                            <form target="_blank" method="post" action="/documento">
+
+
+                                                <input type="hidden" th:value="${paciente.idPaciente}" name="idPaciente">
+                                                <input type="hidden" th:value="${aux.idEvolucion}" name="idEvolucion">
+                                                <input type="hidden" th:value="${aux.id_documento}" name="documento">
+                                                <button class="btn btn-outline-primary text-truncate float-none float-sm-none add-another-btn" data-bs-hover-animate="pulse" type="submit" style="color: #ffffff;background-color: rgb(39,174,96);">Abrir<i class="fas fa-check-circle edit-icon"></i></button>
+                                            </form>
                                         </div>
                                             <!-- ELSE -->
                                             <div th:unless="${aux.isValidacion}">
-                                                <button class="btn btn-danger btn-xs btnActivar" type="button" >Desactivado</button>
+                                                <form action="/register" method="post">
+                                                    <input type="hidden" th:value="${aux.idEvolucion}" name="idEvolucion">
+                                                    <input type="hidden" th:value="${paciente.idPaciente}" name="idPaciente">
+                                                    <input type="hidden" value="evo" name="documento">
+                                                <button class="btn btn-outline-primary text-truncate float-none float-sm-none add-another-btn" data-bs-hover-animate="pulse" type="submit" style="border-color: #5c99c7;background-color: #5c99c7;color: #ffffff;">Cargar<i class="fas fa-plus-circle edit-icon"></i></button>
+
+                                                </form>
                                             </div></td>
                                         <td>
                                             <form method="post" action="/evolucion">
                                                 <input type="hidden" th:value="${paciente.idPaciente}" name="idPaciente">
                                                 <input type="hidden" th:value="${aux.idEvolucion}" name="idEvolucion">
+
 
                                                 <button class="btn btn-link border-pretty" role="button" style="color:#ce9c95;" type="submit" >Seleccionar&nbsp;</button>
                                             </form>

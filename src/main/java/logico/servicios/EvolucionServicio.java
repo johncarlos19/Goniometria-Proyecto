@@ -104,6 +104,52 @@ public class EvolucionServicio {
 
     }
 
+
+    public boolean updateEvolucion(Evolucion evolucion){
+        Connection con = null;
+        try {
+
+
+            con = DataBaseServices.getInstancia().getConexion();
+            String query = "update evolucion_fisioteraputica set respuesta_tratamiento = ?, colaborador = ?, profesion = ?, actividad = ?, objetivo = ?, conclusion = ?, actividadEspecificar = ?, retraso = ?, pulso = ?, temperatura = ?, presion = ?, id_documento = ? where idEvolucion_fisioteraputica = ? ;";
+            //
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+
+            prepareStatement.setString(1,evolucion.getRespuesta_tratamiento());
+            prepareStatement.setString(2,evolucion.getColaborador());
+            prepareStatement.setString(3,evolucion.getProfesion());
+            prepareStatement.setString(4,evolucion.getActividad());
+            prepareStatement.setString(5,evolucion.getObjetivo());
+            prepareStatement.setString(6,evolucion.getConclusion());
+            prepareStatement.setString(7,evolucion.getActividadEspecificar());
+            prepareStatement.setString(8,evolucion.getRetraso());
+            prepareStatement.setString(9,evolucion.getPulso());
+            prepareStatement.setString(10,evolucion.getTemperatura());
+            prepareStatement.setString(11,evolucion.getPresion());
+            prepareStatement.setString(12,evolucion.getId_documento());
+            prepareStatement.setString(13,evolucion.getIdEvolucion());
+
+
+            //Antes de ejecutar seteo los parametros.
+
+
+            //
+            int fila = prepareStatement.executeUpdate();
+
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return true;
+    }
+
     public boolean addEvolucion(Evolucion evolucion){
         Connection con = null;
         try {

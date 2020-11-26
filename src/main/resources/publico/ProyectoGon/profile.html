@@ -188,7 +188,7 @@
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <div class="card mb-3"><div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4" src="assets/img/dogs/user.png" width="160" height="160" />
-                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Subir Foto</button></div>
+
                         </div></div>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -209,6 +209,11 @@
                             <form method="post" action="/estadisticas">
                                 <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                 <button class="btn btn-link border-pretty" style="top:  50px;" type="submit" >Mostrar Estadisticas<i class="icon ion-android-arrow-forward"></i></button>
+                            </form>
+                            <form method="post" action="/evolucion">
+                                <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
+                                <input name="action" type="hidden" value="buscarEvo">
+                                <button class="btn btn-link border-pretty" style="top:  50px;" type="submit" >Mostrar Lista De Evolucion<i class="icon ion-android-arrow-forward"></i></button>
                             </form>
                         </div></div>
                     </div>
