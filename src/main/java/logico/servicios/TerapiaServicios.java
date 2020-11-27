@@ -182,18 +182,18 @@ public class TerapiaServicios {
 
 
 
-    public ArrayList<Medida> listaMedida(String id_paciente){
+    public ArrayList<Medida> listaMedida(String id_paciente, String ordenar){
         ArrayList<Medida> list = new ArrayList<>();
         Connection con = null; //objeto conexion.
         try {
-            //
+            //order by ID_paciente ASC
             String query = "select t.ID_medida, t.idterapia, m.Fecha_realizacion, (\n" +
                     "    CASE\n" +
                     "        WHEN a.ID_pulgar is not null THEN 'pulgar'\n" +
                     "        WHEN a.ID_cuatrodedos is not null THEN '4dedos'\n" +
                     "        ELSE null\n" +
                     "    END) AS dedo from medidas m inner join terapia t on t.ID_medida = m.ID_medida inner join angulos a on m.ID_medida = a.ID_medida\n" +
-                    "where t.ID_paciente = ? order by Fecha_realizacion desc ;";
+                    "where t.ID_paciente = ? "  +ordenar+";";
             con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);

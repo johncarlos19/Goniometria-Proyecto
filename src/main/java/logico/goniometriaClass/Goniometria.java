@@ -85,6 +85,15 @@ public class Goniometria {
         }
     }
 
+    public boolean isAvailable(String ID_cuenta){
+        int cant = Goniometria.getInstance().cant("select count(*) from cuenta where "+"cuenta.ID_cuenta = '"+ID_cuenta+"'");
+        System.out.println("cuenta "+cant);
+        if (cant == 0){
+            return true;
+        }
+        return false;
+    }
+
     public boolean verificar_cuenta(String user){
         try {
 

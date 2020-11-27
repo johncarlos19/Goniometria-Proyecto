@@ -1,9 +1,11 @@
 package logico.goniometriaClass;
 
+import java.sql.Timestamp;
+
 public class Medida {
     private String id_medida;
     private String id_especialista;
-    private String fecha_realizacion;
+    private Timestamp fecha_realizacion;
     private String medida;
     private String lugar;
     private String id_angulo;
@@ -16,7 +18,7 @@ public class Medida {
     public Medida() {
     }
 
-    public Medida(String id_medida, String id_especialista, String fecha_realizacion, String medida, String lugar, String id_angulo, String id_articulaciones, String rom, String id_rom, double rom_value) {
+    public Medida(String id_medida, String id_especialista, Timestamp fecha_realizacion, String medida, String lugar, String id_angulo, String id_articulaciones, String rom, String id_rom, double rom_value) {
         this.id_medida = id_medida;
         this.id_especialista = id_especialista;
         this.fecha_realizacion = fecha_realizacion;
@@ -46,10 +48,13 @@ public class Medida {
     }
 
     public String getFecha_realizacion() {
+        return fecha_realizacion.toString();
+    }
+    public Timestamp getFecha_realizacionTimeStamp() {
         return fecha_realizacion;
     }
 
-    public void setFecha_realizacion(String fecha_realizacion) {
+    public void setFecha_realizacion(Timestamp fecha_realizacion) {
         this.fecha_realizacion = fecha_realizacion;
     }
 

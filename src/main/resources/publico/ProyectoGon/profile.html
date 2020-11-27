@@ -63,13 +63,13 @@
             <li class="nav-item" role="presentation"></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user"></i>Paciente</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a><a class="dropdown-item" role="presentation" href="#">Dar permisos</a></div>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a></div>
             </li>
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -257,27 +257,27 @@
                                     <form id="formProfile" action="/profile" method="post">
                                         <div class="form-row">
                                             <div class="col">
-                                                <div class="form-group"><label for="nombre"><strong>Nombre</strong><br /></label><input type="text" class="form-control" placeholder="user.nombre" name="nombre" th:value="${paciente.nombre}" th:attrappend="disabled=${statu}"/></div>
+                                                <div class="form-group"><label for="nombre"><strong>Nombre</strong><br /></label><input disabled type="text" class="form-control" placeholder="user.nombre" name="nombre" th:value="${paciente.nombre}" th:attrappend="disabled=${statu}"/></div>
                                             </div>
 
                                             <div class="col">
-                                                <div class="form-group"><label for="apellido"><strong>Apellido</strong><br /></label><input type="text" class="form-control" placeholder="user.apellido" name="apellido" th:value="${paciente.apellido}" th:attrappend="disabled=${statu}"/></div>
+                                                <div class="form-group"><label for="apellido"><strong>Apellido</strong><br /></label><input disabled type="text" class="form-control" placeholder="user.apellido" name="apellido" th:value="${paciente.apellido}" th:attrappend="disabled=${statu}"/></div>
                                             </div>
                                             <div class="col">
-                                                <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(809)-233-5820" name="telefono" th:value="${paciente.telefono}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input disabled type="text" class="form-control" placeholder="(809)-233-5820" name="telefono" th:value="${paciente.telefono}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col">
-                                                <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${paciente.cedula}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input disabled type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${paciente.cedula}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
 
                                             <div class="col">
-                                                <div class="form-group"><label for="email"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${paciente.correo}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="email"><strong>Correo Electronico</strong><br /></label><input disabled type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${paciente.correo}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
 
                                         </div>
-                                        <div class="form-group"><input class="btn btn-primary btn-sm" th:value="${perfil}" type="submit" value="Editar"></input></div>
+<!--                                        <div class="form-group"><input disabled class="btn btn-primary btn-sm" th:value="${perfil}" type="submit" value="Editar"></input></div>-->
                                     </form>
                                 </div>
                             </div>
@@ -286,17 +286,17 @@
                                         <p class="text-primary m-0 font-weight-bold">Direccion</p>
                                     </div>
                                     <div class="card-body">
-                                        <form <form id="formProfile2" action="/profile" method="post">
-                                        <div class="form-group"><label for="municipio"><strong>Municipio</strong><br></label><input class="form-control" type="text" placeholder="?" name="municipio" th:value="${direccion.ciudad}" th:attrappend="disabled=${statu}" /></div>
+                                        <form id="formProfile2" action="/profile" method="post">
+                                        <div class="form-group"><label for="municipio"><strong>Municipio</strong><br></label><input disabled class="form-control" type="text" placeholder="?" name="municipio" th:value="${direccion.ciudad}" th:attrappend="disabled=${statu}" /></div>
                                         <div class="form-row">
                                             <div class="col">
-                                                <div class="form-group"><label for="sector"><strong>Sector</strong><br></label><input class="form-control" type="text" placeholder="?" name="sector" th:value="${direccion.sector}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="sector"><strong>Sector</strong><br></label><input disabled class="form-control" type="text" placeholder="?" name="sector" th:value="${direccion.sector}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
                                             <div class="col">
-                                                <div class="form-group"><label for="calle"><strong>Calle</strong><br></label><input class="form-control" type="text" placeholder="?" name="calle" th:value="${direccion.calle}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="calle"><strong>Calle</strong><br></label><input disabled class="form-control" type="text" placeholder="?" name="calle" th:value="${direccion.calle}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
                                         </div>
-                                        <div class="form-group"><input class="btn btn-primary btn-sm" type="submit" value="Editar"></div>
+<!--                                        <div class="form-group"><input class="btn btn-primary btn-sm" type="submit" value="Editar"></div>-->
                                     </form>
                                     </div>
                                 </div>
@@ -368,6 +368,7 @@
                         <p class="text-primary m-0 font-weight-bold">Formulario Registro</p>
                     </div>
                     <div class="card-body"><div class="">
+
 
                         <div class="card shadow mb-5">
                             <div class="card-header py-3">

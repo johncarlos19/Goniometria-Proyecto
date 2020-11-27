@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Dashboard - Brand</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Actor">
@@ -41,7 +44,7 @@
     <link rel="stylesheet" href="assets/css/Vertical-Mobile-Collapsible-Menu.css">
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="error()">
 <div id="wrapper"><nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
     <div class="container-fluid d-flex flex-column p-0">
         <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
@@ -56,13 +59,13 @@
             <li class="nav-item" role="presentation"></li>
             <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user"></i>Paciente</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a><a class="dropdown-item" role="presentation" href="#">Formulario</a></div>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a><a class="dropdown-item" role="presentation" href="#">Dar permisos</a></div>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a></div>
             </li>
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -259,7 +262,55 @@
                 <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
             </ul>
-        </div><button class="btn btn-primary btn-block" type="submit" style="padding: 6px 12px 10px;">Dar permisos para ver registros de mis pacientes&nbsp;<i class="fa fa-chevron-circle-right"></i></button></div>
+        </div>
+
+            <div id="alerta" onload="error()">
+
+            </div>
+            <script>
+                function error(){
+                    var val = "[[${alerta}]]"
+                    if(val!=""){
+                        document.getElementById("alerta").innerHTML = '                <div class="alert alert-danger alert-dismissible fade show" role="alert">\n' +
+                            '                    <strong>Error al buscar!</strong> Especialista no Existe\n' +
+                            '                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                            '                        <span aria-hidden="true">&times;</span>\n' +
+                            '                    </button>\n' +
+                            '                </div>'
+                    }
+                }
+            </script>
+
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+
+            <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+                    <li class="nav-item active text-white ">
+
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+                    <li class="nav-item active text-white ">
+                        Dar permisos para ver registros de mis pacientes&nbsp;<i class="fa fa-chevron-circle-right">
+                    </i>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
+                    <li class="nav-item active text-white ">
+                        <form class="form-inline my-2 my-lg-0" method="post" action="/permisos">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Id Del Especialista" name="especialista">
+                            <input  type="hidden" value="registrar"  name="action">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Agregar</button>
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+        </div>
         <footer class="bg-white sticky-footer">
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">Buscar Paciente</h3>
@@ -268,52 +319,42 @@
                         <p class="text-primary m-0 font-weight-bold">Infomacion del paciente</p>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Mostrar&nbsp;&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Buscar"></label></div>
-                            </div>
-                        </div>
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table my-0" id="dataTable">
+
+                        <div class="table-responsive table mt-2" id="" role="grid" aria-describedby="dataTable_info">
+                            <table class="table table-hover dt-responsive  my-0" id="dataTable">
                                 <thead>
-                                <tr>
-                                    <th style="width: 170px;">ID</th>
-                                    <th>Nombre</th>
-                                    <th style="width: 270px;">Telefono</th>
-                                    <th style="width: 270px;">Permiso</th>
-                                </tr>
+
+                                    <th >ID del Paciente</th>
+                                    <th >ID del Especialista</th>
+                                    <th >Acción</th>
+
+
                                 </thead>
                                 <tbody>
 
+                                <th:block th:each="aux : ${listapermiso}">
+
+
+                                    <tr >
+                                        <td th:text="${aux.id_permisos}">10128006</td>
+                                        <td th:text="${aux.id_especialista}">Joan Pena</td>
+                                        <td>
+                                            <form method="post" action="/permisos">
+                                                <input type="hidden" th:value="${aux.id_permisos}" name="idPaciente">
+                                                <input type="hidden" name="idEspecialista" th:value="${aux.id_especialista}">
+                                                <input type="hidden" name="action" value="eliminar">
+                                                <button class="btn btn-outline-danger" type="submit">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </th:block>
+
 
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <td><strong>Permiso</strong></td>
-                                    <td><strong>ID</strong></td>
-                                    <td>Nombre</td>
-                                    <td>Telefono</td>
-                                </tr>
-                                </tfoot>
+
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6"><button class="btn btn-link border-pretty" style="color:#ce9c95;" type="button">Ocultar tabla&nbsp;&nbsp;<i class="icon ion-android-arrow-forward"></i></button></div>
-                            <div class="col">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers" style="margin: 0px 115px;">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -336,6 +377,40 @@
 <script src="assets/js/Pricing-Tables.js"></script>
 <script src="assets/js/testimonialSlider.js"></script>
 <script src="assets/js/theme.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            "language": {
+
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ registros",
+                "sZeroRecords":    "No se encontraron resultados",
+                "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_",
+                "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0",
+                "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+
+            }
+        });
+
+    } );
+</script>
 </body>
 
 </html>
