@@ -32,12 +32,12 @@ public class Estadistica {
         this.lugar = lugar;
         this.rom = rom;
         this.idPaciente = idPaciente;
-        int numeroMes = 1;
+        int numeroMes = 0;
         double rom_valueMes = 0;
-        int cantMes = 1;
-        int numeroDias = 1;
+        int cantMes = 0;
+        int numeroDias = 0;
         double rom_valueDias = 0;
-        int cantDias = 1;
+        int cantDias = 0;
         boolean entroDia = false;
         boolean entroMes = false;
         double valorAlto = 0;
@@ -52,49 +52,54 @@ public class Estadistica {
                 if (valorAlto < medida1.getRom_value()){
                     valorAlto = medida1.getRom_value();
                 }
-                if(rom_valueMes ==0 && rom_valueDias==0){
-                    rom_valueMes = medida1.getRom_value();
-                    rom_valueDias = medida1.getRom_value();
-
-                }
-                if (medida1.getFecha_realizacionTimeStamp().getMonth()+1 != numeroMes){
-                    if (entroMes == false){
-                        rom_valueMes = medida1.getRom_value();
-
-                    }
-                    entroMes = false;
+                if(entroDia ==false && entroMes==false){
+                    rom_valueMes = 0;
+                    rom_valueDias = 0;
                     numeroMes = medida1.getFecha_realizacionTimeStamp().getMonth()+1;
-                    mesList.add(retornarMes(numeroMes));
-                    mesromValueList.add(Double.toString(round(rom_valueMes/cantMes,2)));
-                    cantMes = 1;
-                    this.cant_mes += cantMes;
-                    rom_valueMes = medida1.getRom_value();
-                }else{
-                    rom_valueMes += medida1.getRom_value();
-                    cantMes +=1;
+                    numeroDias = medida1.getFecha_realizacionTimeStamp().getDate();
+                    entroDia = true;
                     entroMes = true;
+
                 }
                 if (medida1.getFecha_realizacionTimeStamp().getDate() != numeroDias){
-                    if (entroDia == false){
-                        rom_valueDias = medida1.getRom_value();
 
-                    }
-                    entroDia = false;
-                    numeroDias = medida1.getFecha_realizacionTimeStamp().getDate();
-                    diasList.add(retornarMes(medida1.getFecha_realizacionTimeStamp().getMonth()+1)+"-"+Integer.toString(numeroDias));
+
+                    diasList.add(retornarMes(numeroMes)+"-"+Integer.toString(numeroDias));
+
                     diasromValueList.add(Double.toString(round(rom_valueDias/cantDias,2)));
+                    numeroDias = medida1.getFecha_realizacionTimeStamp().getDate();
                     cantDias = 1;
                     this.cant_dia += cantDias;
                     rom_valueDias = medida1.getRom_value();
                 }else{
                     rom_valueDias += medida1.getRom_value();
                     cantDias +=1;
-                    entroDia = true;
+
                 }
+                if (medida1.getFecha_realizacionTimeStamp().getMonth()+1 != numeroMes){
+
+                    mesList.add(retornarMes(numeroMes));
+                    mesromValueList.add(Double.toString(round(rom_valueMes/cantMes,2)));
+                    numeroMes = medida1.getFecha_realizacionTimeStamp().getMonth()+1;
+
+                    cantMes = 1;
+                    this.cant_mes += cantMes;
+                    rom_valueMes = medida1.getRom_value();
+                }else{
+                    rom_valueMes += medida1.getRom_value();
+                    cantMes +=1;
+
+                }
+
 
             }
 
         }
+        mesList.add(retornarMes(numeroMes));
+        mesromValueList.add(Double.toString(round(rom_valueMes/cantMes,2)));
+        diasList.add(retornarMes(numeroMes)+"-"+Integer.toString(numeroDias));
+        diasromValueList.add(Double.toString(round(rom_valueDias/cantDias,2)));
+
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             this.valorMayor = valorAlto;

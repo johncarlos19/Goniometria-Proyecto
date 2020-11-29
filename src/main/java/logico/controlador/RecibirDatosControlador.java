@@ -474,10 +474,18 @@ public class RecibirDatosControlador extends BaseControlador {
 
                 get(ctx -> {
                     String user = Goniometria.getInstance().getUserEncryptor().decrypt(ctx.cookie("User"));
+
                     if (ctx.cookie("User") != null) {
+
                         ctx.res.addHeader("Authorization",ctx.cookie("User"));
+                        EstadisticaTerapia estadisticaTerapia = new EstadisticaTerapia(decodeJWT(user).getId());
                         Map<String, Object> modelo = new HashMap<>();
                         modelo.put("user",decodeJWT(user).getId());
+                        modelo.put("cantidadPaciente",PacienteServicios.getInstance().cantPaciente(decodeJWT(user).getId()));
+                        modelo.put("permisoDado",PermisosServicios.getInstance().cantPermisoOtorgado(decodeJWT(user).getId()));
+                        modelo.put("permisoRecibido",PermisosServicios.getInstance().cantPermisoRecibido(decodeJWT(user).getId()));
+                        modelo.put("medidasTomadas",estadisticaTerapia.getMedidaEstadisticaList().size());
+                        modelo.put("estadistica",estadisticaTerapia);
 
                         ctx.render("/publico/ProyectoGon/dashboard.html",modelo);
                     } else {ctx.res.addHeader("lola","pepe");

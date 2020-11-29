@@ -2,6 +2,7 @@ package logico.servicios;
 
 import logico.goniometriaClass.Goniometria;
 import logico.goniometriaClass.Medida;
+import logico.goniometriaClass.MedidaEstadistica;
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -50,6 +51,35 @@ public class MedidaServicios {
                 Logger.getLogger(EstudianteServices.class.getName()).log(Level.SEVERE, null, ex);
             }
         }*/
+
+        return lista;
+    }
+
+    public List<MedidaEstadistica> listaMedidaEstadistica(String especialista) {
+        List<MedidaEstadistica> lista = new ArrayList<>();
+        Connection con = null; //objeto conexion.
+        try {
+            //
+            String query = "select ID_medida, ID_especialista, Fecha_realizacion, descripcion from goniometria.medidas where ID_especialista = ? order by ID_medida ASC;";
+            con = DataBaseServices.getInstancia().getConexion(); //referencia a la conexion.
+
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            prepareStatement.setString(1, especialista);
+            ResultSet rs = prepareStatement.executeQuery();
+            while(rs.next()){
+                MedidaEstadistica est = new MedidaEstadistica(rs.getString(1),rs.getString(2),rs.getTimestamp(3));
+                lista.add(est);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MedidaEstadistica.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MedidaEstadistica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
         return lista;
     }

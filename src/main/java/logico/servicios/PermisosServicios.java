@@ -32,6 +32,57 @@ public class PermisosServicios {
         return cant;
     }
 
+    public long cantPermisoOtorgado(String ID_cuenta){
+        return permisosList(ID_cuenta).size();
+    }
+    public long cantPermisoRecibido(String ID_especialista){
+        Connection con = null;
+        long cantidad = 0;
+        try {
+
+
+            con = DataBaseServices.getInstancia().getConexion();
+            String query = "select count(*) from goniometria.permisos where ID_especialista = ?;";
+            //
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+            prepareStatement.setString(1, ID_especialista);
+
+
+
+            //Antes de ejecutar seteo los parametros.
+
+
+            //
+            ResultSet rs  = prepareStatement.executeQuery();
+
+            while(rs.next()){
+                cantidad = rs.getLong(1);
+
+
+            }
+//            for (String aux: evolucion.getTerapiaIdList()
+//            ) {
+//                query = "update terapia set ID_evolucion = ? where idterapia = ?;";
+//                prepareStatement = con.prepareStatement(query);
+//                prepareStatement.setString(1,evolucion.getIdEvolucion());
+//                prepareStatement.setString(2,aux);
+//                fila = prepareStatement.executeUpdate();
+//            }
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(PersonaServicios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return cantidad;
+
+    }
+
     public List<Permisos> permisosList(String ID_cuenta){
         Connection con = null;
         List<Permisos> permisosListos = new ArrayList<Permisos>();

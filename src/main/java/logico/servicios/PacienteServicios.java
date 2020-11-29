@@ -23,6 +23,10 @@ public class PacienteServicios {
     }
 
 
+
+public long cantPaciente(String idEspecialista){
+        return listaPaciente(idEspecialista).size();
+}
 public ArrayList<Paciente> listaPaciente(String idEspecialista){
         ArrayList<Paciente> list = new ArrayList<>();
         Connection con = null; //objeto conexion.
