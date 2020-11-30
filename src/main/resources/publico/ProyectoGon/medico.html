@@ -57,15 +57,15 @@
             <li class="nav-item" role="presentation"></li>
             <li class="nav-item" role="presentation"></li>
             <li class="nav-item" role="presentation"></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estad&#237;stica</span></a></li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user"></i>Paciente</a>
                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evoluci&#243;n</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evoluci&#243;n</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
             </li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a></div>
+            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>M&#233;dico</a>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informaci&#243;n</a></div>
             </li>
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -186,7 +186,7 @@
                         <div class="col-9 text-center mx-auto testimonial-content">
                             <p class="text-center rating">5<i class="icon ion-star"></i></p>
                             <p class="signature" style="  color: #000000;
-">Informacion</p>
+">Informaci&#243;n</p>
                             <p class="text-center" style="  color: #140000;
 "><a th:text="'Soy un '+${especialista.tipo_especialista}+'.'">&quot;especialista dedicado a la terapia fisica.&quot;</a><br /></p>
                             <p class="text-center date">April 21, 2014<br /></p>
@@ -197,7 +197,7 @@
                             <p class="text-center rating"><i class="icon ion-leaf"></i></p>
                             <div class="card shadow mb-3">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 font-weight-bold">Informacion</p>
+                                    <p class="text-primary m-0 font-weight-bold">Informaci&#243;n</p>
                                 </div>
                                 <div class="card-body">
                                     <form>
@@ -206,15 +206,15 @@
                                                 <div class="form-group"><label for="especialidad"><strong>Especialidad</strong><br /></label><input type="text" class="form-control" placeholder="Terapeuta de la mano" name="especialidad" th:value="${especialista.tipo_especialista}" disabled /></div>
                                             </div>
                                             <div class="col">
-                                                <div class="form-group"><label for="correo"><strong>Correo Electronico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${especialista.cuenta.correo}" disabled /></div>
+                                                <div class="form-group"><label for="correo"><strong>Correo Electr&#243;nico</strong><br /></label><input type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${especialista.cuenta.correo}" disabled /></div>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col">
-                                                <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${especialista.cedula}" disabled /></div>
+                                                <div class="form-group"><label for="cedula"><strong>C&#233;dula</strong><br /></label><input type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${especialista.cedula}" disabled /></div>
                                             </div>
                                             <div class="col">
-                                                <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input type="text" class="form-control" placeholder="(###)-###-###" name="telefono" th:value="${especialista.telefono}" disabled /></div>
+                                                <div class="form-group"><label for="telefono"><strong>Tel&#233;fono</strong><br /></label><input type="text" class="form-control" placeholder="(###)-###-###" name="telefono" th:value="${especialista.telefono}" disabled /></div>
                                             </div>
                                         </div>
                                     </form>
@@ -228,7 +228,7 @@
                             <p class="text-center rating"><i class="icon ion-location"></i></p>
                             <div class="card shadow">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 font-weight-bold">Direccion</p>
+                                    <p class="text-primary m-0 font-weight-bold">Direcci&#243;n</p>
                                 </div>
                                 <div class="card-body">
                                     <form>
@@ -316,7 +316,7 @@
                 <h3 class="text-dark mb-4">Buscar Paciente</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Infomacion del paciente</p>
+                        <p class="text-primary m-0 font-weight-bold">Informaci&#243;n del paciente</p>
                     </div>
                     <div class="card-body">
 

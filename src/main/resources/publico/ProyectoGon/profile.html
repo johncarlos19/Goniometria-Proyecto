@@ -61,15 +61,15 @@
             <li class="nav-item" role="presentation"></li>
             <li class="nav-item" role="presentation"></li>
             <li class="nav-item" role="presentation"></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estadistica</span></a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="/estadisticas"><i class="icon ion-pie-graph"></i><span>Estad&#237;stica</span></a></li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user"></i>Paciente</a>
                 <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/register">Registrar</a><a class="dropdown-item" role="presentation" href="/buscarPaciente">Buscar</a></div>
             </li>
             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-hospital"></i>Terapia</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evolucion</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/hojaEvolucion">Crear Hoja de Evoluci&#243;n</a> <a class="dropdown-item" role="presentation" href="/evolucion">Ver Hoja de Evoluci&#243;n</a> <a class="dropdown-item" role="presentation" href="#"></a></div>
             </li>
-            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>Medico</a>
-                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informacion</a></div>
+            <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-user-nurse"></i>M&#233;dico</a>
+                <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/informacion">Informaci&#243;n</a></div>
             </li>
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
@@ -183,7 +183,7 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <a class="btn btn-primary btn-sm d-none d-sm-inline-block pull-right" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                <a class="btn btn-primary btn-sm d-none d-sm-inline-block pull-right" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generar Reporte</a>
                 <h2 class="text-dark mb-4">Paciente</h2>
                 <div class="row mb-3">
                     <div class="col-lg-4">
@@ -208,12 +208,12 @@
                             </div>
                             <form method="post" action="/estadisticas">
                                 <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
-                                <button class="btn btn-link border-pretty" style="top:  50px;" type="submit" >Mostrar Estadisticas<i class="icon ion-android-arrow-forward"></i></button>
+                                <button class="btn btn-link border-pretty" style="top:  50px;" type="submit" >Mostrar Estad&#237;sticas<i class="icon ion-android-arrow-forward"></i></button>
                             </form>
                             <form method="post" action="/evolucion">
                                 <input name="idPaciente" type="hidden" th:value="${paciente.idPaciente}">
                                 <input name="action" type="hidden" value="buscarEvo">
-                                <button class="btn btn-link border-pretty" style="top:  50px;" type="submit" >Mostrar Lista De Evolucion<i class="icon ion-android-arrow-forward"></i></button>
+                                <button class="btn btn-link border-pretty" style="top:  50px;" type="submit" >Mostrar Lista De Evoluci&#243;n<i class="icon ion-android-arrow-forward"></i></button>
                             </form>
                         </div></div>
                     </div>
@@ -251,7 +251,7 @@
                         <div class="row">
                             <div class="col"><div class="card shadow mb-3">
                                 <div class="card-header py-3">
-                                    <p class="text-primary m-0 font-weight-bold">Informacion</p>
+                                    <p class="text-primary m-0 font-weight-bold">Informaci&#243;n</p>
                                 </div>
                                 <div class="card-body">
                                     <form id="formProfile" action="/profile" method="post">
@@ -264,16 +264,16 @@
                                                 <div class="form-group"><label for="apellido"><strong>Apellido</strong><br /></label><input disabled type="text" class="form-control" placeholder="user.apellido" name="apellido" th:value="${paciente.apellido}" th:attrappend="disabled=${statu}"/></div>
                                             </div>
                                             <div class="col">
-                                                <div class="form-group"><label for="telefono"><strong>Telefono</strong><br /></label><input disabled type="text" class="form-control" placeholder="(809)-233-5820" name="telefono" th:value="${paciente.telefono}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="telefono"><strong>Tel&#233;fono</strong><br /></label><input disabled type="text" class="form-control" placeholder="(809)-233-5820" name="telefono" th:value="${paciente.telefono}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="col">
-                                                <div class="form-group"><label for="cedula"><strong>Cedula</strong><br /></label><input disabled type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${paciente.cedula}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="cedula"><strong>C&#233;dula</strong><br /></label><input disabled type="text" class="form-control" placeholder="(###)-#######-#" name="cedula" th:value="${paciente.cedula}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
 
                                             <div class="col">
-                                                <div class="form-group"><label for="email"><strong>Correo Electronico</strong><br /></label><input disabled type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${paciente.correo}" th:attrappend="disabled=${statu}" /></div>
+                                                <div class="form-group"><label for="email"><strong>Correo Electr&#243;nico</strong><br /></label><input disabled type="email" class="form-control" placeholder="user@example.com" name="correo" th:value="${paciente.correo}" th:attrappend="disabled=${statu}" /></div>
                                             </div>
 
                                         </div>
@@ -283,7 +283,7 @@
                             </div>
                                 <div class="card shadow">
                                     <div class="card-header py-3">
-                                        <p class="text-primary m-0 font-weight-bold">Direccion</p>
+                                        <p class="text-primary m-0 font-weight-bold">Direcci&#243;n</p>
                                     </div>
                                     <div class="card-body">
                                         <form id="formProfile2" action="/profile" method="post">
@@ -335,7 +335,7 @@
                                     <th>Medida</th>
                                     <th>Lugar</th>
                                     <th>Rom</th>
-                                    <th>Accion</th>
+                                    <th>Acci&#243;n</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -372,7 +372,7 @@
 
                         <div class="card shadow mb-5">
                             <div class="card-header py-3">
-                                <p class="text-primary m-0 font-weight-bold">Documento Fisico</p>
+                                <p class="text-primary m-0 font-weight-bold">Documento F&#237;sico</p>
                             </div>
                             <div class="card-body" id="formulario">
 
@@ -430,7 +430,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="form-group"><label for="from-comments">Ocupacion</label><textarea class="form-control" id="from-comments" name="ocupacion" placeholder="Especifique" rows="5" form="subir" disabled></textarea></div>
+                                                                <div class="form-group"><label for="from-comments">Ocupaci&#243;n</label><textarea class="form-control" id="from-comments" name="ocupacion" placeholder="Especifique" rows="5" form="subir" disabled></textarea></div>
                                                                 <div class="form-group">
                                                                     <div class="form-row">
                                                                         <div class="col-sm-6 col-md-12 col-lg-6">
@@ -451,7 +451,7 @@
                                                                                                 <div
                                                                                                         class="form-group"><label for="country"><strong>Efectos</strong><br></label><textarea class="form-control" id="from-comments-3"  th:text="${medicamentos.efectos}" name="efectos" placeholder="Especifique" rows="5" style="height: 90px;" form="subir" disabled></textarea></div>
                                                                                                 <div
-                                                                                                        class="form-group"><label for="country"><strong>Revision medica</strong><br></label><textarea class="form-control" id="from-comments-1" th:text="${medicamentos.revision_medico}"  name="revision_medico" placeholder="Especifique" rows="5" style="height: 90px;"
+                                                                                                        class="form-group"><label for="country"><strong>Revisi&#243;n m&#233;dica</strong><br></label><textarea class="form-control" id="from-comments-1" th:text="${medicamentos.revision_medico}"  name="revision_medico" placeholder="Especifique" rows="5" style="height: 90px;"
                                                                                                                                                                                                       form="subir" disabled></textarea></div>
                                                                                             </div>
                                                                                         </div>
@@ -466,14 +466,14 @@
                                                                             <div class="card shadow">
                                                                                 <div class="card-body">
                                                                                     <form>
-                                                                                        <div class="form-group"><label for="address"><strong>Condicion</strong><br></label><input class="form-control" id="from-calltime-4" name="condicion" form="subir" disabled type="text" th:value="${estadoSalud.condicion}"></input></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Condici&#243;n</strong><br></label><input class="form-control" id="from-calltime-4" name="condicion" form="subir" disabled type="text" th:value="${estadoSalud.condicion}"></input></div>
                                                                                         <div
                                                                                                 class="form-group"><label for="address"><strong>Dificultades</strong><br></label><input class="form-control" type="text" placeholder="Estirar la espalda"  th:value="${estadoSalud.dificultad}" name="dificultad" form="subir" disabled></div>
                                                                                         <div class="form-group"><label for="address"><strong>Molestias de dolor</strong><br></label><input class="form-control" type="text" placeholder="Dolor de espalda" th:value="${estadoSalud.molestia_dolor}"  name="molestia_dolor" form="subir" disabled></div>
                                                                                         <div class="form-group"><label for="address"><strong>Estres</strong><br></label><input class="form-control" id="from-calltime-5" name="estres_nivel" type="text" form="subir" disabled th:value="${estadoSalud.estres_nivel}" ></input></div>
                                                                                         <div
                                                                                                 class="form-group"><label for="address"><strong>Enfermedades</strong><br></label><input class="form-control" type="text" placeholder="Cancer/Infecciones/Genetica" th:value="${estadoSalud.enfermedades}"  name="enfermedades" form="subir" disabled></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Habitos toxicos</strong><br></label><input class="form-control" type="text" placeholder="No visitar un especialista " th:value="${estadoSalud.habitos_toxicos}" name="habitos_toxicos" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>H&#225;bitos t&#243;xicos</strong><br></label><input class="form-control" type="text" placeholder="No visitar un especialista " th:value="${estadoSalud.habitos_toxicos}" name="habitos_toxicos" form="subir" disabled></div>
                                                                                         <div class="form-row">
                                                                                             <div class="col">
                                                                                                 <div class="form-group"><label for="city"><strong>Dieta pre-escrita</strong><br></label><input class="form-control" type="text" placeholder="Aumentar fibra" th:value="${estadoSalud.dieta_pre}" name="dieta_pre" form="subir" disabled></div>
@@ -491,9 +491,9 @@
                                                                             <div class="card shadow">
                                                                                 <div class="card-body">
                                                                                     <form>
-                                                                                        <div class="form-group"><label for="address"><strong>Tipo de cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.tipo_cirugia}" name="tipo_cirugia" form="subir" disabled></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la cirugia</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.hospital_cirugia}"  name="hospital_cirugia" form="subir" disabled></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_cirugia" id="fecha_cirugia" th:value="${formularioCirugia.fecha_cirugia}" type="text" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Tipo de cirug&#237;a</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.tipo_cirugia}" name="tipo_cirugia" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Hospital de la cirug&#237;a</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioCirugia.hospital_cirugia}"  name="hospital_cirugia" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizaci&#243;n</strong><br></label><input class="form-control" name="fecha_cirugia" id="fecha_cirugia" th:value="${formularioCirugia.fecha_cirugia}" type="text" form="subir" disabled></div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
@@ -508,7 +508,7 @@
                                                                                     <form>
                                                                                         <div class="form-group"><label for="address"><strong>Tipo de prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.tipo_prueba}" name="tipo_prueba" form="subir" disabled></div>
                                                                                         <div class="form-group"><label for="address"><strong>Hospital de la prueba</strong><br></label><input class="form-control" type="text" placeholder="Especifique" th:value="${formularioPruebas.hospital_prueba}" name="hospital_prueba" form="subir" disabled></div>
-                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizacion</strong><br></label><input class="form-control" name="fecha_prueba" id="fecha_prueba" th:value="${formularioPruebas.fecha_prueba}"  type="text" form="subir" disabled></div>
+                                                                                        <div class="form-group"><label for="address"><strong>Fecha de realizaci&#243;n</strong><br></label><input class="form-control" name="fecha_prueba" id="fecha_prueba" th:value="${formularioPruebas.fecha_prueba}"  type="text" form="subir" disabled></div>
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
@@ -538,7 +538,7 @@
                                                                                          <div class="form-row">
                                                                                         <div class="col offset-xl-1">
                                                                                             <div class="form-group ">
-                                                                                                <label for="address" ><strong>Posicion</strong><br></label><input class="form-control" type="text" th:value="${preguntasGenerales.posicion}" placeholder="Encargado/Supervisor/Gerente" name="posicion" form="subir" disabled></div>
+                                                                                                <label for="address" ><strong>Posici&#243;n</strong><br></label><input class="form-control" type="text" th:value="${preguntasGenerales.posicion}" placeholder="Encargado/Supervisor/Gerente" name="posicion" form="subir" disabled></div>
 
                                                                                             <div class="form-group"><label for="country"><strong>Actividad</strong><br></label><input disabled class="form-control" id="from-calltime-6" name="actividades" form="subir" type="text" th:value="${preguntasGenerales.actividades}"></input></div>
                                                                                             <div
@@ -560,14 +560,14 @@
                                                                             <div class="form-group"><label for="address"><strong>Sintomas</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.sintomas_asociados}"  placeholder="Espalda baja" name="sintomas_asociados" form="subir" disabled></div>
                                                                             <div class="form-row">
                                                                                 <div class="col">
-                                                                                    <div class="form-group"><label for="city"><strong>Tipo de lesion</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.tipo_lesion}" disabled placeholder="fractura" name="tipo_lesion" form="subir"></div>
+                                                                                    <div class="form-group"><label for="city"><strong>Tipo de lesi&#243;n</strong><br></label><input class="form-control" type="text" th:value="${preDiagnostico.tipo_lesion}" disabled placeholder="fractura" name="tipo_lesion" form="subir"></div>
                                                                                     <div class="form-group"><label for="city"><strong>Fecha</strong><br></label>
                                                                                         <div class="col-md-6" style="width: 275px;"><input class="form-control" name="fecha_diagnostico" id="fecha_diagnostico" th:value="${preDiagnostico.fecha_diagnostico}" type="text" style="width: 250px;" form="subir" disabled></div>
                                                                                     </div>
                                                                                     <div></div>
                                                                                 </div>
                                                                                 <div class="col">
-                                                                                    <div class="form-group"><label for="country"><strong>Valoracion de dolor</strong><br></label><input class="form-control" id="from-calltime-2" type="text" form="subir" name="valoracion_dolor" disabled th:value="${preDiagnostico.valoracion_dolor}"></input></div>
+                                                                                    <div class="form-group"><label for="country"><strong>Valoraci&#243;n de dolor</strong><br></label><input class="form-control" id="from-calltime-2" type="text" form="subir" name="valoracion_dolor" disabled th:value="${preDiagnostico.valoracion_dolor}"></input></div>
                                                                                     <div
                                                                                             class="form-group"><label for="country"><strong>Tipo de prueba</strong><br></label><input class="form-control" id="from-calltime-7" type="text" name="tipo_prueba" form="subir" disabled th:value="${preDiagnostico.tipo_prueba}"></input></div>
                                                                                 </div>
@@ -601,7 +601,7 @@
                                                                     </div>
                                                                     <div class="form-row">
                                                                         <div class="col-12 col-md-6" id="message">
-                                                                            <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us<small><small class="required-input">&nbsp;(*required)</small></small>
+                                                                            <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us<small><small class="required-input">&nbsp;(*requerido)</small></small>
                                                                             </h2>
                                                                             <div class="form-group"><label for="from-name">Name</label><span class="required-input">*</span>
                                                                                 <div class="input-group">
@@ -872,7 +872,7 @@
                                 '                                                                                    <div></div>\n' +
                                 '                                                                                </div>\n' +
                                 '                                                                                <div class="col">\n' +
-                                '                                                                                    <div class="form-group"><label for="country"><strong>Relacion con el padre</strong><br></label><input type="text" value="[[${formularioMenor.relacion_paciente}]]" class="form-control" id="from-calltime-1" name="relacion_paciente"  form="subir" disabled></input></div>\n' +
+                                '                                                                                    <div class="form-group"><label for="country"><strong>Relaci&#243;n con el padre</strong><br></label><input type="text" value="[[${formularioMenor.relacion_paciente}]]" class="form-control" id="from-calltime-1" name="relacion_paciente"  form="subir" disabled></input></div>\n' +
                                 '                                                                                    <div\n' +
                                 '                                                                                            class="form-group"><label for="country"><strong>Seguro del padre</strong><br></label><input  disabled class="form-control" type="number" min="0" placeholder="(###)-(#####)-(#)" name="seguro_padre" form="subir" disabled value="[[${formularioMenor.seguro_padre}]]"></div>\n' +
                                 '                                                                                </div>\n' +
