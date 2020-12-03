@@ -79,8 +79,8 @@ public class PreMedidaServicios {
 
             con = DataBaseServices.getInstancia().getConexion();
             //
-            query = "select rm.ID_paciente ,a.ID_angulo, ac.ID_cuatrodedos, cu.id_dedos, r.ID_rom,\n" +
-                    "ac.Interfalangicas_distales , ac.Interfalangicas_proximales , ac.Metacarpofalangicas, cu.anular,\n" +
+            query = "select rm.ID_paciente ,a.ID_angulo, ac.ID_cuatrodedos, cu.id_dedos, r.ID_rom,\n" +//5
+                    "ac.Interfalangicas_distales , ac.Interfalangicas_proximales , ac.Metacarpofalangicas, cu.anular,\n" +//9
                     "cu.indice, cu.mayor, cu.menique, r.Flexion, r.Extension, r.Abduccion, r.Aduccion from registro_medida_a_tomar rm, angulos a, cuatrodedos cu, articulaciones_cuatrodedos ac, rom r\n" +
                     "where rm.ID_angulo = a.ID_angulo and a.ID_cuatrodedos = ac.ID_cuatrodedos and ac.ID_dedos = cu.id_dedos and cu.ID_rom = r.ID_rom and rm.ID_paciente = ?;";
             PreparedStatement prepareStatement = con.prepareStatement(query);
@@ -126,10 +126,10 @@ public class PreMedidaServicios {
                         aux.setRom(selectRom(2));
 
                     }else if (rs.getInt(15)==1){
-                        aux.setRom(selectRom(4));
+                        aux.setRom(selectRom(3));
 
                     }else if (rs.getInt(16)==1){
-                        aux.setRom(selectRom(3));
+                        aux.setRom(selectRom(4));
 
                     }
 
